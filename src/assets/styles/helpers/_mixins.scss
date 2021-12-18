@@ -1,0 +1,64 @@
+@import 'variables';
+
+@mixin flex-container($align: center, $justify: center, $direction: row) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+@mixin box-shadow($color: #bbbbbb) {
+  box-shadow: 0px 3px 5px $color;
+}
+
+@mixin top-box-shadow($color: #bbbbbb) {
+  box-shadow: -10px 0px 5px $color;
+}
+
+@mixin font($size, $family: regular) {
+  font-size: $size/$primary-font-size-value + rem;
+  @if $family == thin {
+    font-family: MontserratThin;
+  } @else if ($family == light) {
+    font-family: MontserratLight;
+  } @else if ($family == regular) {
+    font-family: MontserratRegular;
+  } @else if ($family == medium) {
+    font-family: MontserratMedium;
+  } @else if ($family == semi) {
+    font-family: MontserratSemiBold;
+  } @else if ($family == bold) {
+    font-family: MontserratBold;
+  } @else if ($family == extra) {
+    font-family: MontserratExtraBold;
+  } @else if ($family == black) {
+    font-family: MontserratBlack;
+  }
+  @else if ($family == italic) {
+    font-family: MontserratBlackItalic;
+  }
+}
+
+@mixin width($width) {
+  width: $width / $primary-font-size-value + rem;
+}
+
+@mixin height($height) {
+  height: $height / $primary-font-size-value + rem;
+}
+
+@mixin min-width($width) {
+  min-width: $width / $primary-font-size-value + rem;
+}
+
+@mixin min-height($height) {
+  min-height: $height / $primary-font-size-value + rem;
+}
+
+@mixin max-width($width) {
+  max-width: $width / $primary-font-size-value + rem;
+}
+
+@mixin max-height($height) {
+  max-height: $height / $primary-font-size-value + rem;
+}

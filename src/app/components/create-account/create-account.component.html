@@ -1,0 +1,79 @@
+<div class="login-component">
+    <div class="name-logo">
+        <div class="logo">
+            <img src="assets/images/crypto.png" alt="">
+        </div>
+        <div class="name">CryFt</div>
+    </div>
+    <div class="content">
+        <div class="header">
+            Create Yout accont
+        </div>
+
+
+       <div class="inner-content">
+        <div class="left">
+            <form>
+                <mat-form-field appearance="fill">
+                    <mat-label>First name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput>
+                </mat-form-field>
+
+                <div class="tnc">
+                    By signing up, you agree to cryft's <a href="">Terms & Conditions</a>.
+                </div>
+
+                <button class="sign-up" mat-raised-button color="primary">Sign Up</button>
+            </form>
+        </div>
+
+        <div class="right">
+            <div class="logo">
+                <img src="assets/images/gift.png" alt="">
+                <!-- <img src="assets/images/coins.png" alt=""> -->
+            </div>
+
+            <div class="exiting-acc">
+                Already have an account? <a [routerLink]="['/login']">Log in</a>
+            </div>
+
+            <div class="password-instructions">
+                Password must be at least eight characters long,
+
+               <div class="item">
+                - contain at least one upper case and lower case letter,
+               </div>
+
+              <div class="item">
+                - one numeral
+              </div>
+
+              <div class="item">
+                - and one special character.
+              </div>
+
+               
+            </div>
+
+        </div>
+       </div>
+    </div>
+
+
+</div>

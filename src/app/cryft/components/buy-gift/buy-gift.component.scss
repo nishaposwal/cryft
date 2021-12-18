@@ -1,0 +1,100 @@
+@import "../../../../assets/styles/helpers/mixins";
+@import "../../../../assets/styles/helpers/fonts";
+
+.buy-gift-component {
+  display: flex;
+  padding: 2rem;
+
+  .left {
+    img {
+      width: 25rem;
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    .header {
+      font-family: MontserratBold;
+      font-size: 2rem;
+      color: $primary-color;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid $secondary-color;
+    }
+
+    .section {
+      width: 100%;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid $secondary-color;
+      .header1 {
+        font-family: MontserratMedium;
+        font-size: 1rem;
+        color: $primary-color;
+        width: 100%;
+      }
+      padding: 1rem;
+      .cards {
+        padding-left: 2rem;
+        width: 70%;
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 2rem;
+
+        .card {
+          margin: 5px;
+          img {
+            width: 6rem;
+          }
+        }
+      }
+
+      .detail {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+
+        .header3 {
+          font-family: MontserratMedium;
+          margin-right: 1rem;
+          font-size: 1.2rem;
+        }
+        .amount {
+          display: flex;
+
+          .amount-pill {
+            border: 1px solid grey;
+            border-radius: 5px;
+            padding: 0.6rem 0.8rem;
+            margin: 5px;
+            font-family: MontserratBold;
+
+            input{
+              background: transparent;
+              border: none;
+              outline: none;
+            }
+          }
+          .selected {
+            background-color: $primary-color;
+            color: white;
+          }
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+
+        mat-form-field {
+          width: 70%;
+        }
+      }
+
+      button{
+        width: 70%;
+      }
+    }
+  }
+}

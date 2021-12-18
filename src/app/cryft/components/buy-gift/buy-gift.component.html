@@ -1,0 +1,80 @@
+<div class="buy-gift-component">
+    <div class="left">
+        <img src="assets/images/gift-card.png">
+    </div>
+
+    <div class="right">
+        <div class="header">
+            Cryft Gift card
+        </div>
+        <div class="section">
+            <div class="header1">
+                1. Select the type of crypto
+            </div>
+
+            <div class="cards">
+                <div class="card" *ngFor="let card of giftCards">
+                    <img src="assets/images/{{card.img}}">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="header1">
+                2. Provide the details
+            </div>
+
+            <div class="detail">
+                <div class="header3">
+                    Amount
+                </div>
+                <div class="amount">
+                    <div class="amount-pill" *ngFor="let amount of amounts; let i = index" [class.selected]="selectedAmountPill == i" (click)="selecteAmount(i)">
+                        Rs{{amount}}
+                    </div>
+
+                    <div class="amount-pill">
+                        <input type="number" placeholder="Enter amount in rupees">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="detail">
+                <div class="header3">
+                    Delivery
+                </div>
+                <div class="type">
+                    Email
+                </div>
+            </div>
+
+            <form action="">
+                <mat-form-field appearance="fill">
+                    <mat-label>Recipient Name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Recipient Email</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Your Name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Message</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </form>
+            <button mat-raised-button color="primary">Buy Now</button>
+        </div>
+
+    </div>
+</div>

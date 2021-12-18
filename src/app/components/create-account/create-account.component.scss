@@ -1,0 +1,105 @@
+@import "../../../assets/styles/helpers/mixins";
+@import "../../../assets/styles/helpers/fonts";
+
+.login-component {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  overflow-x: hidden;
+
+  .name-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    .logo {
+      img {
+        width: 3rem;
+      }
+    }
+
+    .name {
+      font-family: MontserratExtraBoldItalic;
+      font-size: 2rem;
+      color: $primary-color;
+    }
+  }
+
+  .content {
+    width: 80%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(199, 197, 197);
+    background-color: white;
+    box-shadow: 2px 0px 10px -3px rgba(0, 0, 0, 0.33);
+
+    .header {
+      width: 100%;
+      font-family: MontserratBold;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: $secondary-color;
+    }
+
+    .inner-content {
+      width: 80vw;
+      display: flex;
+      .left {
+        flex: 1;
+        padding: 1rem;
+        form {
+          display: flex;
+          flex-direction: column;
+          mat-form-field {
+            input {
+              width: 8rem;
+            }
+          }
+
+          .sign-up {
+            margin: 1rem;
+          }
+        }
+      }
+
+      .right {
+        padding: 1rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .logo {
+          width: 100%;
+          margin-left: 3rem;
+          img {
+            width: 8rem;
+            margin: 0 0.5rem;
+          }
+        }
+        .exiting-acc{
+            margin: 1rem;
+        }
+
+        .password-instructions{
+            margin: 1rem;
+
+            .item{
+                margin: 1rem 0;
+            }
+        }
+
+
+      }
+    }
+  }
+}
+
+a {
+  color: $secondary-color;
+  padding-bottom: 0.5rem;
+}
