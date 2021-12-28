@@ -19,4 +19,8 @@ export class CreateAccountComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  signup(){
+
+  }
+
 }

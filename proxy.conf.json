@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+      "target": "https://tranquil-depths-04523.herokuapp.com",
+      "secure": false,
+      "logLevel": "debug"
+    }
+  }

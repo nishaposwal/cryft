@@ -1,0 +1,28 @@
+<div class="profile-component">
+  <div class="edit">
+    <button mat-stroked-button color="primary" (click)="openDialog()">Edit Profile</button>
+  </div>
+  <div class="profile-picture">
+    <div class="image">
+      <img src="assets/images/baga border.jpg" />
+    </div>
+    {{profile.name}}
+  </div>
+  <div class="my-currencies">
+      My Currenccies
+  </div>
+  <div class="currencies">
+      <div class="currency" *ngFor="let currency of profile.currencies">
+      <div class="name">
+       {{ currency.currencyName}}
+      </div>
+      <div class="amoount">
+          {{currency.amount}}
+      </div>
+      </div>
+  </div>
+
+  <div class="orders">
+      
+  </div>
+</div>

@@ -1,0 +1,70 @@
+@import "../../../../assets/styles/helpers/mixins";
+@import "../../../../assets/styles/helpers/fonts";
+
+.profile-component {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fafafa;
+  padding: 1rem;
+
+
+  .edit{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: $primary-color;
+  }
+  .profile-picture {
+    width: 100%;
+    border-bottom: 1px solid $primary-color;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1rem;
+
+    .image {
+      margin-bottom: 1rem;
+      img {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        border: 1px solid grey;
+      }
+    }
+  }
+
+  .my-currencies{
+      color: $primary-color;
+      font-family: MontserratBold;
+      font-size: 1.5rem;
+      padding: 2rem 0;
+  }
+
+  .currencies {
+    display: flex;
+
+    .currency {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 7rem;
+      height: 6rem;
+      background: linear-gradient(180deg, $secondary-color, $secondary-light);
+      border-radius: 5px;
+      box-shadow: 2px 0px 10px -3px rgba(0, 0, 0, 0.33);
+      margin: 0.5rem;
+      color: white;
+      font-family: MontserratBold;
+      border: 1px solid $secondary-color;
+    }
+  }
+
+  .orders{
+      
+  }
+}

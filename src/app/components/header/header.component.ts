@@ -1,9 +1,16 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +18,8 @@ import {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private router: Router) {}
+
   redeemCode: String = '';
   navs = [
     {
@@ -34,6 +42,25 @@ export class HeaderComponent implements OnInit {
       console.log('The dialog was closed');
       this.redeemCode = result;
     });
+  }
+
+  navigate(nav: any) {
+    if (nav.name === 'Redeem Gift Card') {
+      this.openDialog();
+    } else {
+    }
+  }
+
+  login() {
+    this.router.navigate(['login']);
+  }
+
+  sign() {
+    this.router.navigate(['sign-up']);
+  }
+
+  home() {
+    this.router.navigate(['/']);
   }
 }
 

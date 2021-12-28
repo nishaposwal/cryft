@@ -15,11 +15,7 @@
         <div class="left">
             <form>
                 <mat-form-field appearance="fill">
-                    <mat-label>First name</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>Last Name</mat-label>
+                    <mat-label>Name</mat-label>
                     <input matInput>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
@@ -39,7 +35,7 @@
                     By signing up, you agree to cryft's <a href="">Terms & Conditions</a>.
                 </div>
 
-                <button class="sign-up" mat-raised-button color="primary">Sign Up</button>
+                <button class="sign-up" mat-raised-button color="primary" (click)="signup()">Sign Up</button>
             </form>
         </div>
 

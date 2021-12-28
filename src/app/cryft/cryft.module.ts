@@ -11,21 +11,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
-import {
-  HeaderComponent,
-  RedeemDialog,
-} from './components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EditProfile, ProfileComponent } from './components/profile/profile.component';
 @NgModule({
   declarations: [
     CryftComponent,
     HomeComponent,
     BuyGiftComponent,
     FaqsComponent,
-    HeaderComponent,
-    RedeemDialog,
+    ProfileComponent,
+    EditProfile
   ],
   imports: [
     CommonModule,

@@ -1,37 +1,48 @@
 <div class="login-component">
-    <div class="name-logo">
-        <div class="logo">
-            <img src="assets/images/crypto.png" alt="">
-        </div>
-        <div class="name">CryFt</div>
+  <div class="name-logo">
+    <div class="logo">
+      <img src="assets/images/crypto.png" alt="" />
     </div>
-    <div class="content">
-        <div class="header">
-            Log in
-        </div>
+    <div class="name">CryFt</div>
+  </div>
+  <div class="content">
+    <div class="header">Log in</div>
 
-        <div class="input-container">
-            <mat-form-field appearance="fill">
-                <mat-label>Enter your email</mat-label>
-                <input matInput placeholder="pat@example.com" required autocomplete="off">
+    <form [formGroup]="loginForm">
+      <div class="input-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            required
+            autocomplete="off"
+            formControlName="email"
+          />
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="password"
+            required
+            autocomplete="off"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </div>
+    </form>
 
-            </mat-form-field>
-        </div>
-        <div class="input-container">
-            <mat-form-field appearance="fill">
-                <mat-label>Enter your password</mat-label>
-                <input type="password" matInput placeholder="password" required autocomplete="off">
+    <button mat-raised-button color="primary" (click)="login()">Log in</button>
+  </div>
 
-            </mat-form-field>
-        </div>
-
-        <button mat-raised-button color="primary" (click)="login()">Log in</button>
+  <div class="forget-pass">
+    <a href="">Forgot password?</a>
+    <div class="sign-up">
+      Don't have an account?<a [routerLink]="['/sign-up']">Create account</a>
     </div>
-
-    <div class="forget-pass">
-     <a href="">Forgot password?</a>
-     <div class="sign-up">
-        Don't have an account?<a [routerLink]="['/sign-up']">Create account</a>
-     </div>
-    </div>
+  </div>
 </div>

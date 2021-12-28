@@ -1,5 +1,5 @@
 <div mat-dialog-content>
-  <p>Enter RedeemCode here</p>
+  <p>Enter Redeem Code here</p>
   <mat-form-field appearance="fill">
     <mat-label>Redeem Code</mat-label>
     <input matInput [(ngModel)]="data.redeemCode">
@@ -8,4 +8,4 @@
 <div mat-dialog-actions>
   <button mat-raised-button color="accent" (click)="onNoClick()">Cancel</button>
   <button mat-raised-button color="primary" [mat-dialog-close]="data.redeemCode" cdkFocusInitial [disabled]="!data.redeemCode">Redeem</button>
-</div>
+</div> 

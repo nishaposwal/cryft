@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'cryft',
     pathMatch: 'full'
   },
   { path: 'cryft', loadChildren: () => import('./cryft/cryft.module').then(m => m.CryftModule) }
