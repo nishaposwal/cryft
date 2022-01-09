@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HeaderComponent, RedeemDialog } from './components/header/header.component';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor, TokenInterceptor } from './core/interceptors';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   
@@ -36,7 +37,8 @@ import { ErrorInterceptor, TokenInterceptor } from './core/interceptors';
     MatInputModule,
     MatDatepickerModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [
     {

@@ -14,7 +14,11 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatDialogModule } from '@angular/material/dialog';
-import { EditProfile, ProfileComponent } from './components/profile/profile.component';
+import {
+  EditProfile,
+  ProfileComponent,
+} from './components/profile/profile.component';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     CryftComponent,
@@ -22,7 +26,7 @@ import { EditProfile, ProfileComponent } from './components/profile/profile.comp
     BuyGiftComponent,
     FaqsComponent,
     ProfileComponent,
-    EditProfile
+    EditProfile,
   ],
   imports: [
     CommonModule,
@@ -37,6 +41,7 @@ import { EditProfile, ProfileComponent } from './components/profile/profile.comp
     ReactiveFormsModule,
     MatRippleModule,
     ClipboardModule,
+    MatTableModule,
   ],
 })
 export class CryftModule {}

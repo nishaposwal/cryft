@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
-
-import { throwError } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-
-import { AppService } from './app.service';
+import { Observable, Subject } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
-import { RestService } from './rest.service';
 
 function _window() {
   return window;
@@ -16,6 +11,7 @@ function _window() {
 export class AuthService {
   private token: any;
   private authInfo = null;
+  loggedIn$ = new Subject();
 
   constructor(private localStorageService: LocalStorageService) {}
 
@@ -29,14 +25,21 @@ export class AuthService {
   }
 
   getAuthToken() {
-    return this.token;
+    return this.localStorageService.getItem('token');
   }
 
   setAuthToken(token: any) {
+    this.loggedIn$.next(true)
+    this.localStorageService.addItem('token', token);
     this.token = token;
   }
 
-  getNativeWindow() {
+  getNativeWindow(): any {
     return _window();
+  }
+
+  logout(){
+    this.loggedIn$.next(false);
+    this.localStorageService.removeItem('token')
   }
 }

@@ -1,19 +1,54 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { EventEmitterService } from 'src/app/core/services/event-emitter.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-
-  constructor() { }
+export class HomeComponent implements OnInit, AfterViewInit {
+  @ViewChild('buyGift', { static: false })
+  buyGift: ElementRef<HTMLElement> = {} as ElementRef;
+  @ViewChild('home', { static: false })
+  home: ElementRef<HTMLElement> = {} as ElementRef;
+  subscription: any = [];
+  constructor(private eventEmitterService: EventEmitterService) {}
 
   ngOnInit(): void {
+    this.subscription.push(
+      this.eventEmitterService.subscribe((event: any) => {
+        switch (event.type) {
+          case 'BUY_GIFT':
+            this.buy();
+            break;
+          case 'SROLL_TO_THE_TOP':
+            this.home.nativeElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+              inline: 'nearest',
+            });
+            break;
+
+          default:
+            break;
+        }
+      })
+    );
   }
 
-  buy(){
-    
-  }
+  ngAfterViewInit() {}
 
+  buy() {
+    this.buyGift.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
+  }
 }

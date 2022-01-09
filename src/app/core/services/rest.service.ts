@@ -28,4 +28,8 @@ export class RestService {
     const headers: HttpHeaders = options.headers || new HttpHeaders();
     return this.httpClient.delete(url, { headers });
   }
+
+  getifsc(url:any){
+    return this.httpClient.get(url);
+  }
 }

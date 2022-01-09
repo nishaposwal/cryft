@@ -1,28 +1,113 @@
 <div class="profile-component">
   <div class="edit">
-    <button mat-stroked-button color="primary" (click)="openDialog()">Edit Profile</button>
+    <button mat-stroked-button color="primary" (click)="openDialog()">
+      Edit Profile
+    </button>
   </div>
   <div class="profile-picture">
     <div class="image">
       <img src="assets/images/baga border.jpg" />
     </div>
-    {{profile.name}}
+    {{ profile.name }}
   </div>
-  <div class="my-currencies">
-      My Currenccies
-  </div>
+  <div class="my-currencies">My Currenccies</div>
+
   <div class="currencies">
-      <div class="currency" *ngFor="let currency of profile.currencies">
-      <div class="name">
-       {{ currency.currencyName}}
-      </div>
-      <div class="amoount">
-          {{currency.amount}}
-      </div>
-      </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      </ng-container>
+
+      <!-- Currency Name Column -->
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef>Currency Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.currency }}</td>
+      </ng-container>
+
+      <!-- Amount Column -->
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>amount</th>
+        <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+      </ng-container>
+
+      <!-- Current Prize  Column -->
+      <ng-container matColumnDef="crrentPrize">
+        <th mat-header-cell *matHeaderCellDef>Current Prize(INR)</th>
+        <td mat-cell *matCellDef="let element">{{ element.crrentPrize }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef>Symbol</th>
+        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="primary" (click)="sell(element)">
+            {{ element.action }}
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
   </div>
 
-  <div class="orders">
-      
+  <div class="bank-details">
+    <div class="header">Provide Bank Details</div>
+
+    <div class="sub-header">
+      Money will be credited to provided bank account if you sell any
+      crypocurrency currency
+    </div>
+    <form action="" [formGroup]="bankAccountDetailsForm">
+      <mat-form-field appearance="fill">
+        <mat-label>IFSC Code*</mat-label>
+        <input matInput formControlName="ifscCode" (change)="fetchBankDetailsByIfsc($event)"/>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>City*</mat-label>
+        <input matInput formControlName="city" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Address*</mat-label>
+        <input matInput formControlName="address" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Branch*</mat-label>
+        <input matInput formControlName="branch" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Account Number*</mat-label>
+        <input matInput formControlName="accountNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Account Number*</mat-label>
+        <input matInput formControlName="confirmAccountNumber" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Account holder Name*</mat-label>
+        <input matInput formControlName="accountHolderName" />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!bankAccountDetailsForm.valid"
+        (click)="save()"
+      >
+        Save
+      </button>
+    </form>
   </div>
+  <div class="logout">
+    <button mat-button color="accent" (click)="logout()">Log out</button>
+  </div>
+  <div class="orders"></div>
 </div>

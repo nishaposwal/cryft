@@ -1,38 +1,40 @@
 @import "../../../assets/styles/helpers/mixins";
 @import "../../../assets/styles/helpers/fonts";
 
-.header-component{
+.header-component {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: white;
+
+  .logo {
+    margin-left: 2rem;
+    img {
+      width: 2rem;
+    }
+  }
+
+  .navs {
     display: flex;
     align-items: center;
-    height: 60px;
-    background-color: white;
-
-    .logo{
-     margin-left: 2rem;
-        img{
-            width: 2rem;
-        }
+    margin-left: 2rem;
+    .nav {
+      margin: 0 1rem;
+      color: $primary-color;
+      font-family: MontserratBold;
+      cursor: pointer;
     }
+  }
 
-    .navs{
-        display: flex;
-        align-items: center;
-        margin-left: 2rem;
-        .nav{
-            margin: 0 1rem;
-            color: $primary-color;
-            font-family: MontserratBold;
-        }
+  .auth {
+    position: absolute;
+    right: 2rem;
+
+    button {
+      margin-left: 1rem;
     }
-
-    .auth{
-     position: absolute;
-     right: 2rem;
-
-     button{
-         margin-left: 1rem;
-     }
-    }
-
-    
+  }
+}
+.material-icons {
+  font-size: 40px;
 }

@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
       })
       .subscribe((res: any) => {
         if (res.success) {
-          this.router.navigate(['/cryft']);
           this.authService.setAuthToken(res.token);
+          this.router.navigate(['/cryft']);
         }
       });
   }

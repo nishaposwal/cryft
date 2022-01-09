@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AppService } from 'src/app/core/services/app.service';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { RestService } from 'src/app/core/services/rest.service';
 
 @Component({
   selector: 'app-buy-gift',
@@ -7,47 +11,53 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./buy-gift.component.scss'],
 })
 export class BuyGiftComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private restService: RestService,
+    private appService: AppService,
+    private router: Router
+  ) {}
 
   cryptos = [
     {
       id: 1,
-      curency: 'Bitcoin',
+      currency: 'Bitcoin',
       img: 'gift-card.png',
     },
     {
       id: 2,
-      curency: 'Ether',
+      currency: 'Ether',
       img: 'gift-card1.png',
     },
     {
       id: 3,
-      curency: 'Ghonchu',
+      currency: 'Ghonchu',
       img: 'gift-card.png',
     },
     {
       id: 4,
-      curency: 'type4',
+      currency: 'type4',
       img: 'gift-card1.png',
     },
     {
       id: 5,
-      curency: 'type5',
+      currency: 'type5',
       img: 'gift-card.png',
     },
     {
       id: 6,
-      curency: 'type6',
+      currency: 'type6',
       img: 'gift-card1.png',
     },
     {
       id: 7,
-      curency: 'type7',
+      currency: 'type7',
       img: 'gift-card.png',
     },
     {
       id: 8,
-      curency: 'type8',
+      currency: 'type8',
       img: 'gift-card1.png',
     },
   ];
@@ -55,6 +65,26 @@ export class BuyGiftComponent implements OnInit {
   amounts = [100, 200, 500, 1000];
   selectedAmount = 100;
   selectedCrypto: any;
+  isloggedIn = false;
+  options: any = {
+    key: 'rzp_live_FM5EtJ4ekjxFo5',
+    amount: '1',
+    currency: 'INR',
+    name: 'Acme Corp',
+    description: 'Test Transaction',
+    image: 'https://example.com/your_logo',
+    prefill: {
+      name: 'Gaurav Kumar',
+      email: 'gaurav.kumar@example.com',
+      contact: '9999999999',
+    },
+    notes: {
+      address: 'Razorpay Corporate Office',
+    },
+    theme: {
+      color: '#3399cc',
+    },
+  };
 
   deliveryForm: any;
   ngOnInit(): void {
@@ -66,25 +96,67 @@ export class BuyGiftComponent implements OnInit {
       message: [''],
       delivryTime: ['', Validators.required],
       amount: [100, Validators.required],
-      typeOfCrypto: ['', Validators.required],
+      typeOfCrypto: [this.selectedCrypto.currency, Validators.required],
     });
+    this.isloggedIn = this.authService.getAuthToken() ? true : false;
+    this.authService.loggedIn$.subscribe((res: any) => {
+      this.isloggedIn = res;
+    });
+    this.paymentHandler();
   }
 
   amount: Number | undefined;
 
   selecteAmount(amount: number) {
     this.selectedAmount = amount;
+    this.deliveryForm.get('amount').setValue(amount);
   }
 
   selectTypeOfCrypto(crypto: any) {
     this.selectedCrypto = crypto;
+    this.deliveryForm
+      .get('typeOfCrypto')
+      .setValue(this.selectedCrypto.currency);
   }
 
   print(event: any) {
     console.log(event.target.value);
   }
 
-  buyNow() {
-    console.log(this.deliveryForm?.value);
+  createOrder() {
+    let payload = {
+      amount: '100',
+      currency: 'INR',
+      receipt: 'receipt',
+    };
+    this.restService
+      .post(
+        `${this.appService.getEnvVariable('API_HOST')}/payments/new-order`,
+        payload
+      )
+      .subscribe((res: any) => {
+        console.log('lol', res);
+        this.options['order_id'] = res.id;
+        let rzp1 = this.authService.getNativeWindow().Razorpay(this.options);
+        rzp1.open();
+      });
   }
+
+  paymentHandler() {
+    this.options['handler'] = (response: any, error: any) => {
+      console.log('lol', response);
+      // varify payment
+    };
+  }
+
+  buyNow() {
+    if (this.isloggedIn) {
+      console.log(this.deliveryForm?.value);
+      this.createOrder();
+    } else {
+      this.router.navigate(['login']);
+    }
+  }
+
+  sendByNowRequest() {}
 }

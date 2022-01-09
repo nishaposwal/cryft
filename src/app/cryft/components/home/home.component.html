@@ -1,19 +1,19 @@
 <div class="home-component">
-    <div class="left">
-        <div class="header">
-            <p>The Gift Card for giving </p>
-           <p>crypto currency.</p>
-        </div>
-
-        <div class="sub-header">
-            Give a gift that keeps on giving.
-        </div>
-
-        <div class="buy" (click)="buy()">
-          Buy Now
-        </div>
+  <div class="left" #home>
+    <div class="header">
+      <p>The Gift Card for giving</p>
+      <p>crypto currency.</p>
     </div>
-    <div class="right">
-        <img src="assets/images/gift-card2.png" >
-    </div>
+
+    <div class="sub-header">Give a gift that keeps on giving.</div>
+
+    <div class="buy" (click)="buy()">Buy Now</div>
+  </div>
+  <div class="right">
+    <img src="assets/images/gift-card2.png" />
+  </div>
+</div>
+
+<div #buyGift>
+  <app-buy-gift></app-buy-gift>
 </div>

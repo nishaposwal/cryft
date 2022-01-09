@@ -9,7 +9,10 @@
    </div>
 
    <div class="auth">
-    <button mat-raised-button (click)="login()">Log in</button> 
-    <button mat-raised-button color="accent" (click)="sign()">Sign Up</button>
+    <button mat-raised-button (click)="login()" *ngIf="!isLoggedIn">Log in</button> 
+    <button mat-raised-button color="accent" (click)="sign()" *ngIf="!isLoggedIn">Sign Up</button>
+    <button mat-icon-button color="primary" (click)="navigayeToProfile()">
+        <mat-icon class="account" *ngIf="isLoggedIn">account_circle</mat-icon>
+      </button>
    </div>
 </div>

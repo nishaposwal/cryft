@@ -10,8 +10,7 @@
   background-color: #fafafa;
   padding: 1rem;
 
-
-  .edit{
+  .edit {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -19,7 +18,7 @@
   }
   .profile-picture {
     width: 100%;
-    border-bottom: 1px solid $primary-color;
+    border-bottom: 2px solid $primary-color;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -37,34 +36,47 @@
     }
   }
 
-  .my-currencies{
-      color: $primary-color;
-      font-family: MontserratBold;
-      font-size: 1.5rem;
-      padding: 2rem 0;
+  .my-currencies {
+    color: $primary-color;
+    font-family: MontserratBold;
+    font-size: 1.5rem;
+    padding: 2rem 0;
   }
 
   .currencies {
-    display: flex;
-
-    .currency {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      width: 7rem;
-      height: 6rem;
-      background: linear-gradient(180deg, $secondary-color, $secondary-light);
-      border-radius: 5px;
-      box-shadow: 2px 0px 10px -3px rgba(0, 0, 0, 0.33);
-      margin: 0.5rem;
-      color: white;
-      font-family: MontserratBold;
-      border: 1px solid $secondary-color;
+    width: 100%;
+    table {
+      width: 100%;
     }
   }
 
-  .orders{
-      
+  .bank-details {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 2rem;
+
+    .header {
+      font-size: 1.5rem;
+      color: $primary-color;
+      font-family: MontserratBold;
+    }
+
+    .sub-header {
+      font-family: MontserrattThin;
+      font-size: 0.8rem;
+    }
+    form {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+    }
+  }
+
+  .logout {
+    width: 100%;
+  }
+
+  .orders {
   }
 }
