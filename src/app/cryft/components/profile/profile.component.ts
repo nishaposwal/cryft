@@ -149,13 +149,22 @@ export class ProfileComponent implements OnInit {
     let ifsc = event.target.value;
     if (ifsc.length == 11) {
       this.restService
-        .getifsc('https://ifsc.razorpay.com/PUNB0404400')
+        .get(`${this.appervice.getEnvVariable('API_HOST')}/ifsc/${ifsc}`)
         .subscribe((res: any) => {
-          this.bankAccountDetailsForm.get('ifscCode')?.setValue(res['IFSC']);
-          this.bankAccountDetailsForm.get('city')?.setValue(res['CITY']);
-          this.bankAccountDetailsForm.get('address')?.setValue(res['ADDRESS']);
-          this.bankAccountDetailsForm.get('bankName')?.setValue(res['BANK']);
-          this.bankAccountDetailsForm.get('branch')?.setValue(res['BRANCH']);
+          // console.log(JSON.parse(res.body));
+          let response = JSON.parse(res.body);
+          this.bankAccountDetailsForm.controls['city'].setValue(
+            response['CITY']
+          );
+          this.bankAccountDetailsForm.controls['address'].setValue(
+            response['ADDRESS']
+          );
+          this.bankAccountDetailsForm.controls['bankName'].setValue(
+            response['BANK']
+          );
+          this.bankAccountDetailsForm.controls['branch'].setValue(
+            response['BRANCH']
+          );
         });
     }
   }

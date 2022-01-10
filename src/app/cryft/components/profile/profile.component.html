@@ -66,10 +66,22 @@
       Money will be credited to provided bank account if you sell any
       crypocurrency currency
     </div>
-    <form action="" [formGroup]="bankAccountDetailsForm">
+    <form [formGroup]="bankAccountDetailsForm">
       <mat-form-field appearance="fill">
         <mat-label>IFSC Code*</mat-label>
-        <input matInput formControlName="ifscCode" (change)="fetchBankDetailsByIfsc($event)"/>
+        <input
+          matInput
+          formControlName="ifscCode"
+          (change)="fetchBankDetailsByIfsc($event)"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Bank Name*</mat-label>
+        <input matInput formControlName="bankName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Branch*</mat-label>
+        <input matInput formControlName="branch" />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>City*</mat-label>
@@ -79,10 +91,7 @@
         <mat-label>Address*</mat-label>
         <input matInput formControlName="address" />
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Branch*</mat-label>
-        <input matInput formControlName="branch" />
-      </mat-form-field>
+
       <mat-form-field appearance="fill">
         <mat-label>Account Number*</mat-label>
         <input matInput formControlName="accountNumber" />
@@ -91,6 +100,29 @@
         <mat-label>Confirm Account Number*</mat-label>
         <input matInput formControlName="confirmAccountNumber" />
       </mat-form-field>
+      <div
+        class="err"
+        *ngIf="
+          bankAccountDetailsForm.controls.accountNumber.value &&
+          bankAccountDetailsForm.controls.confirmAccountNumber.value &&
+          bankAccountDetailsForm.controls.accountNumber.value !=
+            bankAccountDetailsForm.controls.confirmAccountNumber.value
+        "
+      >
+        Account number and confirm account number is not same
+      </div>
+
+      <div
+        class="matched"
+        *ngIf="
+          bankAccountDetailsForm.controls.accountNumber.value &&
+          bankAccountDetailsForm.controls.confirmAccountNumber.value &&
+          bankAccountDetailsForm.controls.accountNumber.value ==
+            bankAccountDetailsForm.controls.confirmAccountNumber.value
+        "
+      >
+        Account Number matched
+      </div>
 
       <mat-form-field appearance="fill">
         <mat-label>Account holder Name*</mat-label>
@@ -99,8 +131,12 @@
       <button
         mat-raised-button
         color="primary"
-        [disabled]="!bankAccountDetailsForm.valid"
         (click)="save()"
+        [disabled]="
+          !bankAccountDetailsForm.valid ||
+          bankAccountDetailsForm.controls.accountNumber.value !=
+            bankAccountDetailsForm.controls.confirmAccountNumber.value
+        "
       >
         Save
       </button>

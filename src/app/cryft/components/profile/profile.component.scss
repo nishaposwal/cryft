@@ -70,6 +70,22 @@
       display: flex;
       flex-direction: column;
       margin-top: 2rem;
+
+      .err {
+        color: red;
+        font-size: 0.7rem;
+        font-family: MontserrattThin;
+        position: relative;
+        top: -1rem;
+      }
+
+      .matched {
+        color: green;
+        font-size: 0.7rem;
+        font-family: MontserrattThin;
+        position: relative;
+        top: -1rem;
+      }
     }
   }
 

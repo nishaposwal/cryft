@@ -63,26 +63,21 @@ export class BuyGiftComponent implements OnInit {
   ];
 
   amounts = [100, 200, 500, 1000];
+  profile: any;
   selectedAmount = 100;
   selectedCrypto: any;
   isloggedIn = false;
   options: any = {
     key: 'rzp_live_FM5EtJ4ekjxFo5',
-    amount: '1',
     currency: 'INR',
-    name: 'Acme Corp',
+    name: 'CryFt',
     description: 'Test Transaction',
-    image: 'https://example.com/your_logo',
-    prefill: {
-      name: 'Gaurav Kumar',
-      email: 'gaurav.kumar@example.com',
-      contact: '9999999999',
-    },
+    image: '',
     notes: {
       address: 'Razorpay Corporate Office',
     },
     theme: {
-      color: '#3399cc',
+      color: '#08133d',
     },
   };
 
@@ -97,12 +92,17 @@ export class BuyGiftComponent implements OnInit {
       delivryTime: ['', Validators.required],
       amount: [100, Validators.required],
       typeOfCrypto: [this.selectedCrypto.currency, Validators.required],
+      contactNo: ['', Validators.required],
     });
     this.isloggedIn = this.authService.getAuthToken() ? true : false;
     this.authService.loggedIn$.subscribe((res: any) => {
       this.isloggedIn = res;
     });
-    this.paymentHandler();
+    this.restService
+      .get(`${this.appService.getEnvVariable('API_HOST')}/users/profile`)
+      .subscribe((res) => {
+        this.profile = res;
+      });
   }
 
   amount: Number | undefined;
@@ -124,8 +124,9 @@ export class BuyGiftComponent implements OnInit {
   }
 
   createOrder() {
+    let that = this
     let payload = {
-      amount: '100',
+      amount: this.deliveryForm.controls['amount'].value + '00',
       currency: 'INR',
       receipt: 'receipt',
     };
@@ -137,16 +138,36 @@ export class BuyGiftComponent implements OnInit {
       .subscribe((res: any) => {
         console.log('lol', res);
         this.options['order_id'] = res.id;
+        this.options['prefill'] = {
+          name: this.deliveryForm.controls['senderName'].value,
+          email: this.profile.email,
+          contact: this.deliveryForm.controls['contactNo'].value,
+        };
+        this.options['handler'] = function (res: any) {
+          that.paymentHandler(res);
+        };
         let rzp1 = this.authService.getNativeWindow().Razorpay(this.options);
         rzp1.open();
       });
   }
 
-  paymentHandler() {
-    this.options['handler'] = (response: any, error: any) => {
-      console.log('lol', response);
-      // varify payment
+  paymentHandler(response: any) {
+    let payload = {
+      ...this.deliveryForm.value,
+      orderId: response.razorpay_order_id,
+      paymentId: response.razorpay_payment_id,
+      sig: response.razorpay_signature,
     };
+    this.restService
+      .post(
+        `${this.appService.getEnvVariable(
+          'API_HOST'
+        )}/payments/verify-and-add-gift`,
+        payload
+      )
+      .subscribe((res: any) => {
+        console.log(res);
+      });
   }
 
   buyNow() {
