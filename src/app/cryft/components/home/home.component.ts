@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   buyGift: ElementRef<HTMLElement> = {} as ElementRef;
   @ViewChild('home', { static: false })
   home: ElementRef<HTMLElement> = {} as ElementRef;
+  @ViewChild('faq', { static: false })
+  faq: ElementRef<HTMLElement> = {} as ElementRef;
   subscription: any = [];
   constructor(private eventEmitterService: EventEmitterService) {}
 
@@ -35,6 +37,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
             });
             break;
 
+          case 'FAQ':
+            this.scrollToFAQ();
+            break;
+
           default:
             break;
         }
@@ -46,6 +52,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   buy() {
     this.buyGift.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
+  }
+
+  scrollToFAQ() {
+    this.faq.nativeElement.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
       inline: 'nearest',

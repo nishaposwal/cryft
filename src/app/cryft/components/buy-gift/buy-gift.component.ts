@@ -22,7 +22,7 @@ export class BuyGiftComponent implements OnInit {
   cryptos = [
     {
       id: 1,
-      currency: 'Bitcoin',
+      currency: 'btc',
       img: 'gift-card.png',
     },
     {
@@ -87,12 +87,12 @@ export class BuyGiftComponent implements OnInit {
     this.deliveryForm = this.formBuilder.group({
       recipeintName: ['', Validators.required],
       recipeintEmail: ['', Validators.required],
-      senderName: ['', Validators.required],
       message: [''],
-      delivryTime: ['', Validators.required],
+      deliveryDateTime: ['', Validators.required],
       amount: [100, Validators.required],
-      typeOfCrypto: [this.selectedCrypto.currency, Validators.required],
+      currency: [this.selectedCrypto.currency, Validators.required],
       contactNo: ['', Validators.required],
+      deliveryType: ['email', Validators.required],
     });
     this.isloggedIn = this.authService.getAuthToken() ? true : false;
     this.authService.loggedIn$.subscribe((res: any) => {
@@ -114,9 +114,7 @@ export class BuyGiftComponent implements OnInit {
 
   selectTypeOfCrypto(crypto: any) {
     this.selectedCrypto = crypto;
-    this.deliveryForm
-      .get('typeOfCrypto')
-      .setValue(this.selectedCrypto.currency);
+    this.deliveryForm.get('currency').setValue(this.selectedCrypto.currency);
   }
 
   print(event: any) {
@@ -124,7 +122,7 @@ export class BuyGiftComponent implements OnInit {
   }
 
   createOrder() {
-    let that = this
+    let that = this;
     let payload = {
       amount: this.deliveryForm.controls['amount'].value + '00',
       currency: 'INR',
@@ -139,7 +137,7 @@ export class BuyGiftComponent implements OnInit {
         console.log('lol', res);
         this.options['order_id'] = res.id;
         this.options['prefill'] = {
-          name: this.deliveryForm.controls['senderName'].value,
+          name: this.profile.name,
           email: this.profile.email,
           contact: this.deliveryForm.controls['contactNo'].value,
         };

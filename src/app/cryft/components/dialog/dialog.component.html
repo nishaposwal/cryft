@@ -1,0 +1,15 @@
+<div mat-dialog-content>
+  {{ data.msg }}
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent" (click)="onNoClick()">Cancel</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onNoClick('ok')"
+    cdkFocusInitial
+    [disabled]="!data"
+  >
+    OK
+  </button>
+</div>

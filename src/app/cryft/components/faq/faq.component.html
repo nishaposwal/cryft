@@ -1,0 +1,13 @@
+<div class="faq-component">
+  <div class="question" *ngFor="let question of questions">
+    <div class="ques">
+      <div class="text">
+        {{ question.question }}
+      </div>
+      <img src="assets/images/arrow_right.svg" (click)="toggleQuestion(question)"/>
+    </div>
+    <div class="answer" *ngIf="question.show">
+      {{ question.answer }}
+    </div>
+  </div>
+</div>

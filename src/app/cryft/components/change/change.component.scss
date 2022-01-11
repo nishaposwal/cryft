@@ -1,0 +1,40 @@
+@import "../../../../assets/styles/helpers/mixins";
+@import "../../../../assets/styles/helpers/fonts";
+
+.change {
+  width: 100vw;
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .content {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgb(199, 197, 197);
+    box-shadow: 2px 0px 10px -3px rgba(0, 0, 0, 0.33);
+
+    .logo {
+      font-family: MontserratBold;
+      font-size: 1.5rem;
+      color: $primary-color;
+    }
+
+    .change-pass {
+      font-family: MontserratBold;
+      font-size: 1.3rem;
+      padding: 2rem 0;
+    }
+
+    .mat-form-field {
+      width: 20rem;
+    }
+
+    button {
+      width: 20rem;
+    }
+  }
+}

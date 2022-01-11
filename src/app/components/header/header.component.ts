@@ -12,8 +12,10 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app/core/services/app.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { EventEmitterService } from 'src/app/core/services/event-emitter.service';
+import { RestService } from 'src/app/core/services/rest.service';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +29,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog,
     private router: Router,
     private authService: AuthService,
-    private eventEmitterService: EventEmitterService
+    private eventEmitterService: EventEmitterService,
+    private restService: RestService,
+    private apppService: AppService
   ) {}
 
   redeemCode: String = '';
@@ -37,6 +41,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     },
     {
       name: 'Buy Gift Card',
+    },
+    {
+      name: 'FAQ',
     },
   ];
 
@@ -50,25 +57,38 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(RedeemDialog, {
-      width: '250px',
-      data: { redeemCode: this.redeemCode },
-    });
+    if (this.isLoggedIn) {
+      const dialogRef = this.dialog.open(RedeemDialog, {
+        width: '250px',
+        data: { redeemCode: this.redeemCode },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log('The dialog was closed');
+        if (result.event === 'save') {
+          this.redeemCode = result;
+          this.redeem(result);
+        }
+      });
+    } else {
+      this.router.navigate(['login']);
+    }
+  }
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      if (result.event === 'save') {
-        this.redeemCode = result;
-      }
-    });
+  redeem(code: String) {
+    this.restService.post(
+      `${this.apppService.getEnvVariable('API_HOST')}//api/gifts/redeem-gift`,
+      { redeemCode: code }
+    );
   }
 
   navigate(nav: any) {
     if (this.isLoggedIn) {
       if (nav.name === 'Redeem Gift Card') {
         this.openDialog();
-      } else {
+      } else if (nav.name === 'Buy Gift Card') {
         this.buyGift();
+      } else {
+        this.eventEmitterService.emit({ type: 'FAQ', data: {} });
       }
     } else {
       this.router.navigate(['login']);

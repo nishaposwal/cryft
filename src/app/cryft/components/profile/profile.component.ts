@@ -1,4 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   MatDialog,
@@ -9,13 +16,16 @@ import { Router } from '@angular/router';
 import { AppService } from 'src/app/core/services/app.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { RestService } from 'src/app/core/services/rest.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, AfterViewInit {
+  @ViewChild('bankDetails', { static: false })
+  bankDetails: ElementRef<HTMLElement> = {} as ElementRef;
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -25,14 +35,8 @@ export class ProfileComponent implements OnInit {
     private appervice: AppService
   ) {}
   bankAccountDetailsForm!: FormGroup;
-  profile = {
-    email: 'nishaposwal321@gmail.com',
-    name: 'Nisha',
-  };
-  data = {
-    email: 'nishaposwal321@gamil.com',
-    name: 'Nisha',
-  };
+  profile: any;
+
   ELEMENT_DATA = [
     {
       position: 1,
@@ -126,7 +130,14 @@ export class ProfileComponent implements OnInit {
   dataSource = this.ELEMENT_DATA;
   ngOnInit(): void {
     this, this.initializebankAccountDetailsForm();
+    this.restService
+      .get(`${this.appervice.getEnvVariable('API_HOST')}/users/profile`)
+      .subscribe((res: any) => {
+        this.profile = res;
+      });
   }
+
+  ngAfterViewInit() {}
 
   initializebankAccountDetailsForm() {
     this.bankAccountDetailsForm = this.formBuilder.group({
@@ -169,21 +180,49 @@ export class ProfileComponent implements OnInit {
     }
   }
   openDialog(): void {
+    console.log(this.profile)
     const dialogRef = this.dialog.open(EditProfile, {
       width: '300px',
-      data: this.data,
+      data: this.profile,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       if (result.event === 'save') {
-        this.data = result.data;
+        this.profile = result.data;
       }
     });
   }
 
+  showDialog(data: any) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',
+      data: data,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      if (result.event === 'ok') {
+        this.scrollToTheBankDetails();
+      }
+    });
+  }
   sell(element: any) {
-    console.log(element);
+    if (this.profile.bankDetails) {
+      // sell api call
+    } else {
+      this.showDialog({
+        msg: 'Please Fill Bank details In order to sell',
+      });
+    }
+  }
+
+  scrollToTheBankDetails() {
+    this.bankDetails.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
   }
 
   logout() {
@@ -200,7 +239,9 @@ export class EditProfile {
   constructor(
     public dialogRef: MatDialogRef<EditProfile>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) {
+    console.log("pop", this.data)
+  }
 
   onNoClick(event?: String): void {
     this.dialogRef.close({ event: event, data: this.data });

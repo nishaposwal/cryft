@@ -19,6 +19,10 @@ import {
   ProfileComponent,
 } from './components/profile/profile.component';
 import { MatTableModule } from '@angular/material/table';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
+import { ChangeComponent } from './components/change/change.component';
 @NgModule({
   declarations: [
     CryftComponent,
@@ -27,6 +31,10 @@ import { MatTableModule } from '@angular/material/table';
     FaqsComponent,
     ProfileComponent,
     EditProfile,
+    DialogComponent,
+    FaqComponent,
+    ForgotPassComponent,
+    ChangeComponent,
   ],
   imports: [
     CommonModule,
