@@ -23,7 +23,7 @@ export class CreateAccountComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      confirm_password: ['', Validators.required],
     });
   }
 
@@ -32,6 +32,18 @@ export class CreateAccountComponent implements OnInit {
   }
 
   signup() {
-    
+    if (
+      this.createAccountForm.valid &&
+      this.createAccountForm.controls['password'].value ===
+        this.createAccountForm.controls['confirm_password'].value
+    ) {
+      this.restService
+        .post(`${this.appService.getEnvVariable('API_HOST')}/users/register`, {
+          ...this.createAccountForm.value,
+        })
+        .subscribe((res) => {
+          console.log(res);
+        });
+    }
   }
 }

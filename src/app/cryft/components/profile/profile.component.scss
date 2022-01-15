@@ -41,6 +41,7 @@
     font-family: MontserratBold;
     font-size: 1.5rem;
     padding: 2rem 0;
+    width: 100%;
   }
 
   .currencies {
@@ -50,25 +51,25 @@
     }
   }
 
+  .my-balance {
+    padding: 2rem 1rem;
+    width: 100%;
+
+    .mat-card {
+      .mat-form-field {
+        
+        .mat-form-field-flex ng-tns-c35-0{
+          background: transparent;
+        }
+      }
+    }
+  }
+
   .bank-details {
     width: 100%;
     padding: 1rem;
     margin-top: 2rem;
-   
-    .header {
-      font-size: 1.5rem;
-      color: $primary-color;
-      font-family: MontserratBold;
-      display: flex;
-      width: 60%;
-      justify-content: space-between;
-      align-items: center;
-    }
 
-    .sub-header {
-      font-family: MontserrattThin;
-      font-size: 0.8rem;
-    }
     form {
       width: 60%;
       display: flex;
@@ -99,4 +100,19 @@
 
   .orders {
   }
+}
+
+.header {
+  font-size: 1.5rem;
+  color: $primary-color;
+  font-family: MontserratBold;
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sub-header {
+  font-family: MontserrattThin;
+  font-size: 0.8rem;
 }

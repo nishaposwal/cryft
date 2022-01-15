@@ -10,7 +10,9 @@
     </div>
     {{ profile.name }}
   </div>
-  <div class="my-currencies">My Currenccies</div>
+  <div class="my-currencies">
+    <div class="header">My Currenccies</div>
+  </div>
 
   <div class="currencies">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -57,6 +59,27 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+  </div>
+
+  <div class="my-balance">
+    <div class="header">My Balance</div>
+    <div class="sub-header">
+      Money will be credited to provided bank account if you withdraw
+    </div>
+
+    <mat-card>
+      <div class="balance">
+        Balance : 100
+        <mat-form-field appearance="fill">
+          <mat-label>Enter Amount</mat-label>
+          <input
+            matInput
+             type="number"
+          />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="withdraw()">withdraw</button>
+      </div>
+    </mat-card>
   </div>
 
   <div class="bank-details" #bankDetails>
@@ -143,7 +166,9 @@
     </form>
   </div>
   <div class="logout">
-    <button mat-stroked-button color="accent" (click)="logout()">Log out</button>
+    <button mat-stroked-button color="accent" (click)="logout()">
+      Log out
+    </button>
   </div>
   <div class="orders"></div>
 </div>

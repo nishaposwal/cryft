@@ -141,9 +141,19 @@ export class ProfileComponent implements OnInit, AfterViewInit {
           this.bankDetailsEditingMode = true;
         }
       });
+
+    this.fetchCryptoPrizes();
   }
 
   ngAfterViewInit() {}
+
+  fetchCryptoPrizes() {
+    this.restService
+      .get(`${this.appervice.getEnvVariable('API_HOST')}/ticker/wrxinr`)
+      .subscribe((res) => {
+        console.log(JSON.parse(res.body));
+      });
+  }
 
   initializebankAccountDetailsForm() {
     this.bankAccountDetailsForm = this.formBuilder.group({
@@ -262,6 +272,10 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/cryft']);
+  }
+
+  withdraw(){
+    
   }
 }
 

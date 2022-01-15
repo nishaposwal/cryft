@@ -14,6 +14,7 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
 import {
   EditProfile,
   ProfileComponent,
@@ -51,6 +52,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatTableModule,
     SharedModule,
     MatIconModule,
+    MatCardModule
   ],
 })
 export class CryftModule {}

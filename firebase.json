@@ -1,0 +1,9 @@
+{
+  "hosting": {
+    "public": "dist/cryft",
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }]
+  }
+}
