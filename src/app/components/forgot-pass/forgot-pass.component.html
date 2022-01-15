@@ -17,10 +17,11 @@
           placeholder="Email"
           required
           autocomplete="off"
+          [(ngModel)]="email"
         />
       </mat-form-field>
     </div>
 
-    <button mat-raised-button color="primary">Send</button>
+    <button [disabled]="!email" mat-raised-button color="primary" (click)="send()">Send</button>
   </div>
 </div>

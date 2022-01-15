@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 import { AppService } from 'src/app/core/services/app.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { RestService } from 'src/app/core/services/rest.service';
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogComponent } from '../../../shared/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-profile',

@@ -16,6 +16,9 @@ import { HeaderComponent, RedeemDialog } from './components/header/header.compon
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor, TokenInterceptor } from './core/interceptors';
 import {MatIconModule} from '@angular/material/icon';
+import { ChangeComponent } from './components/change/change.component';
+import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   
@@ -25,6 +28,8 @@ import {MatIconModule} from '@angular/material/icon';
     CreateAccountComponent,
     HeaderComponent,
     RedeemDialog,
+    ChangeComponent,
+    ForgotPassComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatDatepickerModule,
     MatDialogModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    SharedModule
   ],
   providers: [
     {

@@ -19,10 +19,11 @@ import {
   ProfileComponent,
 } from './components/profile/profile.component';
 import { MatTableModule } from '@angular/material/table';
-import { DialogComponent } from './components/dialog/dialog.component';
+import { DialogComponent } from '../shared/components/dialog/dialog.component';
 import { FaqComponent } from './components/faq/faq.component';
-import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
-import { ChangeComponent } from './components/change/change.component';
+import { ForgotPassComponent } from '../components/forgot-pass/forgot-pass.component';
+import { ChangeComponent } from '../components/change/change.component';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
     CryftComponent,
@@ -31,10 +32,7 @@ import { ChangeComponent } from './components/change/change.component';
     FaqsComponent,
     ProfileComponent,
     EditProfile,
-    DialogComponent,
     FaqComponent,
-    ForgotPassComponent,
-    ChangeComponent,
   ],
   imports: [
     CommonModule,
@@ -50,6 +48,7 @@ import { ChangeComponent } from './components/change/change.component';
     MatRippleModule,
     ClipboardModule,
     MatTableModule,
+    SharedModule
   ],
 })
 export class CryftModule {}

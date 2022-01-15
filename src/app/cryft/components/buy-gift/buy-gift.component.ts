@@ -142,14 +142,14 @@ export class BuyGiftComponent implements OnInit {
           contact: this.deliveryForm.controls['contactNo'].value,
         };
         this.options['handler'] = function (res: any) {
-          that.paymentHandler(res);
+          that.varifyPayment(res);
         };
         let rzp1 = this.authService.getNativeWindow().Razorpay(this.options);
         rzp1.open();
       });
   }
 
-  paymentHandler(response: any) {
+  varifyPayment(response: any) {
     let payload = {
       ...this.deliveryForm.value,
       orderId: response.razorpay_order_id,

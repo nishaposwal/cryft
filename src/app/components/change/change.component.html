@@ -11,6 +11,7 @@
         required
         autocomplete="off"
         type="password"
+        [(ngModel)]="password"
       />
     </mat-form-field>
 
@@ -22,9 +23,31 @@
         required
         autocomplete="off"
         type="password"
+        [(ngModel)]="newPassword"
       />
     </mat-form-field>
 
-    <button mat-raised-button color="primary">Change Password</button>
+    <div
+      class="err"
+      *ngIf="password && newPassword && password !== newPassword"
+    >
+      New Password and confirm new password are not same
+    </div>
+
+    <div
+      class="matched"
+      *ngIf="password && newPassword && password === newPassword"
+    >
+      New Password and confirm new password matched
+    </div>
+
+    <button
+      [disabled]="!(newPassword && password && password === newPassword)"
+      mat-raised-button
+      color="primary"
+      (click)="changePassword()"
+    >
+      Change Password
+    </button>
   </div>
 </div>
