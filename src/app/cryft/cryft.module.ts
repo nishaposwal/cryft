@@ -24,6 +24,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import { ForgotPassComponent } from '../components/forgot-pass/forgot-pass.component';
 import { ChangeComponent } from '../components/change/change.component';
 import { SharedModule } from '../shared/shared.module';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     CryftComponent,
@@ -48,7 +49,8 @@ import { SharedModule } from '../shared/shared.module';
     MatRippleModule,
     ClipboardModule,
     MatTableModule,
-    SharedModule
+    SharedModule,
+    MatIconModule,
   ],
 })
 export class CryftModule {}

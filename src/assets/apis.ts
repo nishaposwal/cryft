@@ -128,8 +128,9 @@ let response4 = {
     branch: '',
     bankName: '',
     accountNumber: '',
-    confirmAccountNumber: '',
+    city : '',
     accountHolderName: '',
+
   }
 };
 
@@ -146,7 +147,7 @@ let payload5 = {
     branch: '',
     bankName: '',
     accountNumber: '',
-    confirmAccountNumber: '',
+   city: '',
     accountHolderName: '',
   }
 };

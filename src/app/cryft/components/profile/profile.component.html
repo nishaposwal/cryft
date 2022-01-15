@@ -131,7 +131,7 @@
       <button
         mat-raised-button
         color="primary"
-        (click)="save()"
+        (click)="saveBankDetails()"
         [disabled]="
           !bankAccountDetailsForm.valid ||
           bankAccountDetailsForm.controls.accountNumber.value !=
@@ -143,7 +143,7 @@
     </form>
   </div>
   <div class="logout">
-    <button mat-button color="accent" (click)="logout()">Log out</button>
+    <button mat-stroked-button color="accent" (click)="logout()">Log out</button>
   </div>
   <div class="orders"></div>
 </div>

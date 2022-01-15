@@ -36,6 +36,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   ) {}
   bankAccountDetailsForm!: FormGroup;
   profile: any;
+  bankDetailsEditingMode = false;
 
   ELEMENT_DATA = [
     {
@@ -134,6 +135,11 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       .get(`${this.appervice.getEnvVariable('API_HOST')}/users/profile`)
       .subscribe((res: any) => {
         this.profile = res;
+        if (this.profile.bankDetails) {
+          this.autofillBankDetails(this.profile?.bankDetails);
+        } else {
+          this.bankDetailsEditingMode = true;
+        }
       });
   }
 
@@ -152,8 +158,32 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     });
   }
 
-  save() {
-    console.log(this.bankAccountDetailsForm.value);
+  saveBankDetails() {
+    this.restService
+      .post(`${this.appervice.getEnvVariable('API_HOST')}/users/edit-profile`, {
+        bankDetails: { ...this.bankAccountDetailsForm.value },
+      })
+      .subscribe((res) => {
+        console.log(res);
+      });
+  }
+
+  autofillBankDetails(bankDetails: any) {
+    let formElements = [
+      'ifscCode',
+      'city',
+      'address',
+      'branch',
+      'bankName',
+      'accountNumber',
+      'accountHolderName',
+    ];
+
+    formElements.forEach((element) => {
+      this.bankAccountDetailsForm.controls[element].setValue(
+        bankDetails[element]
+      );
+    });
   }
 
   fetchBankDetailsByIfsc(event: any) {
@@ -180,7 +210,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     }
   }
   openDialog(): void {
-    console.log(this.profile)
+    console.log(this.profile);
     const dialogRef = this.dialog.open(EditProfile, {
       width: '300px',
       data: this.profile,
@@ -225,6 +255,10 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     });
   }
 
+  editBankDetails() {
+    this.bankDetailsEditingMode = true;
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/cryft']);
@@ -240,7 +274,7 @@ export class EditProfile {
     public dialogRef: MatDialogRef<EditProfile>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    console.log("pop", this.data)
+    console.log('pop', this.data);
   }
 
   onNoClick(event?: String): void {
