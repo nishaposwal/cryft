@@ -37,6 +37,8 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   bankAccountDetailsForm!: FormGroup;
   profile: any;
   bankDetailsEditingMode = false;
+  withdrawEditingMode = false;
+  withdrawAmount: Number | undefined;
 
   ELEMENT_DATA = [
     {
@@ -143,6 +145,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       });
 
     this.fetchCryptoPrizes();
+    this.profile['balance'] = 20
   }
 
   ngAfterViewInit() {}
@@ -274,8 +277,12 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/cryft']);
   }
 
-  withdraw(){
-    
+  withdraw() {
+    if (this.withdrawEditingMode) {
+      // withdraw api
+    } else {
+      this.withdrawEditingMode = true;
+    }
   }
 }
 
