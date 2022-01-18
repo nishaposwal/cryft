@@ -25,8 +25,33 @@
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Confirm Password</mat-label>
-            <input type="password" matInput formControlName="confirm_password" />
+            <input
+              type="password"
+              matInput
+              formControlName="confirm_password"
+            />
           </mat-form-field>
+          <div
+            class="err"
+            *ngIf="
+              createAccountForm.valid &&
+              createAccountForm.controls.password.value !==
+                createAccountForm.controls.confirm_password.value
+            "
+          >
+            password and confirm password are not matching
+          </div>
+
+          <div
+            class="matched"
+            *ngIf="
+              createAccountForm.valid &&
+              createAccountForm.controls.password.value ===
+                createAccountForm.controls.confirm_password.value
+            "
+          >
+            password and confirm password matched
+          </div>
 
           <div class="tnc">
             By signing up, you agree to cryft's

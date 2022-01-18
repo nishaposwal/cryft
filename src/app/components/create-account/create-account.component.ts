@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/core/services/app.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { RestService } from 'src/app/core/services/rest.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class CreateAccountComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private restService: RestService,
-    private appService: AppService
+    private appService: AppService,
+    private authSrvice : AuthService
   ) {}
 
   createAccountForm: any;
@@ -41,8 +43,9 @@ export class CreateAccountComponent implements OnInit {
         .post(`${this.appService.getEnvVariable('API_HOST')}/users/register`, {
           ...this.createAccountForm.value,
         })
-        .subscribe((res) => {
-          console.log(res);
+        .subscribe((res:any) => {
+          this.authSrvice.setAuthToken(res.token)
+          this.router.navigate(['/cryft']);
         });
     }
   }
