@@ -4,10 +4,12 @@
 .buy-gift-component {
   display: flex;
   padding: 2rem;
+  justify-content: center;
+  margin-top: 5rem;
 
   .left {
     img {
-      width: 25rem;
+      width: 100%;
     }
   }
 
@@ -27,24 +29,26 @@
       width: 100%;
       padding-bottom: 2rem;
       border-bottom: 1px solid $secondary-color;
+      justify-self: center;
       .header1 {
-        font-family: MontserratMedium;
+        margin: 1rem 0 1rem 0;
+        font-family: "MontserratMedium";
         font-size: 1rem;
         color: $primary-color;
         width: 100%;
       }
       padding: 1rem;
       .cards {
-        padding-left: 2rem;
-        width: 70%;
-        display: flex;
-        flex-wrap: wrap;
-        padding-left: 2rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0 auto;
+        justify-self: center;
 
         .card {
-          margin: 5px;
+          margin: 0.5rem;
+          // padding: 0;
           img {
-            width: 6rem;
+            width: 15rem;
           }
         }
         .selected {
@@ -65,6 +69,7 @@
         }
         .amount {
           display: flex;
+          flex-wrap: wrap;
 
           .amount-pill {
             border: 1px solid grey;
@@ -73,6 +78,7 @@
             margin: 5px;
             font-family: MontserratBold;
             display: flex;
+            flex-grow: 1;
 
             input {
               background: transparent;
@@ -92,15 +98,52 @@
       form {
         display: flex;
         flex-direction: column;
-        margin-top: 2rem;
+        margin-top: 1rem;
 
         mat-form-field {
-          width: 70%;
+          width: 100%;
         }
       }
 
       button {
         width: 70%;
+      }
+    }
+  }
+}
+
+@media (max-width: 65rem) {
+  .left {
+    margin-bottom: 1.2rem;
+  }
+  .right {
+    align-items: center;
+    padding-left: 0;
+  }
+
+  .buy-gift-component {
+    flex-direction: column !important;
+    gap: 2rem;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 34rem) {
+  .buy-gift-component {
+    .right {
+      .section {
+        .cards {
+          grid-template-columns: repeat(2, 1fr);
+          justify-items: center;
+        }
+
+        .detail {
+          flex-direction: column;
+
+          .header3 {
+            margin-bottom: 1.5rem;
+          }
+        }
       }
     }
   }

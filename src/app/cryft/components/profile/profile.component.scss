@@ -10,10 +10,14 @@
   background-color: #fafafa;
   padding: 1rem;
 
+  .mat-form-field {
+    outline: 1px solid black;
+  }
   .edit {
     position: absolute;
     top: 1rem;
     right: 1rem;
+    // bottom: 2rem;
     color: $primary-color;
   }
   .profile-picture {
@@ -26,6 +30,7 @@
     padding-bottom: 1rem;
 
     .image {
+      margin-top: 10rem;
       margin-bottom: 1rem;
       img {
         width: 10rem;
@@ -56,12 +61,6 @@
     width: 100%;
 
     .mat-card {
-      .balance {
-        .mat {
-          background: transparent;
-          margin: 0 1rem;
-        }
-      }
       .mat-form-field {
         .mat-form-field-flex ng-tns-c35-0 {
           background: transparent;
@@ -80,6 +79,7 @@
       display: flex;
       flex-direction: column;
       margin-top: 2rem;
+      margin-inline: auto;
 
       .err {
         color: red;
@@ -103,8 +103,8 @@
     width: 100%;
   }
 
-  .orders {
-  }
+  // .orders {
+  // }
 }
 
 .header {

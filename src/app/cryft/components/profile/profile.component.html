@@ -70,21 +70,9 @@
     <mat-card>
       <div class="balance">
         Balance : 100
-        <mat-form-field
-          appearance="fill"
-          *ngIf="withdrawEditingMode"
-          class="mat"
-        >
+        <mat-form-field appearance="fill">
           <mat-label>Enter Amount</mat-label>
-          <div class="amount-container">
-            <input matInput type="number" [(ngModel)]="withdrawAmount" />
-            <div
-              class="err"
-              *ngIf="withdrawAmount && withdrawAmount > profile?.balance"
-            >
-              Amount is greater then your current balance
-            </div>
-          </div>
+          <input matInput type="number" />
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="withdraw()">
           withdraw

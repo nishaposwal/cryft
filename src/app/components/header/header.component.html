@@ -1,18 +1,30 @@
 <div class="header-component">
-    <div class="logo" (click)="home()">
-        <img src="assets/images/crypto.png" alt="">
-    </div>
-   <div class="navs">
+  <div class="logo" (click)="home()">
+    <img src="assets/images/crypto.png" alt="" />
+  </div>
+  <div class="navs">
     <div class="nav" *ngFor="let nav of navs" (click)="navigate(nav)">
-        {{nav.name}}
+      {{ nav.name }}
     </div>
-   </div>
+  </div>
 
-   <div class="auth">
-    <button mat-raised-button (click)="login()" *ngIf="!isLoggedIn">Log in</button> 
-    <button mat-raised-button color="accent" (click)="sign()" *ngIf="!isLoggedIn">Sign Up</button>
-    <button mat-icon-button color="primary" (click)="navigayeToProfile()">
-        <mat-icon class="account" *ngIf="isLoggedIn">account_circle</mat-icon>
-      </button>
-   </div>
+  <div class="auth">
+    <button mat-raised-button (click)="login()" *ngIf="!isLoggedIn">
+      Log in
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="sign()"
+      *ngIf="!isLoggedIn"
+    >
+      Sign Up
+    </button>
+
+    <!-- Bug -->
+    <!-- <button mat-icon-button color="primary" (click)="navigayeToProfile()"> -->
+    <mat-icon class="account" *ngIf="isLoggedIn">account_circle</mat-icon>
+    <!-- </button> -->
+    <!-- bug -->
+  </div>
 </div>
