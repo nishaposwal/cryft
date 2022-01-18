@@ -9,6 +9,7 @@
 
   .logo {
     margin-left: 2rem;
+    cursor: pointer;
     img {
       width: 2rem;
     }
@@ -38,4 +39,9 @@
 }
 .material-icons {
   font-size: 40px;
+}
+@media (max-width: 44.375rem) {
+  .nav {
+    display: none;
+  }
 }

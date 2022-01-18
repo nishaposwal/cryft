@@ -2,10 +2,18 @@
   <p>Enter Redeem Code here</p>
   <mat-form-field appearance="fill">
     <mat-label>Redeem Code</mat-label>
-    <input matInput [(ngModel)]="data.redeemCode">
+    <input matInput [(ngModel)]="data.redeemCode" />
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="accent" (click)="onNoClick()">Cancel</button>
-  <button mat-raised-button color="primary" (click)="onNoClick('save')" cdkFocusInitial [disabled]="!data.redeemCode">Redeem</button>
-</div> 
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onNoClick('save')"
+    cdkFocusInitial
+    [disabled]="!data.redeemCode"
+  >
+    Redeem
+  </button>
+</div>

@@ -2,6 +2,7 @@
 @import "../../../assets/styles/helpers/fonts";
 
 .forgot-pass {
+  margin-top: 10rem;
   width: 100vw;
   height: calc(100vh - 60px);
   display: flex;
@@ -42,8 +43,6 @@
         width: 20rem;
       }
     }
-
-    
 
     button {
       width: 20rem;
