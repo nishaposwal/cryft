@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   API_HOST : 'https://tranquil-depths-04523.herokuapp.com/api',
-  IFSC_API_HOST : 'https://ifsc.razorpay.com/'
+  // IFSC_API_HOST : 'https://ifsc.razorpay.com/'
 };
 
 /*

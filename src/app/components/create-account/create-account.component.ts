@@ -42,6 +42,7 @@ export class CreateAccountComponent implements OnInit {
           ...this.createAccountForm.value,
         })
         .subscribe((res) => {
+          this.router.navigate(['/cryft']);
           console.log(res);
         });
     }
