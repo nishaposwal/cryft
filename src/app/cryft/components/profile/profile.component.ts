@@ -145,7 +145,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       });
 
     this.fetchCryptoPrizes();
-    this.profile['balance'] = 20
+    this.profile['balance'] = 20;
   }
 
   ngAfterViewInit() {}
@@ -172,10 +172,15 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   }
 
   saveBankDetails() {
+    let payload = {
+      bankDetails: { ...this.bankAccountDetailsForm.value },
+    };
+    delete payload['bankDetails'].confirmAccountNumber;
     this.restService
-      .post(`${this.appervice.getEnvVariable('API_HOST')}/users/edit-profile`, {
-        bankDetails: { ...this.bankAccountDetailsForm.value },
-      })
+      .post(
+        `${this.appervice.getEnvVariable('API_HOST')}/users/edit-profile`,
+        payload
+      )
       .subscribe((res) => {
         console.log(res);
       });

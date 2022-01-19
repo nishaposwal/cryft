@@ -65,8 +65,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       dialogRef.afterClosed().subscribe((result) => {
         console.log('The dialog was closed');
         if (result.event === 'save') {
-          this.redeemCode = result;
-          this.redeem(result);
+          this.redeemCode = result.data.redeemCode;
+          this.redeem(this.redeemCode);
         }
       });
     } else {
@@ -75,10 +75,18 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   redeem(code: String) {
-    this.restService.post(
-      `${this.apppService.getEnvVariable('API_HOST')}//api/gifts/redeem-gift`,
-      { redeemCode: code }
-    );
+    let payload = {
+      reedemCode: code,
+    };
+
+    this.restService
+      .post(
+        `${this.apppService.getEnvVariable('API_HOST')}/gifts/redeem-gift`,
+        payload
+      )
+      .subscribe((res: any) => {
+        console.log(res);
+      });
   }
 
   navigate(nav: any) {

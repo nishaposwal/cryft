@@ -89,7 +89,7 @@ export class BuyGiftComponent implements OnInit {
       recipeintEmail: ['', Validators.required],
       message: [''],
       deliveryDateTime: ['', Validators.required],
-      amount: [100, Validators.required],
+      money: [100, Validators.required],
       currency: [this.selectedCrypto.currency, Validators.required],
       contactNo: ['', Validators.required],
       deliveryType: ['email', Validators.required],
@@ -109,7 +109,7 @@ export class BuyGiftComponent implements OnInit {
 
   selecteAmount(amount: number) {
     this.selectedAmount = amount;
-    this.deliveryForm.get('amount').setValue(amount);
+    this.deliveryForm.get('money').setValue(amount);
   }
 
   selectTypeOfCrypto(crypto: any) {
@@ -124,7 +124,7 @@ export class BuyGiftComponent implements OnInit {
   createOrder() {
     let that = this;
     let payload = {
-      amount: this.deliveryForm.controls['amount'].value + '00',
+      amount: this.deliveryForm.controls['money'].value + '00',
       currency: 'INR',
       receipt: 'receipt',
     };
@@ -156,6 +156,7 @@ export class BuyGiftComponent implements OnInit {
       paymentId: response.razorpay_payment_id,
       sig: response.razorpay_signature,
     };
+    delete payload['contactNo']
     this.restService
       .post(
         `${this.appService.getEnvVariable(
