@@ -17,7 +17,7 @@ export class BuyGiftComponent implements OnInit {
     private restService: RestService,
     private appService: AppService,
     private router: Router
-  ) {}
+  ) { }
 
   cryptos = [
     {
@@ -62,6 +62,7 @@ export class BuyGiftComponent implements OnInit {
     },
   ];
 
+  showMsg: boolean = false;
   amounts = [100, 200, 500, 1000];
   profile: any;
   selectedAmount = 100;
@@ -94,6 +95,7 @@ export class BuyGiftComponent implements OnInit {
       contactNo: ['', Validators.required],
       deliveryType: ['email', Validators.required],
     });
+
     this.isloggedIn = this.authService.getAuthToken() ? true : false;
     this.authService.loggedIn$.subscribe((res: any) => {
       this.isloggedIn = res;
@@ -165,6 +167,14 @@ export class BuyGiftComponent implements OnInit {
         payload
       )
       .subscribe((res: any) => {
+        this.showMsg = true;
+        this.deliveryForm.get('money').setValue('');
+        this.deliveryForm.get('recipientName').setValue('');
+        this.deliveryForm.get('recipientEmail').setValue('');
+        this.deliveryForm.get('message').setValue('');
+        this.deliveryForm.get('currency').setValue('');
+        this.deliveryForm.get('contactNo').setValue('');
+        this.deliveryForm.get('deliveryDateTime').setValue('');
         console.log(res);
       });
   }
@@ -178,5 +188,5 @@ export class BuyGiftComponent implements OnInit {
     }
   }
 
-  sendByNowRequest() {}
+  sendByNowRequest() { }
 }

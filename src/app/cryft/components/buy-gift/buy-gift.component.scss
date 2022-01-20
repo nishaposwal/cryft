@@ -10,6 +10,26 @@
       width: 25rem;
     }
   }
+  .alert {
+    padding: 22px;
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
 
   .right {
     display: flex;
@@ -21,6 +41,10 @@
       color: $primary-color;
       padding-bottom: 2rem;
       border-bottom: 1px solid $secondary-color;
+    }
+    .row{
+      display: flex;
+      flex-direction: row;
     }
 
     .section {
