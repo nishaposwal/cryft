@@ -34,7 +34,7 @@
             [class.selected]="selectedAmount == amount"
             (click)="selecteAmount(amount)"
           >
-            Rs{{ amount }}
+            Rs {{ amount }}
           </div>
 
           <div class="amount-pill">
@@ -56,11 +56,11 @@
       <form action="" [formGroup]="deliveryForm">
         <mat-form-field appearance="fill">
           <mat-label>Recipient Name*</mat-label>
-          <input matInput formControlName="recipeintName" />
+          <input matInput formControlName="recipientName" />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Recipient Email*</mat-label>
-          <input matInput formControlName="recipeintEmail" />
+          <input matInput formControlName="recipientEmail" />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Contact Number*</mat-label>

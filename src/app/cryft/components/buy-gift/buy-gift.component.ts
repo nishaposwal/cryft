@@ -85,8 +85,8 @@ export class BuyGiftComponent implements OnInit {
   ngOnInit(): void {
     this.selectedCrypto = this.cryptos[0];
     this.deliveryForm = this.formBuilder.group({
-      recipeintName: ['', Validators.required],
-      recipeintEmail: ['', Validators.required],
+      recipientName: ['', Validators.required],
+      recipientEmail: ['', Validators.required],
       message: [''],
       deliveryDateTime: ['', Validators.required],
       money: [100, Validators.required],
