@@ -5,10 +5,15 @@
     </button>
   </div>
   <div class="profile-picture">
-    <div class="image">
-      <img src="assets/images/baga border.jpg" />
+    <div *ngIf="profile?.img" class="image">
+      <img src="assets/images/{{profile?.img}} .png" />
     </div>
     {{ profile.name }}
+    <button *ngIf="!profile?.img" (click)="choose()">Choose Profile picture</button>
+    <button *ngIf="profile?.img" (click)="choose()">Edit Profile picture</button>
+    <div *ngIf="chooseClicked" class="grid">
+      <div *ngFor="let e of [].constructor(12); let i = index"><img (click)="selectImg(i+1)" src="assets/images/{{i+1}} .png"/></div>
+    </div>
   </div>
   <div class="my-currencies">
     <div class="header">My Currenccies</div>

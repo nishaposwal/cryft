@@ -43,82 +43,122 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   ELEMENT_DATA = [
     {
       position: 1,
-      currency: 'Hydrogen',
+      currency: 'Bitcoin',
       amount: 1.0079,
       crrentPrize: 100,
-      symbol: 'H',
+      symbol: 'BTC',
       action: 'Sell',
     },
     {
       position: 2,
-      currency: 'Helium',
+      currency: 'Ethereum',
       amount: 4.0026,
       crrentPrize: 100,
-      symbol: 'He',
+      symbol: 'ETH',
       action: 'Sell',
     },
     {
       position: 3,
-      currency: 'Lithium',
+      currency: 'Tether',
       amount: 6.941,
       crrentPrize: 100,
-      symbol: 'Li',
+      symbol: 'USDT',
       action: 'Sell',
     },
     {
       position: 4,
-      currency: 'Beryllium',
+      currency: 'BNB',
       amount: 9.0122,
       crrentPrize: 100,
-      symbol: 'Be',
+      symbol: 'BNB',
       action: 'Sell',
     },
     {
       position: 5,
-      currency: 'Boron',
+      currency: 'Solana',
       amount: 10.811,
       crrentPrize: 100,
-      symbol: 'B',
+      symbol: 'SOL',
       action: 'Sell',
     },
     {
       position: 6,
-      currency: 'Carbon',
+      currency: 'USD Coin',
       amount: 12.0107,
       crrentPrize: 100,
-      symbol: 'C',
+      symbol: 'USDC',
       action: 'Sell',
     },
     {
       position: 7,
-      currency: 'Nitrogen',
+      currency: 'Cardano',
       amount: 14.0067,
       crrentPrize: 100,
-      symbol: 'N',
+      symbol: 'ADA',
       action: 'Sell',
     },
     {
       position: 8,
-      currency: 'Oxygen',
+      currency: 'XRP',
       amount: 15.9994,
       crrentPrize: 100,
-      symbol: 'O',
+      symbol: 'XRP',
       action: 'Sell',
     },
     {
       position: 9,
-      currency: 'Fluorine',
+      currency: 'Terra',
       amount: 18.9984,
       crrentPrize: 100,
-      symbol: 'F',
+      symbol: 'LUNA',
       action: 'Sell',
     },
     {
       position: 10,
-      currency: 'Neon',
+      currency: 'Polkadot',
       amount: 20.1797,
       crrentPrize: 100,
-      symbol: 'Ne',
+      symbol: 'DOT',
+      action: 'Sell',
+    },
+    {
+      position: 11,
+      currency: 'Cardano',
+      amount: 20.1797,
+      crrentPrize: 100,
+      symbol: 'AVAX',
+      action: 'Sell',
+    },
+    {
+      position: 12,
+      currency: 'Dogecoin',
+      amount: 20.1797,
+      crrentPrize: 100,
+      symbol: 'DOGE',
+      action: 'Sell',
+    },
+    {
+      position: 13,
+      currency: 'Shiba Inu',
+      amount: 20.1797,
+      crrentPrize: 100,
+      symbol: 'SHIB',
+      action: 'Sell',
+    },
+    {
+      position: 14,
+      currency: 'Polygon',
+      amount: 20.1797,
+      crrentPrize: 100,
+      symbol: 'MATIC',
+      action: 'Sell',
+    },
+    {
+      position: 15,
+      currency: 'Binance USD',
+      amount: 20.1797,
+      crrentPrize: 100,
+      symbol: 'BUSD',
       action: 'Sell',
     },
   ];
@@ -148,6 +188,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     this.profile['balance'] = 20;
   }
 
+  chooseClicked = false;
   ngAfterViewInit() {}
 
   fetchCryptoPrizes() {
@@ -155,6 +196,29 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       .get(`${this.appervice.getEnvVariable('API_HOST')}/ticker/wrxinr`)
       .subscribe((res) => {
         console.log(JSON.parse(res.body));
+      });
+  }
+
+  choose() {
+    console.log(this.chooseClicked)
+    this.chooseClicked = !this.chooseClicked;
+  }
+
+  selectImg(i: any) {
+    let payload = {
+      'img': i + '',
+    };
+    
+    console.log(payload)
+    this.restService
+      .post(
+        `${this.appervice.getEnvVariable('API_HOST')}/users/edit-profile`,
+        payload
+      )
+      .subscribe((res) => {
+        console.log('hi')
+        this.chooseClicked = !this.chooseClicked;
+        console.log(res);
       });
   }
 
@@ -238,6 +302,18 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       console.log('The dialog was closed');
       if (result.event === 'save') {
         this.profile = result.data;
+        let payload = {
+          'name': result.data.name,
+          'contactNo': result.data.contactNo,
+        };
+        this.restService
+          .post(
+            `${this.appervice.getEnvVariable('API_HOST')}/users/edit-profile`,
+            payload
+          )
+          .subscribe((res) => {
+            console.log(res);
+          });
       }
     });
   }

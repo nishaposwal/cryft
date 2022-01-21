@@ -9,6 +9,28 @@
   flex-direction: column;
   background-color: #fafafa;
   padding: 1rem;
+  button{
+    border: 2px solid rgb(2, 104, 221);
+    padding: 4px;
+    color: rgb(2, 104, 221);
+    font-size: 16px;
+    background-color: white;
+    margin: 2px;
+    cursor: pointer;
+  }
+  .grid{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 600px;
+    padding: 5px;
+    img {
+      width: 70px;
+      height: 70px;
+      margin: 8px;
+      cursor: pointer;
+    }
+  }
 
   .edit {
     position: absolute;
@@ -28,8 +50,8 @@
     .image {
       margin-bottom: 1rem;
       img {
-        width: 10rem;
-        height: 10rem;
+        width: 8rem;
+        height: 8rem;
         border-radius: 50%;
         border: 1px solid grey;
       }
