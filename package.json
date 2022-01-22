@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.2.13",
+    "@angular/animations": "^11.2.14",
     "@angular/cdk": "^11.2.13",
     "@angular/common": "~11.2.13",
     "@angular/compiler": "~11.2.13",
@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~11.2.13",
     "@angular/router": "~11.2.13",
     "firebase-tools": "^10.1.0",
+    "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

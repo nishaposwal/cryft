@@ -17,6 +17,8 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { EventEmitterService } from 'src/app/core/services/event-emitter.service';
 import { RestService } from 'src/app/core/services/rest.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -31,8 +33,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     private authService: AuthService,
     private eventEmitterService: EventEmitterService,
     private restService: RestService,
-    private apppService: AppService
-  ) {}
+    private apppService: AppService,
+    private toastr: ToastrService
+  ) { }
 
   redeemCode: String = '';
   navs = [
@@ -54,7 +57,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
   openDialog(): void {
     if (this.isLoggedIn) {
@@ -83,10 +86,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       .post(
         `${this.apppService.getEnvVariable('API_HOST')}/gifts/redeem-gift`,
         payload
-      )
+      )//CRYFT78131
       .subscribe((res: any) => {
-        console.log(res);
-      });
+        this.toastr.success(res.success)
+      }, error => console.log(error.error));
   }
 
   navigate(nav: any) {
@@ -143,7 +146,7 @@ export class RedeemDialog {
   constructor(
     public dialogRef: MatDialogRef<RedeemDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
 
   onNoClick(event?: String): void {
     this.dialogRef.close({ data: this.data, event: event });

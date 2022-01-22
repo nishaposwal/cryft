@@ -1,4 +1,5 @@
 <div class="profile-component">
+  <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=itNPFbf4NzDfpqnvMA8chDimMGKVYqQGpzq2V0au26vWFLHwzmlsL0wNrytn"></script></span>
   <div class="edit">
     <button mat-stroked-button color="primary" (click)="openDialog()">
       Edit Profile
@@ -8,7 +9,7 @@
     <div *ngIf="profile?.img" class="image">
       <img src="assets/images/{{profile?.img}} .png" />
     </div>
-    {{ profile.name }}
+    {{ profile?.name }}
     <button *ngIf="!profile?.img" (click)="choose()">Choose Profile picture</button>
     <button *ngIf="profile?.img" (click)="choose()">Edit Profile picture</button>
     <div *ngIf="chooseClicked" class="grid">
@@ -16,47 +17,47 @@
     </div>
   </div>
   <div class="my-currencies">
-    <div class="header">My Currenccies</div>
+    <div class="header">My Currencies</div>
   </div>
 
   <div class="currencies" *ngIf="profile?.currencies.length > 0">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="profile?.currencies" class="mat-elevation-z8">
       <!-- Position Column -->
-      <ng-container matColumnDef="position">
+      <!-- <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef>No.</th>
         <td mat-cell *matCellDef="let element">{{ element.position }}</td>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Currency Name Column -->
       <ng-container matColumnDef="currency">
         <th mat-header-cell *matHeaderCellDef>Currency Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.currency }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.currencyName }}</td>
       </ng-container>
 
       <!-- Amount Column -->
       <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef>amount</th>
-        <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
       </ng-container>
 
       <!-- Current Prize  Column -->
-      <ng-container matColumnDef="crrentPrize">
+      <!-- <ng-container matColumnDef="crrentPrize">
         <th mat-header-cell *matHeaderCellDef>Current Prize(INR)</th>
         <td mat-cell *matCellDef="let element">{{ element.crrentPrize }}</td>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
+      <!-- <ng-container matColumnDef="symbol">
         <th mat-header-cell *matHeaderCellDef>Symbol</th>
         <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Action Column -->
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>Action</th>
         <td mat-cell *matCellDef="let element">
           <button mat-raised-button color="primary" (click)="sell(element)">
-            {{ element.action }}
+            Sell
           </button>
         </td>
       </ng-container>

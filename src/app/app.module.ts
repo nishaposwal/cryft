@@ -19,6 +19,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { ChangeComponent } from './components/change/change.component';
 import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
 import { SharedModule } from './shared/shared.module';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   
@@ -44,7 +46,8 @@ import { SharedModule } from './shared/shared.module';
     MatDialogModule,
     HttpClientModule,
     MatIconModule,
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot()  
   ],
   providers: [
     {

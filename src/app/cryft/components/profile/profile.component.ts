@@ -17,6 +17,9 @@ import { AppService } from 'src/app/core/services/app.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { RestService } from 'src/app/core/services/rest.service';
 import { DialogComponent } from '../../../shared/components/dialog/dialog.component';
+import { currencies } from '../../../constants/constant'
+
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -32,145 +35,23 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private restService: RestService,
-    private appervice: AppService
-  ) {}
+    private appervice: AppService,
+    private toastr: ToastrService
+  ) { }
   bankAccountDetailsForm!: FormGroup;
   profile: any;
   bankDetailsEditingMode = false;
   withdrawEditingMode = false;
   withdrawAmount: Number | undefined;
-
-  ELEMENT_DATA = [
-    {
-      position: 1,
-      currency: 'Bitcoin',
-      amount: 1.0079,
-      crrentPrize: 100,
-      symbol: 'BTC',
-      action: 'Sell',
-    },
-    {
-      position: 2,
-      currency: 'Ethereum',
-      amount: 4.0026,
-      crrentPrize: 100,
-      symbol: 'ETH',
-      action: 'Sell',
-    },
-    {
-      position: 3,
-      currency: 'Tether',
-      amount: 6.941,
-      crrentPrize: 100,
-      symbol: 'USDT',
-      action: 'Sell',
-    },
-    {
-      position: 4,
-      currency: 'BNB',
-      amount: 9.0122,
-      crrentPrize: 100,
-      symbol: 'BNB',
-      action: 'Sell',
-    },
-    {
-      position: 5,
-      currency: 'Solana',
-      amount: 10.811,
-      crrentPrize: 100,
-      symbol: 'SOL',
-      action: 'Sell',
-    },
-    {
-      position: 6,
-      currency: 'USD Coin',
-      amount: 12.0107,
-      crrentPrize: 100,
-      symbol: 'USDC',
-      action: 'Sell',
-    },
-    {
-      position: 7,
-      currency: 'Cardano',
-      amount: 14.0067,
-      crrentPrize: 100,
-      symbol: 'ADA',
-      action: 'Sell',
-    },
-    {
-      position: 8,
-      currency: 'XRP',
-      amount: 15.9994,
-      crrentPrize: 100,
-      symbol: 'XRP',
-      action: 'Sell',
-    },
-    {
-      position: 9,
-      currency: 'Terra',
-      amount: 18.9984,
-      crrentPrize: 100,
-      symbol: 'LUNA',
-      action: 'Sell',
-    },
-    {
-      position: 10,
-      currency: 'Polkadot',
-      amount: 20.1797,
-      crrentPrize: 100,
-      symbol: 'DOT',
-      action: 'Sell',
-    },
-    {
-      position: 11,
-      currency: 'Cardano',
-      amount: 20.1797,
-      crrentPrize: 100,
-      symbol: 'AVAX',
-      action: 'Sell',
-    },
-    {
-      position: 12,
-      currency: 'Dogecoin',
-      amount: 20.1797,
-      crrentPrize: 100,
-      symbol: 'DOGE',
-      action: 'Sell',
-    },
-    {
-      position: 13,
-      currency: 'Shiba Inu',
-      amount: 20.1797,
-      crrentPrize: 100,
-      symbol: 'SHIB',
-      action: 'Sell',
-    },
-    {
-      position: 14,
-      currency: 'Polygon',
-      amount: 20.1797,
-      crrentPrize: 100,
-      symbol: 'MATIC',
-      action: 'Sell',
-    },
-    {
-      position: 15,
-      currency: 'Binance USD',
-      amount: 20.1797,
-      crrentPrize: 100,
-      symbol: 'BUSD',
-      action: 'Sell',
-    },
-  ];
   displayedColumns: string[] = [
-    'position',
+    // 'position',
     'currency',
     'amount',
-    'crrentPrize',
-    'symbol',
+    // 'crrentPrize',
+    // 'symbol',
     'action',
   ];
-  dataSource = this.ELEMENT_DATA;
+  dataSource: any;
   ngOnInit(): void {
     this, this.initializebankAccountDetailsForm();
     this.restService
@@ -182,18 +63,17 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         } else {
           this.bankDetailsEditingMode = true;
         }
-      });
-
-    this.fetchCryptoPrizes();
-    this.profile['balance'] = 20;
+        this.dataSource = this.profile?.currencies;
+        console.log(this.dataSource);
+      }, error =>  this.toastr.error(error.error));
   }
 
   chooseClicked = false;
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
-  fetchCryptoPrizes() {
+  fetchCryptoPrizes(currency: string) {
     this.restService
-      .get(`${this.appervice.getEnvVariable('API_HOST')}/ticker/wrxinr`)
+      .get(`${this.appervice.getEnvVariable('API_HOST')}/ticker/` + currency)
       .subscribe((res) => {
         console.log(JSON.parse(res.body));
       });
@@ -208,7 +88,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     let payload = {
       'img': i + '',
     };
-    
+
     console.log(payload)
     this.restService
       .post(
@@ -216,10 +96,10 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         payload
       )
       .subscribe((res) => {
-        console.log('hi')
         this.chooseClicked = !this.chooseClicked;
+        this.toastr.success('Profile picture saved')
         console.log(res);
-      });
+      }, error =>  this.toastr.error(error.error));
   }
 
   initializebankAccountDetailsForm() {
@@ -246,8 +126,9 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         payload
       )
       .subscribe((res) => {
+        this.toastr.success('Bank details saved')
         console.log(res);
-      });
+      }, error =>  this.toastr.error(error.error));
   }
 
   autofillBankDetails(bankDetails: any) {
@@ -312,6 +193,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
             payload
           )
           .subscribe((res) => {
+            this.toastr.success('Profile details saved')
             console.log(res);
           });
       }

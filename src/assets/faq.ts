@@ -1,9 +1,9 @@
 export const QUESTIONS = [
   {
-    question: 'what is inchpe',
+    question: 'what is gappy',
     show: false,
     answer:
-      'Inchpe is a modern-day gifting platform that enables you to gift crypto to your loved ones, colleagues, and well-wishers.  Buying crypto is s new gold. so instead of handing a pack of cookies next time gift them a gift  that keeps on growing and keeps on gifting itself',
+      'Gappy is a modern-day gifting platform that enables you to gift crypto to your loved ones, colleagues, and well-wishers.  Buying crypto is s new gold. so instead of handing a pack of cookies next time gift them a gift  that keeps on growing and keeps on gifting itself',
   },
   {
     show: false,
@@ -13,7 +13,7 @@ export const QUESTIONS = [
   },
   {
     show: false,
-    question: 'Why inchpe',
+    question: 'Why gappy',
     answer:
       'We are an investment cum gifting platform you gift a gift that keeps on gifting itself',
   },

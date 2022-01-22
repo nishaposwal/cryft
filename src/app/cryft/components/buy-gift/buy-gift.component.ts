@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { currencies } from 'src/app/constants/constant';
 import { AppService } from 'src/app/core/services/app.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { RestService } from 'src/app/core/services/rest.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-buy-gift',
@@ -16,51 +18,11 @@ export class BuyGiftComponent implements OnInit {
     private authService: AuthService,
     private restService: RestService,
     private appService: AppService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
-  cryptos = [
-    {
-      id: 1,
-      currency: 'btc',
-      img: 'gift-card.png',
-    },
-    {
-      id: 2,
-      currency: 'Ether',
-      img: 'gift-card1.png',
-    },
-    {
-      id: 3,
-      currency: 'Ghonchu',
-      img: 'gift-card.png',
-    },
-    {
-      id: 4,
-      currency: 'type4',
-      img: 'gift-card1.png',
-    },
-    {
-      id: 5,
-      currency: 'type5',
-      img: 'gift-card.png',
-    },
-    {
-      id: 6,
-      currency: 'type6',
-      img: 'gift-card1.png',
-    },
-    {
-      id: 7,
-      currency: 'type7',
-      img: 'gift-card.png',
-    },
-    {
-      id: 8,
-      currency: 'type8',
-      img: 'gift-card1.png',
-    },
-  ];
+  cryptos = currencies;
 
   showMsg: boolean = false;
   amounts = [100, 200, 500, 1000];
@@ -71,14 +33,14 @@ export class BuyGiftComponent implements OnInit {
   options: any = {
     key: 'rzp_live_FM5EtJ4ekjxFo5',
     currency: 'INR',
-    name: 'CryFt',
-    description: 'Test Transaction',
+    name: 'Gappy',
+    description: 'Buy Gift',
     image: '',
     notes: {
-      address: 'Razorpay Corporate Office',
+      address: 'Swaran Path, Mansarovar, Jaipur',
     },
     theme: {
-      color: '#08133d',
+      color: '#4055b5',
     },
   };
 
@@ -91,7 +53,8 @@ export class BuyGiftComponent implements OnInit {
       message: [''],
       deliveryDateTime: ['', Validators.required],
       money: [100, Validators.required],
-      currency: [this.selectedCrypto.currency, Validators.required],
+      currency: [this.selectedCrypto.marketSymbol, Validators.required],
+      currencyName: [this.selectedCrypto.currency, Validators.required],
       contactNo: ['', Validators.required],
       deliveryType: ['email', Validators.required],
     });
@@ -141,7 +104,7 @@ export class BuyGiftComponent implements OnInit {
         this.options['prefill'] = {
           name: this.profile.name,
           email: this.profile.email,
-          contact: this.deliveryForm.controls['contactNo'].value,
+          contact: this.profile.contactNo,
         };
         this.options['handler'] = function (res: any) {
           that.varifyPayment(res);
@@ -167,7 +130,7 @@ export class BuyGiftComponent implements OnInit {
         payload
       )
       .subscribe((res: any) => {
-        this.showMsg = true;
+        this.toastr.success('Gift bought successfully')
         this.deliveryForm.get('money').setValue('');
         this.deliveryForm.get('recipientName').setValue('');
         this.deliveryForm.get('recipientEmail').setValue('');
@@ -176,7 +139,7 @@ export class BuyGiftComponent implements OnInit {
         this.deliveryForm.get('contactNo').setValue('');
         this.deliveryForm.get('deliveryDateTime').setValue('');
         console.log(res);
-      });
+      }, error =>  this.toastr.error(error.error));
   }
 
   buyNow() {

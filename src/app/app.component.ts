@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from './core/services/app.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +10,7 @@ import { AppService } from './core/services/app.service';
 })
 export class AppComponent implements OnInit {
   title = 'cryft';
-  constructor(private router: Router, private appService: AppService) {}
+  constructor(private router: Router, private appService: AppService) { }
 
   ngOnInit(): void {
     let url = location.href;
@@ -18,4 +19,5 @@ export class AppComponent implements OnInit {
       this.router.navigate(['/reset-pass']);
     }
   }
+
 }
