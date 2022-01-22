@@ -88,8 +88,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         payload
       )//CRYFT78131
       .subscribe((res: any) => {
-        this.toastr.success(res.success)
-      }, error => console.log(error.error));
+        this.toastr.success(res)
+      }, error => this.toastr.error(error.error));
   }
 
   navigate(nav: any) {
