@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AppService } from 'src/app/core/services/app.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { RestService } from 'src/app/core/services/rest.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-account',
@@ -16,7 +17,8 @@ export class CreateAccountComponent implements OnInit {
     private formBuilder: FormBuilder,
     private restService: RestService,
     private appService: AppService,
-    private authSrvice : AuthService
+    private authSrvice : AuthService,
+    private toastr: ToastrService
   ) {}
 
   createAccountForm: any;
@@ -46,7 +48,8 @@ export class CreateAccountComponent implements OnInit {
         .subscribe((res:any) => {
           this.authSrvice.setAuthToken(res.token)
           this.router.navigate(['/cryft']);
-        });
+          this.toastr.success("Signed up successfully")
+        }, error => this.toastr.error(JSON.stringify(error.error)));
     }
   }
 }

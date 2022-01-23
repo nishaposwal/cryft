@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     // 'position',
     'currency',
     'amount',
-    // 'crrentPrize',
+    'Current Worth (INR)',
     // 'symbol',
     'action',
   ];
@@ -64,6 +64,11 @@ export class ProfileComponent implements OnInit, AfterViewInit {
           this.bankDetailsEditingMode = true;
         }
         this.dataSource = this.profile?.currencies;
+        for (var i = 0; i < this.profile?.currencies.length; i++) {
+          // this.profile.currencies[i].worth = 'fetching...';
+          this.profile.currencies[i].id = i;
+          // this.fetchCryptoPrizes(this.profile?.currencies[i].currency, i);
+        }
         console.log(this.dataSource);
       }, error =>  this.toastr.error(error.error));
   }
@@ -71,10 +76,11 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   chooseClicked = false;
   ngAfterViewInit() { }
 
-  fetchCryptoPrizes(currency: string) {
+  fetchCryptoPrizes(currency: string, id: number) {
     this.restService
       .get(`${this.appervice.getEnvVariable('API_HOST')}/ticker/` + currency)
       .subscribe((res) => {
+        this.profile.currencies[id].worth = JSON.parse(res.body).lastPrice * this.profile?.currencies[id].quantity
         console.log(JSON.parse(res.body));
       });
   }
@@ -98,6 +104,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       .subscribe((res) => {
         this.chooseClicked = !this.chooseClicked;
         this.toastr.success('Profile picture saved')
+        this.profile.img = payload.img;
         console.log(res);
       }, error =>  this.toastr.error(error.error));
   }
@@ -215,7 +222,20 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   }
   sell(element: any) {
     if (this.profile.bankDetails) {
-      // sell api call
+      var payload = {
+        'quantity': element.quantity,
+        'currency': element.currency
+      }
+      this.restService
+          .post(
+            `${this.appervice.getEnvVariable('API_HOST')}/gifts/sell-gift`,
+            payload
+          )
+          .subscribe(({currencies}: any) => {
+            this.toastr.success('Sold successfully')
+            this.profile.currencies = currencies;
+            // console.log(res);
+          }, error => this.toastr.error(JSON.stringify(error.error)));
     } else {
       this.showDialog({
         msg: 'Please Fill Bank details In order to sell',

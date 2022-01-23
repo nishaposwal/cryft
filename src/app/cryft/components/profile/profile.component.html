@@ -10,8 +10,8 @@
       <img src="assets/images/{{profile?.img}} .png" />
     </div>
     {{ profile?.name }}
-    <button *ngIf="!profile?.img" (click)="choose()">Choose Profile picture</button>
-    <button *ngIf="profile?.img" (click)="choose()">Edit Profile picture</button>
+    <button *ngIf="!profile?.img" mat-stroked-button color="primary" (click)="choose()">Choose Profile picture</button>
+    <button *ngIf="profile?.img" mat-stroked-button color="primary" (click)="choose()">Edit Profile picture</button>
     <div *ngIf="chooseClicked" class="grid">
       <div *ngFor="let e of [].constructor(12); let i = index"><img (click)="selectImg(i+1)" src="assets/images/{{i+1}} .png"/></div>
     </div>
@@ -36,15 +36,15 @@
 
       <!-- Amount Column -->
       <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef>amount</th>
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
         <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
       </ng-container>
 
       <!-- Current Prize  Column -->
-      <!-- <ng-container matColumnDef="crrentPrize">
-        <th mat-header-cell *matHeaderCellDef>Current Prize(INR)</th>
-        <td mat-cell *matCellDef="let element">{{ element.crrentPrize }}</td>
-      </ng-container> -->
+      <ng-container matColumnDef="Current Worth (INR)">
+        <th mat-header-cell *matHeaderCellDef>Current Worth (INR)</th>
+        <td mat-cell *matCellDef="let element"><button mat-stroked-button color="accent"  *ngIf="!element.worth" (click)="fetchCryptoPrizes(element.currency, element.id)">Show worth</button><p *ngIf="element.worth" >{{ element.worth }}</p></td>
+      </ng-container>
 
       <!-- Symbol Column -->
       <!-- <ng-container matColumnDef="symbol">
@@ -78,7 +78,7 @@
 
     <mat-card>
       <div class="balance">
-        Balance : 100
+        Balance : {{profile.balance}}
         <mat-form-field
           appearance="fill"
           *ngIf="withdrawEditingMode"
@@ -91,7 +91,7 @@
               class="err"
               *ngIf="withdrawAmount && withdrawAmount > profile?.balance"
             >
-              Amount is greater then your current balance
+              Amount is greater than your current balance
             </div>
           </div>
         </mat-form-field>
@@ -173,7 +173,7 @@
       </mat-form-field>
       <button
         mat-raised-button
-        color="primary"
+        color="accent"
         (click)="saveBankDetails()"
         [disabled]="
           !bankAccountDetailsForm.valid ||
