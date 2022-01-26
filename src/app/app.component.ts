@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { AppService } from './core/services/app.service';
 import { AuthService } from './core/services/auth.service';
 
@@ -13,17 +14,17 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private appService: AppService,
-    private authService: AuthService
-  ) {}
-
+    private authService: AuthService,
+  ) {
+   
+  }
+ 
   ngOnInit(): void {
-    // this.authService.getServerProfile().subscribe((res) => {
-    //   this.authService.setProfile(res);
-    // });
+    console.log("link", location.href)
     let url = location.href;
     if (url.includes('reset-password')) {
       this.appService.setResetTokenFromUrl(location.href);
-      this.router.navigate(['/reset-pass']);
+      this.router.navigate(['/reset-password']);
     }
   }
 }

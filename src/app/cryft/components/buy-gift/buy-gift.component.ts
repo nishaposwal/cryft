@@ -55,7 +55,6 @@ export class BuyGiftComponent implements OnInit {
       money: [100, Validators.required],
       currency: [this.selectedCrypto.marketSymbol, Validators.required],
       currencyName: [this.selectedCrypto.currency, Validators.required],
-      contactNo: ['', Validators.required],
       deliveryType: ['email', Validators.required],
     });
 

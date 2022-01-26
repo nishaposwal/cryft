@@ -21,8 +21,6 @@ import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.compon
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './core/interceptors/gaurds/auth.gaurd';
-
-
 @NgModule({
   
   declarations: [

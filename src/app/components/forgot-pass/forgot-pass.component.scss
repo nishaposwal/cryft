@@ -41,12 +41,30 @@
       .mat-form-field {
         width: 20rem;
       }
-    }
-
-    
-
-    button {
+    }  
+  button {
       width: 20rem;
+    }
+  }
+}
+
+@media screen  and (max-width : 400px){
+  .forgot-pass{
+    .content{
+      width: 90%;
+      padding: 2rem 10px;
+      .subheader {
+        width: 16rem;
+      }
+      .email {
+       
+        .mat-form-field {
+          width: 16rem;
+        }
+      }  
+    button {
+        width: 16rem;
+      }
     }
   }
 }
