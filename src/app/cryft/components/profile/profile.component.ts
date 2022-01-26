@@ -46,7 +46,8 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'currency',
     'amount',
-    'action',
+    'worth',
+    'action'
   ];
   dataSource: any;
   ngOnInit(): void {

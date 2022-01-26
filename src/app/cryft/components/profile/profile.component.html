@@ -66,12 +66,17 @@
         <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
       </ng-container>
 
+      <ng-container matColumnDef="worth">
+        <th mat-header-cell *matHeaderCellDef>Worth</th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <button class="action" mat-stroked-button color="accent"  *ngIf="!element.worth" (click)="fetchCryptoPrizes(element.currency, i)">Show worth</button><p  class="action" *ngIf="element.worth" >{{ element.worth }}</p>
+        </td>
+      </ng-container>
 
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-stroked-button color="accent"  *ngIf="!element.worth" (click)="fetchCryptoPrizes(element.currency, element.id)">Show worth{{element.id}}</button><p *ngIf="element.worth" >{{ element.worth }}</p>
-          <button class="action" mat-raised-button color="primary" (click)="sell(element)">
+        <th mat-header-cell *matHeaderCellDef>Sell</th>
+        <td mat-cell *matCellDef="let element; let i = index">
+         <button class="action" mat-raised-button color="primary" (click)="sell(element)">
             Sell
           </button>
 
