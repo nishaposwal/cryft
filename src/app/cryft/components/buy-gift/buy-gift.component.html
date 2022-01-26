@@ -1,18 +1,8 @@
 <div class="buy-gift-component">
-  <div class="left">
-    <img src="assets/images/{{ selectedCrypto.img }}" />
-  </div>
-
-  <div class="right">
-    <div class="header">Gappy Gift card</div>
-    <div class="section">
-      <div class="header1">1. Select the type of crypto</div>
-
-      <div class="cards">
-        <div class="card" *ngFor="let card of cryptos" (click)="selectTypeOfCrypto(card)">
-          <img src="assets/images/{{ card.img }}" [class.selected]="selectedCrypto == card" />
-        </div>
-      </div>
+  <div class="header">Cryft Gift card</div>
+  <div class="content">
+    <div class="left">
+      <img src="assets/images/{{ selectedCrypto.img }}" />
     </div>
   
     <div class="right">
