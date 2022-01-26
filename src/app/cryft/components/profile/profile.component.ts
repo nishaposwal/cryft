@@ -58,14 +58,16 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     this.authService.profile$.subscribe(
       (res: any) => {
         this.profile = res;
+        console.log(this.profile)
         if (this.profile.bankDetails) {
           this.autofillBankDetails(this.profile?.bankDetails);
         } else {
           this.bankDetailsEditingMode = true;
         }
-        for (var i = 0; i < this.profile?.currencies.length; i++) {
-          this.profile.currencies[i]['id'] = i;
+        for (var i = 0; i < this.profile?.currencies?.length; i++) {
+          this.profile.currencies[i]['id'] = i + '';
         }
+        console.log(this.profile)
       },
       (error) => this.toastr.error(error.error)
     );
