@@ -43,7 +43,7 @@
       Balance(INR)
     </div>
  {{   profile?.balance }}
-   <button mat-button color="primary" (click)="withdraw()">
+   <button mat-button color="primary" (click)="withdraw(profile?.balance)">
      withdraw
    </button>
   </div>
@@ -84,38 +84,6 @@
   </div>
   <div class="currencies" *ngIf="profile?.currencies.length == 0">
     No one has gifted you any Currencies
-  </div>
-
-  <div class="my-balance">
-    <div class="header">My Balance</div>
-    <div class="sub-header">
-      Money will be credited to provided bank account if you withdraw
-    </div>
-
-    <mat-card>
-      <div class="balance">
-        Balance : {{profile.balance}}
-        <mat-form-field
-          appearance="fill"
-          *ngIf="withdrawEditingMode"
-          class="mat"
-        >
-          <mat-label>Enter Amount</mat-label>
-          <div class="amount-container">
-            <input matInput type="number" [(ngModel)]="withdrawAmount" />
-            <div
-              class="err"
-              *ngIf="withdrawAmount && withdrawAmount > profile?.balance"
-            >
-              Amount is greater than your current balance
-            </div>
-          </div>
-        </mat-form-field>
-        <button mat-raised-button color="primary" (click)="withdraw(withdrawAmount)">
-          withdraw
-        </button>
-      </div>
-    </mat-card>
   </div>
 
   <div class="bank-details" #bankDetails>

@@ -315,6 +315,9 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       this.withdrawEditingMode = true;
     }
   }
+  close() {
+    this.chooseClicked = false;
+  }
 }
 
 @Component({
