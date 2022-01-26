@@ -1,6 +1,6 @@
 export const QUESTIONS = [
   {
-    question: 'what is gappy',
+    question: 'What is gappy',
     show: false,
     answer:
       'Gappy is a modern-day gifting platform that enables you to gift crypto to your loved ones, colleagues, and well-wishers.  Buying crypto is s new gold. so instead of handing a pack of cookies next time gift them a gift  that keeps on growing and keeps on gifting itself',

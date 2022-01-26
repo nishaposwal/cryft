@@ -10,6 +10,7 @@ import { AppService } from 'src/app/core/services/app.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { RestService } from 'src/app/core/services/rest.service';
 
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -29,7 +30,8 @@ export class LoginComponent implements OnInit {
     private appService: AppService,
     private restService: RestService,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastr: ToastrService
   ) {}
 
   loginForm: any;
@@ -55,7 +57,7 @@ export class LoginComponent implements OnInit {
           this.authService.setAuthToken(res.token);
           this.router.navigate(['/cryft']);
         }
-      });
+      }, error => this.toastr.error(JSON.stringify(error.error)));
   }
 
 

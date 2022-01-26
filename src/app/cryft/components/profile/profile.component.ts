@@ -260,9 +260,22 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/cryft']);
   }
 
-  withdraw() {
+  withdraw(amount: any) {
+    if (!amount)
+        this.toastr.error('Please enter valid amount')
     if (this.withdrawEditingMode) {
-      // withdraw api
+      var payload = {
+        amount: amount
+      }
+      this.restService
+          .post(
+            `${this.appervice.getEnvVariable('API_HOST')}/users/withdraw`,
+            payload
+          )
+          .subscribe(({balance}: any) => {
+            this.toastr.success('Success! You will be paid in 4-5 business days.')
+            this.profile.balance = balance;
+          }, error => this.toastr.error(JSON.stringify(error.error)));
     } else {
       this.withdrawEditingMode = true;
     }
