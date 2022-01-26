@@ -27,6 +27,7 @@ import { ToastrService } from 'ngx-toastr';
 export class HeaderComponent implements OnInit, AfterViewInit {
   logo: ElementRef<HTMLElement> = {} as ElementRef;
   isLoggedIn = false;
+  profile: any;
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -35,29 +36,42 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     private restService: RestService,
     private apppService: AppService,
     private toastr: ToastrService
-  ) { }
+  ) {}
 
   redeemCode: String = '';
   navs = [
+    { id: 1, name: 'Redeem Gift Card' },
     {
-      name: 'Redeem Gift Card',
-    },
-    {
+      id: 2,
       name: 'Buy Gift Card',
     },
     {
+      id: 3,
       name: 'FAQ',
     },
+    {
+      id: 4,
+      name: 'login',
+    },
+    {
+      id: 5,
+      name: 'sign up',
+    },
   ];
+
+  showNavigationbar = false;
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.getAuthToken() ? true : false;
     this.authService.loggedIn$.subscribe((res: any) => {
       this.isLoggedIn = res;
     });
+    this.authService.profile$.subscribe((res) => {
+      this.profile = res;
+    });
   }
 
-  ngAfterViewInit() { }
+  ngAfterViewInit() {}
 
   openDialog(): void {
     if (this.isLoggedIn) {
@@ -86,24 +100,37 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       .post(
         `${this.apppService.getEnvVariable('API_HOST')}/gifts/redeem-gift`,
         payload
-      )//CRYFT78131
-      .subscribe((res: any) => {
-        this.toastr.success(res)
-      }, error => this.toastr.error(error.error));
+      ) //CRYFT78131
+      .subscribe(
+        (res: any) => {
+          this.toastr.success(res);
+        },
+        (error) => this.toastr.error(error.error)
+      );
   }
 
   navigate(nav: any) {
-    if (this.isLoggedIn) {
-      if (nav.name === 'Redeem Gift Card') {
-        this.openDialog();
-      } else if (nav.name === 'Buy Gift Card') {
-        this.buyGift();
-      } else {
-        this.eventEmitterService.emit({ type: 'FAQ', data: {} });
+    if (nav.id < 3) {
+      if(this.isLoggedIn){
+        if (nav.name === 'Redeem Gift Card') {
+          this.openDialog();
+        } else if (nav.name === 'Buy Gift Card') {
+          this.buyGift();
+        }
+      }else {
+        this.toastr.error('Please login first');
+        this.router.navigate(['login']);
       }
-    } else {
+    } else if (nav.id === 3) {
+      this.eventEmitterService.emit({ type: 'FAQ', data: {} });
+    } else if (nav.id === 4) {
       this.router.navigate(['login']);
+    } else if (nav.id === 5) {
+      this.router.navigate(['sign-up']);
+    }  else{
+      this.navigayeToProfile()
     }
+    this.showNavigationbar = false;
   }
 
   login() {
@@ -136,6 +163,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   navigayeToProfile() {
     this.router.navigate(['cryft/profile']);
   }
+
+  toggleNavigatonBar() {
+    this.showNavigationbar = !this.showNavigationbar;
+  }
 }
 
 @Component({
@@ -146,7 +177,7 @@ export class RedeemDialog {
   constructor(
     public dialogRef: MatDialogRef<RedeemDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  ) {}
 
   onNoClick(event?: String): void {
     this.dialogRef.close({ data: this.data, event: event });

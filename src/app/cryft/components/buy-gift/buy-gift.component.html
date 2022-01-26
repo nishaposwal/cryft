@@ -1,74 +1,76 @@
 <div class="buy-gift-component">
-  <div class="left">
-    <img src="assets/images/{{ selectedCrypto.img }}" />
-  </div>
-
-  <div class="right">
-    <div class="header">Cryft Gift card</div>
-    <div class="section">
-      <div class="header1">1. Select the type of crypto</div>
-
-      <div class="cards">
-        <div class="card" *ngFor="let card of cryptos" (click)="selectTypeOfCrypto(card)">
-          <img src="assets/images/{{ card.img }}" [class.selected]="selectedCrypto == card" />
-        </div>
-      </div>
+  <div class="header">Cryft Gift card</div>
+  <div class="content">
+    <div class="left">
+      <img src="assets/images/{{ selectedCrypto.img }}" />
     </div>
-
-    <div class="row">
+  
+    <div class="right">
       <div class="section">
-        <div class="header1">2. Provide the details</div>
-
-        <div class="detail">
-          <div class="header3">Amount*</div>
-          <div class="amount">
-            <div class="amount-pill" *ngFor="let amount of amounts; let i = index"
-              [class.selected]="selectedAmount == amount" (click)="selecteAmount(amount)">
-              Rs {{ amount }}
-            </div>
-
-            <div class="amount-pill">
-              <input type="number" [(ngModel)]="selectedAmount" placeholder="Enter amount"
-                (ngModelChange)="selecteAmount(selectedAmount)" />
-            </div>
+        <div class="header1">1. Select the type of crypto</div>
+  
+        <div class="cards">
+          <div class="card" *ngFor="let card of cryptos" (click)="selectTypeOfCrypto(card)">
+            <img src="assets/images/{{ card.img }}" [class.selected]="selectedCrypto == card" />
           </div>
         </div>
-
-        <div class="detail">
-          <div class="header3">Delivery</div>
-          <div class="type">Email</div>
-        </div>
-
-        <form action="" [formGroup]="deliveryForm">
-          <mat-form-field appearance="fill">
-            <mat-label>Recipient Name*</mat-label>
-            <input matInput formControlName="recipientName" />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Recipient Email*</mat-label>
-            <input matInput formControlName="recipientEmail" />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Contact Number*</mat-label>
-            <input matInput formControlName="contactNo" />
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Message</mat-label>
-            <input matInput formControlName="message" />
-          </mat-form-field>
-          <div>
-            <mat-form-field appearance="fill">
-              <mat-label>Choose a time*</mat-label>
-              <input matInput type="datetime-local" formControlName="deliveryDateTime" (change)="print($event)" />
-            </mat-form-field>
-          </div>
-        </form>
-        <button mat-raised-button color="primary" [disabled]="!deliveryForm.valid" (click)="buyNow()">
-          Buy Now
-        </button>
       </div>
-
-
+  
+      <div class="row">
+        <div class="section">
+          <div class="header1">2. Provide the details</div>
+  
+          <div class="detail">
+            <div class="header3">Amount*</div>
+            <div class="amount">
+              <div class="amount-pill" *ngFor="let amount of amounts; let i = index"
+                [class.selected]="selectedAmount == amount" (click)="selecteAmount(amount)">
+                Rs {{ amount }}
+              </div>
+  
+              <div class="amount-pill">
+                <input type="number" [(ngModel)]="selectedAmount" placeholder="Enter amount"
+                  (ngModelChange)="selecteAmount(selectedAmount)" />
+              </div>
+            </div>
+          </div>
+  
+          <div class="detail">
+            <div class="header3">Delivery</div>
+            <div class="type">Email</div>
+          </div>
+  
+          <form action="" [formGroup]="deliveryForm">
+            <mat-form-field appearance="fill">
+              <mat-label>Recipient Name*</mat-label>
+              <input matInput formControlName="recipientName" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Recipient Email*</mat-label>
+              <input matInput formControlName="recipientEmail" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Contact Number*</mat-label>
+              <input matInput formControlName="contactNo" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Message</mat-label>
+              <input matInput formControlName="message" />
+            </mat-form-field>
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Choose a time*</mat-label>
+                <input matInput type="datetime-local" formControlName="deliveryDateTime" (change)="print($event)" />
+              </mat-form-field>
+            </div>
+          </form>
+          <button mat-raised-button color="primary" [disabled]="!deliveryForm.valid" (click)="buyNow()">
+            Buy Now
+          </button>
+        </div>
+  
+  
+      </div>
     </div>
   </div>
 </div>

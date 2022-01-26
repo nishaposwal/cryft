@@ -1,20 +1,53 @@
-<div class="profile-component">
+<div class="profile-component" [class.stop-scroll]="chooseClicked">
   <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=itNPFbf4NzDfpqnvMA8chDimMGKVYqQGpzq2V0au26vWFLHwzmlsL0wNrytn"></script></span>
-  <div class="edit">
-    <button mat-stroked-button color="primary" (click)="openDialog()">
-      Edit Profile
-    </button>
-  </div>
+
   <div class="profile-picture">
     <div *ngIf="profile?.img" class="image">
       <img src="assets/images/{{profile?.img}} .png" />
+      <button mat-fab color="primary" (click)="choose()">
+        <mat-icon>edit</mat-icon>
+      </button>
     </div>
-    {{ profile?.name }}
-    <button *ngIf="!profile?.img" mat-stroked-button color="primary" (click)="choose()">Choose Profile picture</button>
-    <button *ngIf="profile?.img" mat-stroked-button color="primary" (click)="choose()">Edit Profile picture</button>
-    <div *ngIf="chooseClicked" class="grid">
-      <div *ngFor="let e of [].constructor(12); let i = index"><img (click)="selectImg(i+1)" src="assets/images/{{i+1}} .png"/></div>
+    <div *ngIf="!profile?.img" class="image">
+      <img src="assets/images/0.png" />
+      <button mat-fab color="primary" (click)="choose()">
+        <mat-icon>edit</mat-icon>
+      </button>
     </div>
+    <div class="profile-section">
+      <div class="label">
+        Email
+      </div>
+      {{   profile?.email }} 
+     </div>
+   <div class="profile-section">
+     <div class="label">
+       Name
+     </div>
+  {{   profile?.name }}
+    <button mat-icon-button color="primary" (click)="openDialog('Name')">
+      <mat-icon>edit</mat-icon>
+    </button>
+   </div>
+   <div class="profile-section" *ngIf="profile?.contactNo">
+    <div class="label">
+      Contact No.
+    </div>
+    {{   profile?.contactNo }} 
+    <button mat-icon-button color="primary" (click)="openDialog('Contact No')">
+      <mat-icon>edit</mat-icon>
+    </button>
+   </div>
+   <div class="profile-section">
+    <div class="label">
+      Balance(INR)
+    </div>
+ {{   profile?.balance }}
+   <button mat-button color="primary" (click)="withdraw()">
+     withdraw
+   </button>
+  </div>
+  
   </div>
   <div class="my-currencies">
     <div class="header">My Currencies</div>
@@ -22,43 +55,26 @@
 
   <div class="currencies" *ngIf="profile?.currencies.length > 0">
     <table mat-table [dataSource]="profile?.currencies" class="mat-elevation-z8">
-      <!-- Position Column -->
-      <!-- <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
-      </ng-container> -->
-
-      <!-- Currency Name Column -->
+     
       <ng-container matColumnDef="currency">
         <th mat-header-cell *matHeaderCellDef>Currency Name</th>
         <td mat-cell *matCellDef="let element">{{ element.currencyName }}</td>
       </ng-container>
 
-      <!-- Amount Column -->
       <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef>Amount</th>
         <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
       </ng-container>
 
-      <!-- Current Prize  Column -->
-      <ng-container matColumnDef="Current Worth (INR)">
-        <th mat-header-cell *matHeaderCellDef>Current Worth (INR)</th>
-        <td mat-cell *matCellDef="let element"><button mat-stroked-button color="accent"  *ngIf="!element.worth" (click)="fetchCryptoPrizes(element.currency, element.id)">Show worth</button><p *ngIf="element.worth" >{{ element.worth }}</p></td>
-      </ng-container>
 
-      <!-- Symbol Column -->
-      <!-- <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef>Symbol</th>
-        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
-      </ng-container> -->
-
-      <!-- Action Column -->
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-raised-button color="primary" (click)="sell(element)">
+          <button mat-stroked-button color="accent"  *ngIf="!element.worth" (click)="fetchCryptoPrizes(element.currency, element.id)">Show worth</button><p *ngIf="element.worth" >{{ element.worth }}</p>
+          <button class="action" mat-raised-button color="primary" (click)="sell(element)">
             Sell
           </button>
+
         </td>
       </ng-container>
 
@@ -68,38 +84,6 @@
   </div>
   <div class="currencies" *ngIf="profile?.currencies.length == 0">
     No one has gifted you any Currencies
-  </div>
-
-  <div class="my-balance">
-    <div class="header">My Balance</div>
-    <div class="sub-header">
-      Money will be credited to provided bank account if you withdraw
-    </div>
-
-    <mat-card>
-      <div class="balance">
-        Balance : {{profile.balance}}
-        <mat-form-field
-          appearance="fill"
-          *ngIf="withdrawEditingMode"
-          class="mat"
-        >
-          <mat-label>Enter Amount</mat-label>
-          <div class="amount-container">
-            <input matInput type="number" [(ngModel)]="withdrawAmount" />
-            <div
-              class="err"
-              *ngIf="withdrawAmount && withdrawAmount > profile?.balance"
-            >
-              Amount is greater than your current balance
-            </div>
-          </div>
-        </mat-form-field>
-        <button mat-raised-button color="primary" (click)="withdraw()">
-          withdraw
-        </button>
-      </div>
-    </mat-card>
   </div>
 
   <div class="bank-details" #bankDetails>
@@ -190,5 +174,10 @@
       Log out
     </button>
   </div>
-  <div class="orders"></div>
+  <div *ngIf="chooseClicked" class="grid">
+  <div class="grid-content">
+    <div class="close" (click)="close()">X</div>
+    <div *ngFor="let e of [].constructor(12); let i = index" class="avatar"><img (click)="selectImg(i+1)" src="assets/images/{{i+1}} .png"/></div>
+  </div>
+  </div>
 </div>

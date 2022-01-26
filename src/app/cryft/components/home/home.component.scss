@@ -4,8 +4,11 @@
 .home-component {
   background: radial-gradient($primary-color, $background-color1);
   width: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 
   .left {
     flex: 1;
@@ -16,10 +19,10 @@
     padding: 1rem;
 
     .header {
-      font-family: MontserratExtraBold;
       color: #ffcc5c;
-      font-size: 3rem;
       p {
+        font-size: 2rem;
+        font-family: MontserratExtraBold;
         padding-bottom: 1rem;
       }
     }
@@ -27,7 +30,7 @@
     .sub-header {
       color: white;
       font-family: MontserratMedium;
-      font-size: 2rem;
+      font-size: 1.5rem;
       padding: 1rem 0;
     }
 
@@ -54,5 +57,50 @@
     img {
       width: 25rem;
     }
+  }
+}
+
+@media screen and (max-width: 840px) and (min-width: 600px){
+  .home-component{
+    flex-direction: column;
+    .left{
+      width: 100%;
+      align-items: center;
+    }
+    .right{
+   
+      img{
+        width: 12rem;
+  
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px){
+  .home-component{
+    flex-direction: column;
+    .left{
+      width: 100%;
+      align-items: center;
+      
+      .header{
+       p{
+        font-size: 1.5rem;
+        text-align: center;
+       }
+      }
+
+      .sub-header{
+        font-size: 1rem;
+      }
+    }
+  .right{
+   
+    img{
+      width: 10rem;
+
+    }
+  }
   }
 }
