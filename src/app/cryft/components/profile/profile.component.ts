@@ -63,13 +63,9 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         } else {
           this.bankDetailsEditingMode = true;
         }
-        this.dataSource = this.profile?.currencies;
         for (var i = 0; i < this.profile?.currencies.length; i++) {
-          // this.profile.currencies[i].worth = 'fetching...';
-          this.profile.currencies[i].id = i;
-          // this.fetchCryptoPrizes(this.profile?.currencies[i].currency, i);
+          this.profile.currencies[i]['id'] = i;
         }
-        console.log(this.dataSource);
       },
       (error) => this.toastr.error(error.error)
     );
@@ -79,13 +75,15 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {}
 
   fetchCryptoPrizes(currency: string, id: number) {
+    console.log(id)
     this.restService
       .get(`${this.appervice.getEnvVariable('API_HOST')}/ticker/` + currency)
       .subscribe((res) => {
+        console.log(this.profile?.currencies);
+        console.log(JSON.parse(res.body))
         this.profile.currencies[id].worth =
           JSON.parse(res.body).lastPrice *
           this.profile?.currencies[id].quantity;
-        console.log(JSON.parse(res.body));
       });
   }
 
@@ -297,7 +295,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
   withdraw(amount: any) {
     if (!amount)
-        this.toastr.error('Please enter valid amount')
+        this.toastr.error('Zero balance')
     if (this.withdrawEditingMode) {
       var payload = {
         amount: amount
