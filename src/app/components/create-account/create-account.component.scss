@@ -116,3 +116,16 @@ a {
   position: relative;
   top: -1rem;
 }
+
+@media screen and (max-width: 650px) {
+  .login-component {
+    .content {
+      width: 100%;
+      border: none;
+      box-shadow: none;
+      .inner-content {
+        flex-direction: column;
+      }
+    }
+  }
+}

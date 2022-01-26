@@ -5,6 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { EventEmitterService } from 'src/app/core/services/event-emitter.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('faq', { static: false })
   faq: ElementRef<HTMLElement> = {} as ElementRef;
   subscription: any = [];
-  constructor(private eventEmitterService: EventEmitterService) {}
+  constructor(private eventEmitterService: EventEmitterService, private authService : AuthService) {}
 
   ngOnInit(): void {
     this.subscription.push(
@@ -45,9 +46,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
             break;
         }
       })
-    );
+    ); 
 
-    
+    this.authService.getServerProfile().subscribe(res=>{
+      this.authService.setProfile(res);
+    })
   }
 
   ngAfterViewInit() {}

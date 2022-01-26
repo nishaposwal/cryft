@@ -23,13 +23,24 @@
       font-family: MontserratBold;
       font-size: 1.3rem;
 
-      img{
-          cursor: pointer;
+      img {
+        cursor: pointer;
       }
     }
 
     .answer {
-      font-family: MontserratSemiBold;
+      font-family: MontserratMedium;
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .faq-component {
+    .question {
+      width: 95%;
+      .ques {
+        font-size: 1rem;
+      }
     }
   }
 }

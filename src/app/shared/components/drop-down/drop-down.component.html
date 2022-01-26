@@ -1,0 +1,15 @@
+<div class="drop-down-component">
+  <div
+    class="tab"
+    *ngFor="let tab of tabs"
+    (click)="navigateTo(tab)"
+    [class.hide]="isloggedIn && tab.id > 3"
+  >
+    {{ tab.name }}
+  </div>
+
+  <div class="profile" *ngIf="profile && isloggedIn" (click)="navigateTo({name : this.profile, id : 6})">
+      <img *ngIf="!profile?.img" src="/assets/images/0.png">
+      <img *ngIf="profile?.img" src="/assets/images/{{profile.img}} .png">
+  </div>
+</div>

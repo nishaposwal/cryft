@@ -9,27 +9,57 @@
   flex-direction: column;
   background-color: #fafafa;
   padding: 1rem;
-  
-  .grid{
+  position: relative;
+
+  .grid {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    max-width: 600px;
+    justify-content: center;
     padding: 5px;
-    img {
-      width: 70px;
-      height: 70px;
-      margin: 8px;
-      cursor: pointer;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    top: 60px;
+    padding: 3rem 0;
+    height: 100%;
+    overflow-y: auto;
+
+    .grid-content {
+      background-color: white;
+      padding: 2rem 1rem;
+      width: 50%;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      .avatar {
+        width: 70px;
+        height: 70px;
+        margin: 8px;
+        cursor: pointer;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .close {
+        color: $primary-color;
+        font-size: 2rem;
+        font-family: MontserratBold;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2;
+        cursor: pointer;
+      }
     }
   }
 
-  .edit {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    color: $primary-color;
-  }
   .profile-picture {
     width: 100%;
     border-bottom: 2px solid $primary-color;
@@ -47,6 +77,43 @@
         border-radius: 50%;
         border: 1px solid grey;
       }
+      button {
+        position: relative;
+        top: -2.5rem;
+        left: 4.5rem;
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .profile-section {
+      width: 50%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border: 2px solid gray;
+      padding: 5px;
+      position: relative;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      height: 40px;
+
+      .label {
+        position: absolute;
+        top: -0.8rem;
+        background-color: white;
+        padding: 0 1rem;
+        left: 1rem;
+        font-size: 0.8rem;
+      }
+
+      .mat-icon-button {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
@@ -55,44 +122,34 @@
     font-family: MontserratBold;
     font-size: 1.5rem;
     padding: 2rem 0;
-    width: 100%;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
   }
 
   .currencies {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     table {
-      width: 100%;
-    }
-  }
+      width: 60%;
 
-  .my-balance {
-    padding: 2rem 1rem;
-    width: 100%;
-
-    .mat-card {
-      .balance {
-        .mat {
-          background: transparent;
-          margin: 0 1rem;
-        }
-      }
-      .mat-form-field {
-        .mat-form-field-flex ng-tns-c35-0 {
-          background: transparent;
-        }
+      .action {
+        margin: 0 5px;
       }
     }
-  }
-
-  table {
-    width: fit-content;
-    padding: 30px;
   }
 
   .bank-details {
     width: 100%;
     padding: 1rem;
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     form {
       width: 60%;
@@ -132,11 +189,46 @@
   font-family: MontserratBold;
   display: flex;
   width: 60%;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+
+.stop-scroll {
+  overflow: hidden;
+  cursor: not-allowed;
 }
 
 .sub-header {
   font-family: MontserrattThin;
   font-size: 0.8rem;
+}
+
+@media screen and (max-width: 650px) {
+  .profile-component {
+    .grid {
+      .grid-content {
+        width: 90%;
+        padding: 3rem 0;
+      }
+    }
+
+    .profile-picture {
+      .profile-section {
+        width: 100%;
+      }
+    }
+    .bank-details {
+      form {
+        width: 100%;
+      }
+    }
+  }
+  .header {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .sub-header {
+    font-size: 0.6rem;
+  }
 }

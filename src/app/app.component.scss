@@ -4,11 +4,14 @@
   top: 0;
   left: 0;
   z-index: 10;
+  height: 60px;
 }
 
 .outlet {
   width: 100%;
   position: absolute;
   top: 60px;
+  left: 0;
   height: calc(100vh-60px);
+  overflow: hidden;
 }

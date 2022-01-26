@@ -17,7 +17,7 @@ import { AppService } from 'src/app/core/services/app.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { RestService } from 'src/app/core/services/rest.service';
 import { DialogComponent } from '../../../shared/components/dialog/dialog.component';
-import { currencies } from '../../../constants/constant'
+import { currencies } from '../../../constants/constant';
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -37,26 +37,26 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     private restService: RestService,
     private appervice: AppService,
     private toastr: ToastrService
-  ) { }
+  ) {}
   bankAccountDetailsForm!: FormGroup;
   profile: any;
   bankDetailsEditingMode = false;
   withdrawEditingMode = false;
   withdrawAmount: Number | undefined;
   displayedColumns: string[] = [
-    // 'position',
     'currency',
     'amount',
-    'Current Worth (INR)',
-    // 'symbol',
     'action',
   ];
   dataSource: any;
   ngOnInit(): void {
-    this, this.initializebankAccountDetailsForm();
-    this.restService
-      .get(`${this.appervice.getEnvVariable('API_HOST')}/users/profile`)
-      .subscribe((res: any) => {
+    this.initializebankAccountDetailsForm();
+    this.profile = this.authService.getProfile();
+    if (this.profile.bankDetails) {
+      this.autofillBankDetails(this.profile?.bankDetails);
+    }
+    this.authService.profile$.subscribe(
+      (res: any) => {
         this.profile = res;
         if (this.profile.bankDetails) {
           this.autofillBankDetails(this.profile?.bankDetails);
@@ -70,43 +70,51 @@ export class ProfileComponent implements OnInit, AfterViewInit {
           // this.fetchCryptoPrizes(this.profile?.currencies[i].currency, i);
         }
         console.log(this.dataSource);
-      }, error =>  this.toastr.error(error.error));
+      },
+      (error) => this.toastr.error(error.error)
+    );
   }
 
   chooseClicked = false;
-  ngAfterViewInit() { }
+  ngAfterViewInit() {}
 
   fetchCryptoPrizes(currency: string, id: number) {
     this.restService
       .get(`${this.appervice.getEnvVariable('API_HOST')}/ticker/` + currency)
       .subscribe((res) => {
-        this.profile.currencies[id].worth = JSON.parse(res.body).lastPrice * this.profile?.currencies[id].quantity
+        this.profile.currencies[id].worth =
+          JSON.parse(res.body).lastPrice *
+          this.profile?.currencies[id].quantity;
         console.log(JSON.parse(res.body));
       });
   }
 
   choose() {
-    console.log(this.chooseClicked)
+    console.log(this.chooseClicked);
     this.chooseClicked = !this.chooseClicked;
   }
 
   selectImg(i: any) {
     let payload = {
-      'img': i + '',
+      img: i + '',
     };
 
-    console.log(payload)
+    console.log(payload);
     this.restService
       .post(
         `${this.appervice.getEnvVariable('API_HOST')}/users/edit-profile`,
         payload
       )
-      .subscribe((res) => {
-        this.chooseClicked = !this.chooseClicked;
-        this.toastr.success('Profile picture saved')
-        this.profile.img = payload.img;
-        console.log(res);
-      }, error =>  this.toastr.error(error.error));
+      .subscribe(
+        (res) => {
+          this.chooseClicked = !this.chooseClicked;
+          this.toastr.success('Profile picture saved');
+          this.profile.img = payload.img;
+          this.authService.setProfile(this.profile);
+          console.log(res);
+        },
+        (error) => this.toastr.error(error.error)
+      );
   }
 
   initializebankAccountDetailsForm() {
@@ -132,10 +140,13 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         `${this.appervice.getEnvVariable('API_HOST')}/users/edit-profile`,
         payload
       )
-      .subscribe((res) => {
-        this.toastr.success('Bank details saved')
-        console.log(res);
-      }, error =>  this.toastr.error(error.error));
+      .subscribe(
+        (res) => {
+          this.toastr.success('Bank details saved');
+          console.log(res);
+        },
+        (error) => this.toastr.error(error.error)
+      );
   }
 
   autofillBankDetails(bankDetails: any) {
@@ -179,28 +190,49 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         });
     }
   }
-  openDialog(): void {
-    console.log(this.profile);
+
+  openDialog(label: any): void {
+    let data = {
+      label: 'Name',
+      field: this.profile?.name,
+    };
+    if (label === 'Contact No') {
+      data = {
+        label: 'Contact No',
+        field: this.profile?.contactNo,
+      };
+    }
     const dialogRef = this.dialog.open(EditProfile, {
       width: '300px',
-      data: this.profile,
+      data: data,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       if (result.event === 'save') {
-        this.profile = result.data;
-        let payload = {
-          'name': result.data.name,
-          'contactNo': result.data.contactNo,
-        };
+        let payload: any;
+        if (label === 'Name') {
+          payload = {
+            name: result.data.field,
+          };
+        } else {
+          payload = {
+            contactNo: result.data.field,
+          };
+        }
         this.restService
           .post(
             `${this.appervice.getEnvVariable('API_HOST')}/users/edit-profile`,
             payload
           )
           .subscribe((res) => {
-            this.toastr.success('Profile details saved')
+            this.toastr.success('Profile details saved');
+           if(label === 'Name'){
+             this.profile.name = result.data.field;
+           } else {
+            this.profile.contactNo = result.data.field;
+           }
+           this.authService.setProfile(this.profile);
             console.log(res);
           });
       }
@@ -223,19 +255,22 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   sell(element: any) {
     if (this.profile.bankDetails) {
       var payload = {
-        'quantity': element.quantity,
-        'currency': element.currency
-      }
+        quantity: element.quantity,
+        currency: element.currency,
+      };
       this.restService
-          .post(
-            `${this.appervice.getEnvVariable('API_HOST')}/gifts/sell-gift`,
-            payload
-          )
-          .subscribe(({currencies}: any) => {
-            this.toastr.success('Sold successfully')
+        .post(
+          `${this.appervice.getEnvVariable('API_HOST')}/gifts/sell-gift`,
+          payload
+        )
+        .subscribe(
+          ({ currencies }: any) => {
+            this.toastr.success('Sold successfully');
             this.profile.currencies = currencies;
             // console.log(res);
-          }, error => this.toastr.error(JSON.stringify(error.error)));
+          },
+          (error) => this.toastr.error(JSON.stringify(error.error))
+        );
     } else {
       this.showDialog({
         msg: 'Please Fill Bank details In order to sell',

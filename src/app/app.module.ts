@@ -20,6 +20,7 @@ import { ChangeComponent } from './components/change/change.component';
 import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
+import { AuthGuard } from './core/interceptors/gaurds/auth.gaurd';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ToastrModule } from 'ngx-toastr';
         provide: HTTP_INTERCEPTORS,
         useClass: ErrorInterceptor,
         multi: true,
-    }
+    },
+    AuthGuard
 ],
   bootstrap: [AppComponent]
 })

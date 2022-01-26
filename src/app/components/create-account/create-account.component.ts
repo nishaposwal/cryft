@@ -17,7 +17,7 @@ export class CreateAccountComponent implements OnInit {
     private formBuilder: FormBuilder,
     private restService: RestService,
     private appService: AppService,
-    private authSrvice : AuthService,
+    private authSrvice: AuthService,
     private toastr: ToastrService
   ) {}
 
@@ -28,6 +28,7 @@ export class CreateAccountComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
       confirm_password: ['', Validators.required],
+      contactNo: ['', Validators.required],
     });
   }
 
@@ -45,11 +46,14 @@ export class CreateAccountComponent implements OnInit {
         .post(`${this.appService.getEnvVariable('API_HOST')}/users/register`, {
           ...this.createAccountForm.value,
         })
-        .subscribe((res:any) => {
-          this.authSrvice.setAuthToken(res.token)
-          this.router.navigate(['/cryft']);
-          this.toastr.success("Signed up successfully")
-        }, error => this.toastr.error(JSON.stringify(error.error)));
+        .subscribe(
+          (res: any) => {
+            this.authSrvice.setAuthToken(res.token);
+            this.router.navigate(['/cryft']);
+            this.toastr.success('Signed up successfully');
+          },
+          (error) => this.toastr.error(JSON.stringify(error.error))
+        );
     }
   }
 }

@@ -6,7 +6,7 @@
   align-items: center;
   height: 60px;
   background-color: white;
-
+  
   .logo {
     margin-left: 2rem;
     img {
@@ -34,8 +34,72 @@
     button {
       margin-left: 1rem;
     }
+
+    .profile{
+      img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid grey;
+      }
+    }
+  }
+
+  .hamburger {
+    width: 30px;
+    position: absolute;
+    display: none;
+    right: 2rem;
+    z-index: 5;
+    .line {
+      width: 100%;
+      border: 2px solid $background-color1;
+      margin-bottom: 4px;
+      transition: all 0.5s linear;  
+    }
+  }
+
+  .tabs {
+    position: absolute;
+    right: 0;
+    width: 60vw;
+    top: 0;
+    transition: right .5s;
+    display: none;
   }
 }
 .material-icons {
   font-size: 40px;
+}
+
+@media screen and (max-width: 650px) {
+  .header-component{
+    .navs , .auth{
+      display: none;
+    }
+
+    .hamburger {
+      display: block;
+
+      .cross:nth-child(1) {
+        transform: rotate(45deg) translate(5px);
+        transition: all 0.5s linear;
+        border: 2px solid white;
+      }
+
+      .cross:nth-child(2) {
+        display: none;
+      }
+
+      .cross:nth-child(3) {
+        transform: rotate(-45deg) translate(5px);
+        transition: all 0.5s linear;
+        border: 2px solid white;
+      }
+    }
+
+    .tabs{
+      display: block;
+    }
+  }
 }
