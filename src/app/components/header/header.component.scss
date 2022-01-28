@@ -11,20 +11,24 @@
     margin-left: 2rem;
     cursor: pointer;
     img {
-      width: 5rem;
+      width: 6rem;
+      margin: auto;
     }
   }
 
   .navs {
     display: flex;
     align-items: center;
-    margin-left: 2rem;
+    margin-left: 5rem;
     cursor: pointer;
     .nav {
       margin: 0 1rem;
       color: $primary-color;
       font-family: MontserratBold;
       cursor: pointer;
+      p {
+        margin: auto;
+      }
     }
   }
 
