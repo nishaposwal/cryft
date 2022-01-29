@@ -5,3 +5,10 @@
 @import 'mixins';
 @import 'animations';
 @import 'structure';
+
+button{
+    background-color: #110629 !important;
+  }
+  button:disabled{
+    background-color: #0000001F !important;
+  }
