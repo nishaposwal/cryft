@@ -43,9 +43,9 @@ export const currencies = [
     },
     {
         id: 7,
-        currency: 'Cardano',
+        currency: 'Cardano (ADA)',
         marketSymbol: 'adainr',
-        img: 'Crypto cards/Cardano.svg',
+        img: 'Crypto cards/Cardano (ADA).svg',
         symbol: 'ADA',
     },
     {
@@ -71,7 +71,7 @@ export const currencies = [
     },
     {
         id: 11,
-        currency: 'Cardano',
+        currency: 'Cardano (AVAX)',
         marketSymbol: 'avaxinr',
         img: 'Crypto cards/Cardano (AVAX).svg',
         symbol: 'AVAX',
