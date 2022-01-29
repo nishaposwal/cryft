@@ -21,6 +21,7 @@ import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.compon
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './core/interceptors/gaurds/auth.gaurd';
+import { TncComponent } from './components/tnc/tnc.component';
 @NgModule({
   
   declarations: [
@@ -30,7 +31,8 @@ import { AuthGuard } from './core/interceptors/gaurds/auth.gaurd';
     HeaderComponent,
     RedeemDialog,
     ChangeComponent,
-    ForgotPassComponent
+    ForgotPassComponent,
+    TncComponent
   ],
   imports: [
     BrowserModule,

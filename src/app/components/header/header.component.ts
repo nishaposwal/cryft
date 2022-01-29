@@ -11,7 +11,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { AppService } from 'src/app/core/services/app.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { EventEmitterService } from 'src/app/core/services/event-emitter.service';
@@ -111,24 +111,24 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   navigate(nav: any) {
     if (nav.id < 3) {
-      if(this.isLoggedIn){
+      if (this.isLoggedIn) {
         if (nav.name === 'Redeem Gift Card') {
           this.openDialog();
         } else if (nav.name === 'Buy Gift Card') {
           this.buyGift();
         }
-      }else {
+      } else {
         this.toastr.error('Please login first');
         this.router.navigate(['login']);
       }
     } else if (nav.id === 3) {
-      this.eventEmitterService.emit({ type: 'FAQ', data: {} });
+      this.scrollToFaq();
     } else if (nav.id === 4) {
       this.router.navigate(['login']);
     } else if (nav.id === 5) {
       this.router.navigate(['sign-up']);
-    }  else{
-      this.navigayeToProfile()
+    } else {
+      this.navigayeToProfile();
     }
     this.showNavigationbar = false;
   }
@@ -153,11 +153,27 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   buyGift() {
     if (this.router.url.includes('profile')) {
-      this.router.navigate(['/']).then(() => {
-        this.eventEmitterService.emit({ type: 'BUY_GIFT', data: {} });
-      });
+      let extras: NavigationExtras = {
+        state: {
+          scrollTo: 'buy_gift',
+        },
+      };
+      this.router.navigate(['/'], extras);
     }
     this.eventEmitterService.emit({ type: 'BUY_GIFT', data: {} });
+  }
+
+  scrollToFaq() {
+    if (this.router.url.includes('profile')) {
+      let extras: NavigationExtras = {
+        state: {
+          scrollTo: 'faq',
+        },
+      };
+      this.router.navigate(['/'], extras);
+    } else {
+      this.eventEmitterService.emit({ type: 'FAQ', data: {} });
+    }
   }
 
   navigayeToProfile() {
