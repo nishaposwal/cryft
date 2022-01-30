@@ -18,7 +18,7 @@ import {MatCardModule} from '@angular/material/card';
 import {
   EditProfile,
   ProfileComponent,
-} from './components/profile/profile.component';
+} from '../components/profile/profile.component';
 import { MatTableModule } from '@angular/material/table';
 import { DialogComponent } from '../shared/components/dialog/dialog.component';
 import { FaqComponent } from './components/faq/faq.component';
@@ -32,7 +32,6 @@ import { MatIconModule } from '@angular/material/icon';
     HomeComponent,
     BuyGiftComponent,
     FaqsComponent,
-    ProfileComponent,
     EditProfile,
     FaqComponent,
   ],

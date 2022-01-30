@@ -1,8 +1,8 @@
-@import "../../../../assets/styles/helpers/mixins";
-@import "../../../../assets/styles/helpers/fonts";
+@import "../../../assets/styles/helpers/mixins";
+@import "../../../assets/styles/helpers/fonts";
 
 .profile-component {
-  width: 100%;
+ width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;

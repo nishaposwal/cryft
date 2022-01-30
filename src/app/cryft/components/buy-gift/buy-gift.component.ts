@@ -52,7 +52,7 @@ export class BuyGiftComponent implements OnInit {
       recipientEmail: ['', Validators.required],
       message: [''],
       deliveryDateTime: ['', Validators.required],
-      money: [100, Validators.required],
+      money: [100, [Validators.required, Validators.min(100)]],
       currency: [this.selectedCrypto.marketSymbol, Validators.required],
       currencyName: [this.selectedCrypto.currency, Validators.required],
       deliveryType: ['email', Validators.required],

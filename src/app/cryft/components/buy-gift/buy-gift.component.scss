@@ -140,8 +140,15 @@ width: 100%;
  }
 }
 
+.hint{
+  font-size: 0.7rem;
+}
+
 @media screen and (max-width: 800px){
   .buy-gift-component{
+    .header{
+      padding: 0;
+    }
    .content{
     flex-direction: column;
     padding: 1rem;
@@ -149,6 +156,7 @@ width: 100%;
 
     .left{
       width: 100%;
+      text-align: center;
 
       img{
         width: 12rem;
@@ -164,6 +172,12 @@ width: 100%;
         .cards{
           width: 100%;
           padding: 0;
+
+          .card{
+            img{
+              width: 6rem;
+            }
+          }
         }
         .detail{
           width: 100%;

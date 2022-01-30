@@ -5,6 +5,7 @@ import { ChangeComponent } from './components/change/change.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { TncComponent } from './components/tnc/tnc.component';
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'tnc',
     component : TncComponent
+  },
+  {
+    path : 'profile',
+    component : ProfileComponent
   },
 
   {

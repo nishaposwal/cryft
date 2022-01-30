@@ -177,7 +177,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   navigayeToProfile() {
-    this.router.navigate(['cryft/profile']);
+    this.router.navigate(['profile']);
   }
 
   toggleNavigatonBar() {

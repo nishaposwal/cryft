@@ -22,6 +22,11 @@ import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './core/interceptors/gaurds/auth.gaurd';
 import { TncComponent } from './components/tnc/tnc.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 @NgModule({
   
   declarations: [
@@ -32,7 +37,8 @@ import { TncComponent } from './components/tnc/tnc.component';
     RedeemDialog,
     ChangeComponent,
     ForgotPassComponent,
-    TncComponent
+    TncComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +54,13 @@ import { TncComponent } from './components/tnc/tnc.component';
     HttpClientModule,
     MatIconModule,
     SharedModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRippleModule,
+    ClipboardModule,
+    MatTableModule,
+    MatCardModule,
     ToastrModule.forRoot()  
   ],
   providers: [
