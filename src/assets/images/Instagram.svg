@@ -1,0 +1,23 @@
+<svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="22.5" cy="22.5" r="22.5" fill="white"/>
+<path d="M29.1176 9.26465H15.8824C12.2275 9.26465 9.2647 12.2275 9.2647 15.8823V29.1176C9.2647 32.7724 12.2275 35.7352 15.8824 35.7352H29.1176C32.7725 35.7352 35.7353 32.7724 35.7353 29.1176V15.8823C35.7353 12.2275 32.7725 9.26465 29.1176 9.26465Z" stroke="url(#paint0_linear_10_827)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.7941 21.6662C27.9575 22.7677 27.7693 23.8927 27.2564 24.8811C26.7436 25.8695 25.9321 26.6711 24.9374 27.1717C23.9428 27.6723 22.8156 27.8466 21.7162 27.6697C20.6168 27.4928 19.6012 26.9737 18.8138 26.1863C18.0264 25.3989 17.5073 24.3833 17.3304 23.2839C17.1535 22.1845 17.3277 21.0573 17.8284 20.0626C18.329 19.068 19.1305 18.2565 20.1189 17.7436C21.1074 17.2308 22.2323 17.0426 23.3338 17.206C24.4574 17.3726 25.4976 17.8961 26.3008 18.6993C27.1039 19.5025 27.6275 20.5427 27.7941 21.6662Z" stroke="url(#paint1_linear_10_827)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M29.7794 15.2207H29.7953" stroke="url(#paint2_linear_10_827)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<linearGradient id="paint0_linear_10_827" x1="22.5" y1="9.26465" x2="22.5" y2="35.7352" gradientUnits="userSpaceOnUse">
+<stop stop-color="#7323C2"/>
+<stop offset="0.515625" stop-color="#BD2D6A"/>
+<stop offset="1" stop-color="#E1983F"/>
+</linearGradient>
+<linearGradient id="paint1_linear_10_827" x1="22.5573" y1="17.1487" x2="22.5573" y2="27.7369" gradientUnits="userSpaceOnUse">
+<stop stop-color="#7323C2"/>
+<stop offset="0.515625" stop-color="#BD2D6A"/>
+<stop offset="1" stop-color="#E1983F"/>
+</linearGradient>
+<linearGradient id="paint2_linear_10_827" x1="29.7874" y1="15.2207" x2="29.7874" y2="16.2207" gradientUnits="userSpaceOnUse">
+<stop stop-color="#7323C2"/>
+<stop offset="0.515625" stop-color="#BD2D6A"/>
+<stop offset="1" stop-color="#E1983F"/>
+</linearGradient>
+</defs>
+</svg>

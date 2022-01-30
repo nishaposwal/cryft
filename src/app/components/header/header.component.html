@@ -1,7 +1,7 @@
 <div class="header-component">
-    <div class="logo" (click)="home()">
-        <img src="assets/images/gappy.png" alt="">
-    </div>
+  <div class="logo" (click)="home()">
+    <img src="../../../assets/images/output-onlinepngtools (4).png" alt="">
+</div>
    <div class="navs">
     <div class="nav" *ngFor="let nav of navs">
       <p *ngIf="nav.id < 4" (click)="navigate(nav)">  {{nav.name}}</p>
@@ -9,8 +9,8 @@
    </div>
 
    <div class="auth">
-    <button mat-raised-button (click)="login()" *ngIf="!isLoggedIn">Log in</button> 
-    <button mat-raised-button color="accent" (click)="sign()" *ngIf="!isLoggedIn">Sign Up</button>
+    <button mat-raised-button class="signIn" (click)="sign()" *ngIf="!isLoggedIn">Sign Up</button>
+    <button mat-raised-button class="loginButton" (click)="login()" *ngIf="!isLoggedIn">Log in</button> 
     <div class="profile" *ngIf="isLoggedIn && !profile?.img" (click)="navigayeToProfile()">
         <img src="assets/images/0.png" alt="">
     </div>

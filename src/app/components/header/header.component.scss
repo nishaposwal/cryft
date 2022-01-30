@@ -5,25 +5,26 @@
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: white;
-  
+  background-color: #F0F5FF;
+
   .logo {
     margin-left: 2rem;
     cursor: pointer;
-    img {
-      width: 6rem;
-      margin: auto;
+     img {
+      width: 5rem;
     }
   }
 
   .navs {
     display: flex;
     align-items: center;
-    margin-left: 5rem;
+    margin-left: 2rem;
+    position: absolute;
+    right: 170px;
     cursor: pointer;
     .nav {
       margin: 0 1rem;
-      color: $primary-color;
+      color: rgba(41, 35, 92, 1);
       font-family: MontserratBold;
       cursor: pointer;
       p {
@@ -108,4 +109,23 @@
       display: block;
     }
   }
+}
+
+.signIn{
+  background: #4B6CFF;
+   color: rgba(255, 255, 255, 1);
+   background: linear-gradient(315deg, #264CFF 0%, #4F6EFF 100%);
+   box-shadow: 0px 20px 40px #A5B5FF, inset 0px -3px 10px rgba(0, 0, 0, 0.37), inset 3px 1px 15px rgba(255, 255, 255, 0.5);
+   border-radius: 20px;
+   flex: none;
+order: 4;
+flex-grow: 0;
+}
+.loginButton{
+  background: linear-gradient(321.06deg, #CDDCF7 7.5%, #FFFFFF 100%);
+box-shadow: 0px 20px 40px #CEDBEF, inset 3px 3px 10px rgba(255, 255, 255, 0.72);
+border-radius: 20px;
+flex: none;
+order: 5;
+flex-grow: 0;
 }

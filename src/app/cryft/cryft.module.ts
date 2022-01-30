@@ -26,6 +26,11 @@ import { ForgotPassComponent } from '../components/forgot-pass/forgot-pass.compo
 import { ChangeComponent } from '../components/change/change.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MetaverseComponent } from './components/metaverse/metaverse.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
+
 @NgModule({
   declarations: [
     CryftComponent,
@@ -35,6 +40,8 @@ import { MatIconModule } from '@angular/material/icon';
     ProfileComponent,
     EditProfile,
     FaqComponent,
+    MetaverseComponent,
+    LandingpageComponent,
   ],
   imports: [
     CommonModule,
@@ -52,7 +59,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatTableModule,
     SharedModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule,
+    MatToolbarModule
   ],
 })
 export class CryftModule {}

@@ -40,22 +40,26 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   redeemCode: String = '';
   navs = [
-    { id: 1, name: 'Redeem Gift Card' },
+    { id: 1, name: 'Gift' },
     {
       id: 2,
-      name: 'Buy Gift Card',
+      name: 'Invest',
     },
     {
       id: 3,
-      name: 'FAQ',
+      name: 'Blog',
+    },
+    {
+      id: 3,
+      name: 'About us',
     },
     {
       id: 4,
-      name: 'login',
+      name: 'Sign up',
     },
     {
       id: 5,
-      name: 'sign up',
+      name: 'Login',
     },
   ];
 
