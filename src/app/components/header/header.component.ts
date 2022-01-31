@@ -102,10 +102,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         payload
       ) //CRYFT78131
       .subscribe(
-        (res: any) => {
-          this.toastr.success(res);
+        (res) => {
+          this.toastr.success("Gift redeemed");
         },
-        (error) => this.toastr.error(error.error)
+        (error) => this.toastr.error(JSON.stringify(error.error))
       );
   }
 
