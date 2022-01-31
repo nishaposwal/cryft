@@ -16,8 +16,8 @@ import { Router } from '@angular/router';
 import { AppService } from 'src/app/core/services/app.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { RestService } from 'src/app/core/services/rest.service';
-import { DialogComponent } from '../../../shared/components/dialog/dialog.component';
-import { currencies } from '../../../constants/constant';
+import { DialogComponent } from '../../shared/components/dialog/dialog.component';
+import { currencies } from '../../constants/constant';
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -52,13 +52,12 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   dataSource: any;
   ngOnInit(): void {
     this.initializebankAccountDetailsForm();
-    this.profile = this.authService.getProfile();
-    if (this.profile.bankDetails) {
-      this.autofillBankDetails(this.profile?.bankDetails);
-    }
-    this.authService.profile$.subscribe(
+    this.authService.getServerProfile().subscribe(
       (res: any) => {
         this.profile = res;
+        if (this.profile?.bankDetails) {
+          this.autofillBankDetails(this.profile?.bankDetails);
+        }
         console.log(this.profile)
         if (this.profile.bankDetails) {
           this.autofillBankDetails(this.profile?.bankDetails);

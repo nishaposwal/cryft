@@ -1,3 +1,5 @@
+
+@import "src/assets/styles/helpers/fonts";
 @import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Poppins:wght@500&display=swap');
 *,
 *::before,
@@ -15,12 +17,10 @@ p {
 }
 
 section {
-  padding: 7em 0;
+  padding: 5em;
 }
 
 .container {
-  width: 85%;
-  max-width: 65em;
   margin: 0 auto;
 }
 
@@ -28,19 +28,35 @@ section {
   display: flex;
   flex-wrap: wrap;
   &>* {
-    flex-basis: 40%;
-    min-width: 25em;
+    flex-basis: 50%;
   }
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .header {
   color: #4A4A4A;
   p {
-    font-size: 2rem;
     font-family: MontserratExtraBold;
     font-style: normal;
-    padding-bottom: 1rem;
+font-weight: 800;
+font-size: 3rem;
+line-height: 3.5rem;
+/* or 117% */
+
+display: flex;
+align-items: center;
+letter-spacing: .15rem;
   }
+}
+.note {
+  font-family: Poppins;
+  font-size: 1rem;
+  color: rgba(74, 74, 74, 0.77);
+  letter-spacing: 0.1rem;
 }
 .main{
   background-color: #F0F5FF;
@@ -57,8 +73,7 @@ padding: 15px 16px;
 position: static;
 width: 142px;
 height: 52px;
-left: 10px;
-top: 10px;
+margin-top: .2rem;
 }
 .logo {
   margin-left: 2rem;
@@ -88,63 +103,95 @@ letter-spacing: 1.5px;
   align-items: center;
   letter-spacing: -0.408px;  
   font-family: Poppins;
-font-style: normal;
-font-weight: 300;
-font-size: 19px;
-line-height: 19px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 19px;
+  line-height: 19px;
 }
 .splitContent1{
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  gap: 2rem;
-  &>* {
-    flex-basis: 20%;
-    min-width: 20em;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 4.5rem;
+  padding: auto;
+  img {
+    width: 280px;
+    margin: auto;
   }
-}
-.sag{
-  position: relative;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 34px;
-  /* or 155% */
-  bottom: 20px;
-  left: 22px;
-  letter-spacing: 1.5px;
+  .sag{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    margin: 2rem;
+    margin-top: 0rem;
+    color: rgba(47, 47, 47, 0.77);
   
-  color: #2F2F2F;
-  overflow: hidden;
-
-}
-.content1{
- width: 300px;
- min-height: 275px;
- border-radius: 55px;
+  }
+  .content1{
+   border-radius: 55px;
+   margin: auto;
+   margin-bottom: 2rem;
+  }
 }
 .frame15img{
   position: relative;
-  width: 311.25px;
-  height: 245.76px;
+  img {
+    width: 480px;
+  height: 480px;
+  }
 }
 .frame15content{
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
-  width: 630px;
-  height: 310px;  
   background: #D6DEEE;
   border-radius: 50px;
-  top: 20px;
   font-family: Poppins;
 font-style: normal;
 font-weight: normal;
-font-size: 15px;
+font-size: 22px;
 line-height: 34px;
+padding: 3rem;
 /* or 155% */
-
+text-align: justify;
 letter-spacing: 1.5px;
 
 color: rgba(24, 24, 24, 0.77);
+}
+
+.twitHeader {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 70px;
+  /* or 140% */
+
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1.5px;
+
+  color: #4A4A4A;
+  margin-bottom: 1rem;
+}
+
+.twits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .twitImg {
+
+    margin: 1rem;
+    width: 400px;
+    height: 320px;
+    border-radius: 24px;
+  }
 }
 ul li {
   display:inline-block;

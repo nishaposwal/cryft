@@ -18,7 +18,7 @@ import {MatCardModule} from '@angular/material/card';
 import {
   EditProfile,
   ProfileComponent,
-} from './components/profile/profile.component';
+} from '../components/profile/profile.component';
 import { MatTableModule } from '@angular/material/table';
 import { DialogComponent } from '../shared/components/dialog/dialog.component';
 import { FaqComponent } from './components/faq/faq.component';
@@ -37,7 +37,6 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     HomeComponent,
     BuyGiftComponent,
     FaqsComponent,
-    ProfileComponent,
     EditProfile,
     FaqComponent,
     MetaverseComponent,
