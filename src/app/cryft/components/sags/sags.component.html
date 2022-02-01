@@ -1,0 +1,13 @@
+<div class="container"> 
+    <div class="head">Sag is a bucket of different coins or tokens. We just like to call them mutual fund for crypto</div>
+    <div class="sags">
+        <div class="sag" *ngFor="let sag of sags">
+           <img src="{{sag.img}}"/>
+           <div class="text">
+               <div class="heading">{{sag.sag}}</div>
+               <div class="about">{{sag.about}}</div>
+           </div>
+        </div>
+    </div>
+    <!-- <app-footer></app-footer> -->
+</div>
