@@ -1,6 +1,6 @@
-
 @import "../../../../assets/styles/helpers/fonts";
-@import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Poppins:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Poppins:wght@500&family=Poppins:wght@600&display=swap');
 
 .container {
     background: #F0F5FF;
@@ -11,10 +11,10 @@
     overflow: scroll;
     .head {
 
-        font-family: Montserrat;
+        font-family: MontserratExtraBold;
         font-style: normal;
         font-weight: 800;
-        font-size: 2.1rem;
+        font-size: 2rem;
         line-height: 4rem;
         /* or 192% */
 
@@ -33,8 +33,8 @@
         height: 100%;
         padding: 1rem;
         .sag {
-            width: 24rem;
-            height: 22rem;
+            width: 28rem;
+            min-height: 22rem;
             margin: 1rem;
             padding: 1.5rem;
             background: #FFFFFF;
