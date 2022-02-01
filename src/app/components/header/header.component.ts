@@ -36,32 +36,42 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     private restService: RestService,
     private apppService: AppService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   redeemCode: String = '';
-  navs = [
-    { id: 1, name: 'Gift' },
-    {
-      id: 2,
-      name: 'Invest',
-    },
-    {
-      id: 3,
-      name: 'Blog',
-    },
-    {
-      id: 3,
-      name: 'About us',
-    },
-    {
-      id: 4,
-      name: 'Sign up',
-    },
-    {
-      id: 5,
-      name: 'Login',
-    },
-  ];
+  navs =
+    [
+      { id: 1, name: 'Gift' },
+      {
+        id: 2,
+        name: 'Invest',
+      },
+      {
+        id: 3,
+        name: 'Blog',
+      },
+      {
+        id: 3,
+        name: 'About us',
+      },
+      {
+        id: 4,
+        name: 'Sign up',
+      },
+      {
+        id: 5,
+        name: 'Login',
+      },
+    ];
+
+  //  navsLeft =
+  //   [
+  //     { id: 1, name: 'Redeem Gift' },
+  //     {
+  //       id: 2,
+  //       name: 'Buy Gift',
+  //     }
+  //   ];
 
   showNavigationbar = false;
 
@@ -75,7 +85,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
   openDialog(): void {
     if (this.isLoggedIn) {
@@ -116,24 +126,33 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   navigate(nav: any) {
     if (nav.id < 3) {
       if (this.isLoggedIn) {
-        if (nav.name === 'Redeem Gift Card') {
+        if (nav.name === 'Redeem Gift') {
           this.openDialog();
-        } else if (nav.name === 'Buy Gift Card') {
+        } else if (nav.name === 'Buy Gift') {
           this.buyGift();
-        }
-      } else {
+        
+      } else if (nav.name == "Login") {
         this.toastr.error('Please login first');
         this.router.navigate(['login']);
       }
-    } else if (nav.id === 3) {
+      else if (nav.name == 'Gift') {
+        console.log('here')
+        this.router.navigate(['gifts']);
+      }
+      else if (nav.name == 'Invest') {
+        console.log('here')
+        this.router.navigate(['invest']);
+      }
+    } else if (nav.name === 'faq') {
       this.scrollToFaq();
-    } else if (nav.id === 4) {
+    } else if (nav.name === 'Login') {
       this.router.navigate(['login']);
-    } else if (nav.id === 5) {
+    } else if (nav.name === 'Sign up') {
       this.router.navigate(['sign-up']);
     } else {
       this.navigayeToProfile();
     }
+  } 
     this.showNavigationbar = false;
   }
 
@@ -197,7 +216,7 @@ export class RedeemDialog {
   constructor(
     public dialogRef: MatDialogRef<RedeemDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
 
   onNoClick(event?: String): void {
     this.dialogRef.close({ data: this.data, event: event });

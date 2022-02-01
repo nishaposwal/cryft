@@ -27,6 +27,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { SagsComponent } from '../app/cryft/components/sags/sags.component';
 @NgModule({
   
   declarations: [
@@ -38,7 +39,8 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
     ChangeComponent,
     ForgotPassComponent,
     TncComponent,
-    ProfileComponent
+    ProfileComponent,
+    SagsComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,12 @@
     </div>
    </div>
 
+   <!-- <div class="navs left-navs">
+    <div class="nav" *ngFor="let nav of navsLeft">
+      <p *ngIf="nav.id < 4" (click)="navigateL(nav)">  {{nav.name}}</p>
+    </div>
+   </div> -->
+
    <div class="auth">
     <button mat-raised-button class="signIn" (click)="sign()" *ngIf="!isLoggedIn">Sign Up</button>
     <button mat-raised-button class="loginButton" (click)="login()" *ngIf="!isLoggedIn">Log in</button> 

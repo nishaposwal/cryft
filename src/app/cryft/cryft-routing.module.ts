@@ -9,7 +9,7 @@ import { CryftComponent } from './cryft.component';
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
   {
-    path: 'metaverse',
+    path: 'home',
     component: HomeComponent,
   },
 ];

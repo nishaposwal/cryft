@@ -7,6 +7,8 @@ import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.compon
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TncComponent } from './components/tnc/tnc.component';
+import { HomeComponent } from './cryft/components/home/home.component';
+import { SagsComponent } from './cryft/components/sags/sags.component';
 
 const routes: Routes = [
   {
@@ -14,12 +16,20 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
+    path: 'gifts',
+    component: HomeComponent
+  },
+  {
+    path: 'invest',
+    component: SagsComponent
+  },
+  {
     path: 'sign-up',
     component: CreateAccountComponent,
   },
   {
     path: '',
-    redirectTo: 'cryft',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -40,7 +50,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'cryft',
+    path: 'home',
     loadChildren: () =>
       import('./cryft/cryft.module').then((m) => m.CryftModule),
   },
