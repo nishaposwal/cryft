@@ -4,15 +4,15 @@
 </div>
    <div class="navs">
     <div class="nav" *ngFor="let nav of navs">
-      <p *ngIf="nav.id < 4" (click)="navigate(nav)">  {{nav.name}}</p>
+      <a href="{{origin}}/{{nav.url}}" >{{nav.name}}</a>
     </div>
    </div>
 
-   <!-- <div class="navs left-navs">
+   <div class="navs left-navs">
     <div class="nav" *ngFor="let nav of navsLeft">
-      <p *ngIf="nav.id < 4" (click)="navigateL(nav)">  {{nav.name}}</p>
+      <p (click)="gifts(nav.name)">  {{nav.name}}</p>
     </div>
-   </div> -->
+   </div>
 
    <div class="auth">
     <button mat-raised-button class="signIn" (click)="sign()" *ngIf="!isLoggedIn">Sign Up</button>
@@ -29,5 +29,5 @@
     <div class="line" [class.cross]="showNavigationbar"></div>
     <div class="line" [class.cross]="showNavigationbar"></div>
   </div>
-  <app-drop-down *ngIf="showNavigationbar" class="tabs" [tabs]="navs" (navClick)="navigate($event)"></app-drop-down>
+  <app-drop-down *ngIf="showNavigationbar" class="tabs" [tabs]="navs" (navClick)="redirect($event)"></app-drop-down>
 </div>

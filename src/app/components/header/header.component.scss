@@ -15,16 +15,21 @@
     }
   }
 
+
   .navs {
     display: flex;
     align-items: center;
     margin-left: 2rem;
     position: absolute;
-    right: 170px;
+    right: 220px;
     cursor: pointer;
+    a {
+      text-decoration: none;
+      color: rgba(41, 35, 92, 1) !important;
+    }
     .nav {
       margin: 0 1rem;
-      color: rgba(41, 35, 92, 1);
+      color: rgba(41, 35, 92, 1) !important;
       font-family: MontserratBold;
       cursor: pointer;
       p {

@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="header" *ngIf="!id" > Blogs </div>
+    <div class="blogs" *ngIf="!id">
+        <a href="/blogs?id={{blog.id}}" class="blog" *ngFor="let blog of blogs">
+            <div class="text">
+                <div class="head">{{blog.head}}</div>
+                <div class="about">{{blog.content.substring(1, 100) + '...'}}</div>
+            </div>
+        </a>
+    </div>
+    <div *ngIf="id">
+        <div class="text">
+            <div class="head blogHead">{{blogs[id-1].head}}</div>
+            <div class="about">{{blogs[id-1].content}}</div>
+        </div>
+    </div>
+</div>

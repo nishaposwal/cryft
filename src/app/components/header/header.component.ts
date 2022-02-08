@@ -11,11 +11,14 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { NavigationExtras, Router } from '@angular/router';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/core/services/app.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { EventEmitterService } from 'src/app/core/services/event-emitter.service';
 import { RestService } from 'src/app/core/services/rest.service';
+
+import { DOCUMENT } from '@angular/common';
+
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -35,47 +38,55 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     private eventEmitterService: EventEmitterService,
     private restService: RestService,
     private apppService: AppService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    @Inject(DOCUMENT) private document: Document
   ) { }
 
+  origin = this.document.location.origin
   redeemCode: String = '';
   navs =
     [
-      { id: 1, name: 'Gift' },
+      { id: 1, name: 'Gift' , url:'gifts'},
       {
         id: 2,
-        name: 'Invest',
+        name: 'Invest', url:'invest'
       },
       {
         id: 3,
-        name: 'Blog',
-      },
-      {
-        id: 3,
-        name: 'About us',
+        name: 'Blog', url:'blogs'
       },
       {
         id: 4,
-        name: 'Sign up',
-      },
-      {
-        id: 5,
-        name: 'Login',
-      },
+        name: 'About us', url:'about-us'
+      }
     ];
 
-  //  navsLeft =
-  //   [
-  //     { id: 1, name: 'Redeem Gift' },
-  //     {
-  //       id: 2,
-  //       name: 'Buy Gift',
-  //     }
-  //   ];
+   navsLeft =
+    [
+      { id: 11, name: 'Redeem Gift' },
+      {
+        id: 12,
+        name: 'Buy Gift',
+      }
+    ];
 
+
+    gifts(name: any) {
+      if (name == "Buy Gift")
+        this.buyGift()
+      else  
+          this.openDialog();
+    }
   showNavigationbar = false;
 
+  action: any;
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.action = params['action'];
+      if (this.action == "redeem")
+          this.openDialog();
+    });
     this.isLoggedIn = this.authService.getAuthToken() ? true : false;
     this.authService.loggedIn$.subscribe((res: any) => {
       this.isLoggedIn = res;
@@ -86,6 +97,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() { }
+
+
 
   openDialog(): void {
     if (this.isLoggedIn) {
@@ -123,36 +136,26 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       );
   }
 
-  navigate(nav: any) {
-    if (nav.id < 3) {
-      if (this.isLoggedIn) {
-        if (nav.name === 'Redeem Gift') {
-          this.openDialog();
-        } else if (nav.name === 'Buy Gift') {
-          this.buyGift();
-        
-      } else if (nav.name == "Login") {
-        this.toastr.error('Please login first');
-        this.router.navigate(['login']);
-      }
-      else if (nav.name == 'Gift') {
+  redirect(nav: any) {
+        if (nav.name == 'Gift') {
         console.log('here')
         this.router.navigate(['gifts']);
       }
       else if (nav.name == 'Invest') {
         console.log('here')
         this.router.navigate(['invest']);
-      }
-    } else if (nav.name === 'faq') {
-      this.scrollToFaq();
-    } else if (nav.name === 'Login') {
+      } else if (nav.name === 'About us') {
+        this.router.navigate(['about-us']);
+    }else if (nav.name === 'Blog') {
+      this.router.navigate(['blogs']);
+  } else if (nav.name === 'Login') {
       this.router.navigate(['login']);
     } else if (nav.name === 'Sign up') {
       this.router.navigate(['sign-up']);
     } else {
       this.navigayeToProfile();
     }
-  } 
+  
     this.showNavigationbar = false;
   }
 

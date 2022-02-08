@@ -1,0 +1,48 @@
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 3rem;
+    img {
+        width: 32rem;
+        height: 30rem;
+    }
+    .about-us {
+        display: flex;
+
+        width: 50%;
+        flex-direction: column;
+        padding: 1rem;
+        .text {
+            font-style: normal;
+            /* identical to box height, or 131% */
+        
+            text-align: center;
+            letter-spacing: 1.5px;
+        
+            color: rgba(47, 47, 47, 0.77);
+            .head {
+        
+                font-family: MontserratExtraBold;
+                font-style: normal;
+                font-weight: 800;
+                font-size: 2rem;
+                line-height: 4rem;
+                /* or 192% */
+                letter-spacing: 1.5px;
+                margin-top: 1.5rem;
+                margin-bottom: 1rem;
+                color: #4A4A4A;
+        
+            }
+            .about {
+        
+                font-family: Poppins;
+                font-weight: 500;
+                font-size: 1.2rem;
+                line-height: 2rem;
+            }
+        }
+    }
+}
