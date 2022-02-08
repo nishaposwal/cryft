@@ -30,7 +30,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MetaverseComponent } from './components/metaverse/metaverse.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
-import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +41,6 @@ import { FooterComponent } from './components/footer/footer.component';
     FaqComponent,
     MetaverseComponent,
     LandingpageComponent,
-    FooterComponent,
   ],
   imports: [
     CommonModule,

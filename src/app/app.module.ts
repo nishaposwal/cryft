@@ -28,6 +28,10 @@ import { MatTableModule } from '@angular/material/table';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { SagsComponent } from '../app/cryft/components/sags/sags.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { BlogsComponent } from './components/blogs/blogs.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { HelpAndSupportComponent } from './components/help-and-support/help-and-support.component';
 @NgModule({
   
   declarations: [
@@ -40,7 +44,8 @@ import { SagsComponent } from '../app/cryft/components/sags/sags.component';
     ForgotPassComponent,
     TncComponent,
     ProfileComponent,
-    SagsComponent
+    SagsComponent, 
+    FooterComponent, BlogsComponent, AboutUsComponent, HelpAndSupportComponent, 
   ],
   imports: [
     BrowserModule,
