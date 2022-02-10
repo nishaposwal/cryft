@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TncComponent } from './components/tnc/tnc.component';
 import { HomeComponent } from './cryft/components/home/home.component';
+import { MetaverseSagComponent } from './cryft/components/Metaversesag/metaverse-sag.component';
 import { SagsComponent } from './cryft/components/sags/sags.component';
 
 const routes: Routes = [
@@ -63,7 +64,10 @@ const routes: Routes = [
     path : 'profile',
     component : ProfileComponent
   },
-
+  {
+    path: 'invest/metaverse',
+    component: MetaverseSagComponent,
+  },
   {
     path: 'home',
     loadChildren: () =>

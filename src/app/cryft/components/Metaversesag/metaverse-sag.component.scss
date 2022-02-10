@@ -1,0 +1,183 @@
+
+@import "../../../../assets/styles/helpers/fonts";
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Poppins:wght@500&display=swap');
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+p {
+  margin: 0;
+}
+
+section {
+  padding: 5em;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.splitContent {
+  display: flex;
+  flex-wrap: wrap;
+  &>* {
+    flex-basis: 70%;
+  }
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.header {
+  color: #4A4A4A;
+  display: flex;
+  gap: 2rem;
+}
+.note {
+  font-family: Poppins;
+  font-size: 1rem;
+  color: rgba(74, 74, 74, 0.77);
+  letter-spacing: 0.1rem;
+}
+.main{
+  background-color: #F0F5FF;
+}
+.getStart{
+  background: #4B6CFF; color: #FFFFFF; background: linear-gradient(315deg, #264CFF 0%, #4F6EFF 100%);
+            box-shadow: 0px 20px 40px #A5B5FF, inset 0px -3px 10px rgba(0, 0, 0, 0.37), inset 3px 1px 15px rgba(255, 255, 255, 0.5);
+            border-radius: 20px; display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 15px 16px;
+
+position: static;
+width: 142px;
+height: 52px;
+margin-top: .2rem;
+}
+.logo {
+  margin: 2rem;
+  img {
+    width: 100px;
+  }
+  position: relative;
+}
+.address{
+  color: #FFFFFF;
+  position: relative;
+  left: 50px;
+  top: 25px;
+  text-align: justify;
+letter-spacing: 1.5px;
+}
+.p {
+  color: rgba(255, 255, 255, 0.77);
+  text-align: justify;
+  letter-spacing: 1.5px;
+}
+.add{
+  color: rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.408px;  
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 19px;
+  line-height: 19px;
+}
+.splitContent1{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 4.5rem;
+  padding: auto;
+  img {
+    width: 280px;
+    margin: auto;
+  }
+  .sag{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    margin: 2rem;
+    margin-top: 0rem;
+    color: rgba(47, 47, 47, 0.77);
+  
+  }
+  .content1{
+   border-radius: 55px;
+   margin: auto;
+   margin-bottom: 2rem;
+  }
+}
+.frame15img{
+  position: relative;
+  img {
+    width: 480px;
+  height: 480px;
+  }
+}
+.frame15content{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  background: #D6DEEE;
+  border-radius: 50px;
+  font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 22px;
+line-height: 34px;
+padding: 3rem;
+/* or 155% */
+text-align: justify;
+letter-spacing: 1.5px;
+
+color: rgba(24, 24, 24, 0.77);
+}
+
+.twitHeader {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 70px;
+  /* or 140% */
+
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1.5px;
+
+  color: #4A4A4A;
+  margin-bottom: 1rem;
+}
+
+.twits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .twitImg {
+
+    margin: 1rem;
+    width: 400px;
+    height: 320px;
+    border-radius: 24px;
+  }
+}
