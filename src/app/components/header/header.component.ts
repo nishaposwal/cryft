@@ -72,9 +72,16 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     ];
 
 
-    gifts(name: any) {
-      if (name == "Buy Gift")
-        this.buyGift()
+    gifts(id: any) {
+      if (id == 12){
+        let extras: NavigationExtras = {
+          state: {
+            scrollTo: 'buyGift',
+          },
+        };
+        this.router.navigate(['gifts'], extras);
+        
+      }
       else  
           this.openDialog();
     }
@@ -136,23 +143,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       );
   }
 
-  redirect(nav: any) {
-        if (nav.name == 'Gift') {
-        console.log('here')
-        this.router.navigate(['gifts']);
-      }
-      else if (nav.name == 'Invest') {
-        console.log('here')
-        this.router.navigate(['invest']);
-      } else if (nav.name === 'About us') {
-        this.router.navigate(['about-us']);
-    }else if (nav.name === 'Blog') {
-      this.router.navigate(['blogs']);
-  } else if (nav.name === 'Login') {
-      this.router.navigate(['login']);
-    } else if (nav.name === 'Sign up') {
-      this.router.navigate(['sign-up']);
-    } else {
+   redrct(nav: any) {
+        if (nav.id <= 4) {
+          this.router.navigate([this.navs[nav.id-1].url])
+        } else {
       this.navigayeToProfile();
     }
   

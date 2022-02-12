@@ -8,6 +8,7 @@ import { CreateAccountComponent } from './components/create-account/create-accou
 import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
 import { HelpAndSupportComponent } from './components/help-and-support/help-and-support.component';
 import { LoginComponent } from './components/login/login.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TncComponent } from './components/tnc/tnc.component';
 import { HomeComponent } from './cryft/components/home/home.component';
@@ -59,6 +60,10 @@ const routes: Routes = [
   {
     path: 'tnc',
     component : TncComponent
+  },
+  {
+    path: 'privacy',
+    component : PrivacyComponent
   },
   {
     path : 'profile',

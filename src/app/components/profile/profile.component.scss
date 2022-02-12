@@ -174,9 +174,19 @@
       }
     }
   }
+  
+  hr {
+    border: .8px solid $primary-color;
+    clear:both;
+    display:block;
+    width: 98%;               
+    background-color: $primary-color;
+    margin: 2rem;
+  }
 
   .logout {
-    width: 100%;
+    align-self: center;
+    margin: 1rem;
   }
 
   .orders {

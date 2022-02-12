@@ -32,6 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BlogsComponent } from './components/blogs/blogs.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { HelpAndSupportComponent } from './components/help-and-support/help-and-support.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 @NgModule({
   
   declarations: [
@@ -45,7 +46,7 @@ import { HelpAndSupportComponent } from './components/help-and-support/help-and-
     TncComponent,
     ProfileComponent,
     SagsComponent, 
-    FooterComponent, BlogsComponent, AboutUsComponent, HelpAndSupportComponent, 
+    FooterComponent, BlogsComponent, AboutUsComponent, HelpAndSupportComponent, PrivacyComponent, 
   ],
   imports: [
     BrowserModule,
