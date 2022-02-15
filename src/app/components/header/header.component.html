@@ -2,15 +2,16 @@
   <div class="logo" (click)="home()">
     <img src="../../../assets/images/gappy.png" alt="">
 </div>
-   <div class="navs">
-    <div class="nav" *ngFor="let nav of navs">
-      <a href="{{origin}}/{{nav.url}}" >{{nav.name}}</a>
-    </div>
-   </div>
 
    <div class="navs left-navs">
     <div class="nav" *ngFor="let nav of navsLeft">
-      <p (click)="gifts(nav.name)">  {{nav.name}}</p>
+      <p (click)="gifts(nav.id)">  {{nav.name}}</p>
+    </div>
+   </div>
+
+   <div class="navs">
+    <div class="nav" *ngFor="let nav of navs">
+      <p (click)="redrct(nav)">{{nav.name}}</p>
     </div>
    </div>
 
@@ -29,5 +30,5 @@
     <div class="line" [class.cross]="showNavigationbar"></div>
     <div class="line" [class.cross]="showNavigationbar"></div>
   </div>
-  <app-drop-down *ngIf="showNavigationbar" class="tabs" [tabs]="navs" (navClick)="redirect($event)"></app-drop-down>
+  <app-drop-down *ngIf="showNavigationbar" class="tabs" [tabs]="navs" (navClick)="redrct($event)"></app-drop-down>
 </div>

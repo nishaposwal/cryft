@@ -3,15 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/interceptors/gaurds/auth.gaurd';
 import { HomeComponent } from './components/home/home.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
-import { MetaverseComponent } from './components/metaverse/metaverse.component';
-import { CryftComponent } from './cryft.component';
 
 const routes: Routes = [
   { path: '', component: LandingpageComponent },
   {
     path: 'home',
     component: HomeComponent,
-  },
+  }
 ];
 
 @NgModule({

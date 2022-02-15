@@ -28,7 +28,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   &>* {
-    flex-basis: 50%;
+    flex-basis: 70%;
   }
 }
 .content {
@@ -39,27 +39,14 @@ section {
 
 .header {
   color: #4A4A4A;
-  p {
-    font-family: MontserratExtraBold;
-    font-style: normal;
-font-weight: 800;
-font-size: 3rem;
-line-height: 3.5rem;
-/* or 117% */
-
-display: flex;
-align-items: center;
-letter-spacing: .15rem;
-  }
+  display: flex;
+  gap: 2rem;
 }
 .note {
   font-family: Poppins;
   font-size: 1rem;
   color: rgba(74, 74, 74, 0.77);
   letter-spacing: 0.1rem;
-}
-.des {
-  width: 35rem;
 }
 .main{
   background-color: #F0F5FF;
@@ -76,7 +63,7 @@ padding: 15px 16px;
 position: static;
 width: 142px;
 height: 52px;
-margin-top: 0rem;
+margin-top: .2rem;
 }
 .logo {
   margin: 2rem;
