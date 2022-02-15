@@ -4,14 +4,14 @@
         <a href="/blogs?id={{blog.id}}" class="blog" *ngFor="let blog of blogs">
             <div class="text">
                 <div class="head">{{blog.head}}</div>
-                <div class="about">{{blog.content.substring(1, 100) + '...'}}</div>
+                <div class="about" [innerHtml]="blog.content.substring(0, 100) + '...'"></div>
             </div>
         </a>
     </div>
     <div *ngIf="id">
         <div class="text">
-            <div class="head blogHead">{{blogs[id-1].head}}</div>
-            <div class="about">{{blogs[id-1].content}}</div>
+            <div class="head blogHead">{{blogs[id].head}}</div>
+            <div class="about" [innerHtml]="htmlToAdd"></div>
         </div>
     </div>
 </div>
