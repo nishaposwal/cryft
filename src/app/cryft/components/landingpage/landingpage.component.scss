@@ -8,8 +8,7 @@
 }
 
 img {
-  max-width: 100%;
-  display: block;
+  display: flex;
 }
 
 p {
@@ -26,7 +25,7 @@ section {
 
 .splitContent {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   &>* {
     flex-basis: 50%;
   }
@@ -39,27 +38,21 @@ section {
 
 .header {
   color: #4A4A4A;
-  p {
     font-family: MontserratExtraBold;
     font-style: normal;
 font-weight: 800;
 font-size: 3rem;
 line-height: 3.5rem;
 /* or 117% */
-
-display: flex;
-align-items: center;
 letter-spacing: .15rem;
-  }
+min-width: 300px;
 }
 .note {
   font-family: Poppins;
   font-size: 1rem;
   color: rgba(74, 74, 74, 0.77);
   letter-spacing: 0.1rem;
-}
-.des {
-  width: 35rem;
+  margin-bottom: 2rem;
 }
 .main{
   background-color: #F0F5FF;
@@ -76,7 +69,7 @@ padding: 15px 16px;
 position: static;
 width: 142px;
 height: 52px;
-margin-top: 0rem;
+margin-bottom: 1rem;
 }
 .logo {
   margin: 2rem;
@@ -112,11 +105,9 @@ letter-spacing: 1.5px;
 .splitContent1{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 4.5rem;
-  padding: auto;
   img {
     width: 280px;
     margin: auto;
@@ -128,7 +119,7 @@ letter-spacing: 1.5px;
     font-size: 1rem;
     line-height: 1.2rem;
     text-align: center;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1rem;
     margin: 2rem;
     margin-top: 0rem;
     color: rgba(47, 47, 47, 0.77);
@@ -136,34 +127,31 @@ letter-spacing: 1.5px;
   }
   .content1{
    border-radius: 55px;
-   margin: auto;
    margin-bottom: 2rem;
+   align-self: center;
+   width: 400px;
+   height: 400px;
   }
 }
 .frame15img{
-  position: relative;
   img {
-    width: 480px;
-  height: 480px;
+    width: 400px;
+  height: 400px;
   }
 }
 .frame15content{
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
+  text-align: center;
   background: #D6DEEE;
   border-radius: 50px;
   font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 22px;
-line-height: 34px;
-padding: 3rem;
-/* or 155% */
-text-align: justify;
-letter-spacing: 1.5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 28px;
+  padding: 2rem;
+  /* or 155% */
 
-color: rgba(24, 24, 24, 0.77);
+  color: rgba(24, 24, 24, 0.77);
 }
 
 .twitHeader {
@@ -193,4 +181,54 @@ color: rgba(24, 24, 24, 0.77);
     height: 320px;
     border-radius: 24px;
   }
+}
+
+@media (max-width: 900px) {
+  .header {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+  }
+  .note {
+    font-size: .8rem;
+  }
+  .splitContent {
+    flex-direction: column;
+  }
+  .splitContent1 {
+    flex-direction: column;
+    .content1 {
+      min-width: 94%;
+      height: auto;
+    }
+    img {
+      width: 200px;
+      height: 200px;
+    }
+    .frame15img {
+      img {
+        width: 300px;
+        height: 300px;
+      }
+    }
+    .frame15content {
+      font-size: 15px;
+      line-height: 18px;
+      align-self: center;
+    }
+    .sag {
+      font-size: .8rem;
+      line-height: 1rem;
+      letter-spacing: .1rem;
+    }
+  }
+  section {
+    padding: 2em;
+  }
+}
+
+@media (min-width: 900px) {
+.splitContent {
+  img {
+    width: 30%;
+  }}
 }

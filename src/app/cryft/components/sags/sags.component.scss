@@ -10,7 +10,6 @@
     flex-direction: column;
     overflow: scroll;
     .head {
-
         font-family: MontserratExtraBold;
         font-style: normal;
         font-weight: 800;
@@ -21,9 +20,7 @@
         display: flex;
         align-items: center;
         letter-spacing: 1.5px;
-
         color: #4A4A4A;
-
     }
     .sags {
         display: flex;
@@ -33,6 +30,7 @@
         height: 100%;
         padding: 1rem;
         .sag {
+            cursor: pointer;
             width: 28rem;
             min-height: 22rem;
             margin: 1rem;

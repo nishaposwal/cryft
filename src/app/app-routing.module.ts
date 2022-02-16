@@ -10,6 +10,7 @@ import { HelpAndSupportComponent } from './components/help-and-support/help-and-
 import { LoginComponent } from './components/login/login.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SagDetailComponent } from './components/sag-detail/sag-detail.component';
 import { TncComponent } from './components/tnc/tnc.component';
 import { HomeComponent } from './cryft/components/home/home.component';
 import { MetaverseSagComponent } from './cryft/components/Metaversesag/metaverse-sag.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'invest',
     component: SagsComponent
+  },
+  {
+    path: 'invest/sag',
+    component: SagDetailComponent
   },
   {
     path: 'blogs',

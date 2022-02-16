@@ -8,6 +8,7 @@
 }
 .bottom {
   bottom: 0;
+  
 }
 img {
   max-width: 100%;
@@ -29,6 +30,8 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: space-evenly;
+  padding-bottom: 2rem;
 }
 .logo {
   margin: 2rem;
@@ -63,16 +66,9 @@ letter-spacing: 1.5px;
 }
 .splitContent1{
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
   margin-bottom: 4.5rem;
-  padding: auto;
-  .content1{
-   border-radius: 55px;
-   margin: auto;
-  }
+  justify-content: space-evenly;
 }
 
 ul li {
@@ -96,26 +92,18 @@ width: 252px;
 height: 113px;
 background: #282B3E;
 }
-.sitemap{
-  position: relative;
-  width: 85px;
-  height: 22px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 22px;
-  /* identical to box height, or 110% */
-  letter-spacing: -0.408px;
-  color: #FFFFFF;
-  top: 110px;
-  left: 200px;
-}
-.rectangle{
-  position: relative;
-  top: 30px;
-width: 552px;
-height: 220px;
-background: rgba(40, 43, 62, 1) ;
-border-radius: 30px;
+
+@media (max-width: 900px) {
+  .splitContent1 {
+    flex-direction: column;
+    font-size: 13px;
+  }
+  .logo {
+    img {
+      width: 170px;
+    }
+  }
+  .bottom {
+    padding-bottom: 1rem;
+  }
 }

@@ -33,6 +33,7 @@ import { BlogsComponent } from './components/blogs/blogs.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { HelpAndSupportComponent } from './components/help-and-support/help-and-support.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
+import { SagDetailComponent } from './components/sag-detail/sag-detail.component';
 @NgModule({
   
   declarations: [
@@ -46,7 +47,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
     TncComponent,
     ProfileComponent,
     SagsComponent, 
-    FooterComponent, BlogsComponent, AboutUsComponent, HelpAndSupportComponent, PrivacyComponent, 
+    FooterComponent, BlogsComponent, AboutUsComponent, HelpAndSupportComponent, PrivacyComponent, SagDetailComponent, 
   ],
   imports: [
     BrowserModule,
