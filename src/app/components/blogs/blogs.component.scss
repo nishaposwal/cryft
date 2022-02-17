@@ -4,7 +4,7 @@
 
 .container {
     background: #F0F5FF;
-    padding: 5rem;
+    padding: 3rem 0;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -37,9 +37,11 @@
         text-align: center;
         .blog {
             cursor: pointer;
-            min-height: 22rem;
+            min-height: 15rem;
             margin: 1rem;
             padding: 1.5rem;
+            width: 92%;
+            align-self: center;
             background: #FFFFFF;
             border-radius: 50px;
             display: flex;
@@ -80,5 +82,40 @@
         text-align: center;
         margin-bottom: 2.6rem;
     }
-    
+    .content {
+        margin: 3rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .container {
+        .header {
+            font-size: 1.8rem;
+
+        }
+        .blogs {
+            .blog {
+                .text {
+                    .head {
+                        font-size: 1.4rem;
+                        line-height: 2.4rem;
+                    }
+                    .about {
+                        font-size: .9rem;
+                        line-height: 1.5rem;
+                    }
+                }
+            }
+        }
+        .text {
+            .blogHead {
+                font-size: 2rem;
+                line-height: 3rem;
+            }
+            .about {
+                font-size: .9rem;
+                line-height: 1.5rem;
+            }
+        }
+    }
 }

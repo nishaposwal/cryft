@@ -10,10 +10,8 @@
     }
     .about-us {
         display: flex;
-
         width: 50%;
         flex-direction: column;
-        padding: 1rem;
         .text {
             font-style: normal;
             /* identical to box height, or 131% */
@@ -42,6 +40,33 @@
                 font-weight: 500;
                 font-size: 1.2rem;
                 line-height: 2rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        margin: 1rem;
+        img {
+            width: 20rem;
+            height: 18rem;
+        }
+        .about-us {
+            width: 80%;
+            .text {
+                .head {
+                    font-size: 1.8rem;
+                    line-height: 3rem;
+                    /* or 192% */
+                    letter-spacing: 1px;
+            
+                }
+                .about {
+                    
+                    font-size: .8rem;
+                    line-height: 1.8rem;
+                }
             }
         }
     }

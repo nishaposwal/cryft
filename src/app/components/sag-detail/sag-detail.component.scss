@@ -278,3 +278,25 @@ progress {
     padding: 1rem;
   }
 }
+
+@media (max-width: 1000px) {
+  .main, .container {
+    header {
+     div {
+       img {
+         width: 150px;
+       }
+      h1 {
+        font-size: 32px;
+        margin-bottom: 12px;
+        letter-spacing: .8px;
+      }
+      p {
+        margin-top: 2px;
+        font-size: 16px;
+        letter-spacing: .5px;
+      }
+     }
+    }
+  }
+}

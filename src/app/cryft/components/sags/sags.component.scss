@@ -16,7 +16,7 @@
         font-size: 2rem;
         line-height: 4rem;
         /* or 192% */
-
+        text-align: center;
         display: flex;
         align-items: center;
         letter-spacing: 1.5px;
@@ -41,6 +41,7 @@
             justify-content: space-around;
             align-items: center;
             flex-direction: column;
+            align-self: center;
             img {
                 width: 10rem;
                 height: 10rem;
@@ -63,6 +64,38 @@
                     font-weight: 500;
                     font-size: 1.2rem;
                     line-height: 2rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        padding: 1rem;
+        .head {
+            font-size: .9rem;
+            line-height: 1.5rem;
+        }
+        .sags {
+            .sag {
+                width: 16rem;
+                min-height: 16rem;
+                padding: 1rem;
+                img {
+                    width: 5rem;
+                    height: 5rem;
+                }
+                .text {
+                    letter-spacing: 1px;
+                    .heading {
+                        font-size: 1rem;
+                        line-height: 1.5rem;
+                    }
+                    .about {
+                        font-size: .7rem;
+                        line-height: 1rem;
+                    }
                 }
             }
         }
