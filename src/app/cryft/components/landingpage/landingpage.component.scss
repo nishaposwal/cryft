@@ -106,7 +106,6 @@ letter-spacing: 1.5px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
   margin-bottom: 4.5rem;
   img {
     width: 280px;
@@ -133,11 +132,17 @@ letter-spacing: 1.5px;
    height: 400px;
   }
 }
+.cnt {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
 .frame15img{
   img {
     width: 400px;
   height: 400px;
   }
+  margin: 2rem 8rem;
 }
 .frame15content{
   text-align: center;
@@ -148,10 +153,11 @@ letter-spacing: 1.5px;
   font-weight: normal;
   font-size: 22px;
   line-height: 28px;
-  padding: 2rem;
+  padding: 3rem;
   /* or 155% */
 
   color: rgba(24, 24, 24, 0.77);
+  max-width: 1000px;
 }
 
 .twitHeader {
@@ -204,6 +210,14 @@ letter-spacing: 1.5px;
       width: 200px;
       height: 200px;
     }
+    .sag {
+      font-size: .8rem;
+      line-height: 1rem;
+      letter-spacing: .1rem;
+    }
+  }
+  .cnt {
+    flex-direction: column;
     .frame15img {
       img {
         width: 300px;
@@ -215,10 +229,19 @@ letter-spacing: 1.5px;
       line-height: 18px;
       align-self: center;
     }
-    .sag {
-      font-size: .8rem;
-      line-height: 1rem;
-      letter-spacing: .1rem;
+  }
+  .twitHeader {
+    font-size: 2.2rem;
+    line-height: 2rem;
+    margin-top: 2rem;
+  }
+  .twits {
+    .twitImg {
+
+      margin: 1rem;
+      width: 300px;
+      height: 250px;
+      border-radius: 24px;
     }
   }
   section {
