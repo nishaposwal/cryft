@@ -9,7 +9,7 @@
             &nbsp;
             <div class="p">
                 <p>Swaran Path, Mansarovar<br>Jaipur - 302020</p><br>
-                <p href="" style="color: rgba(255, 255, 255, 0.77);">Contact Us - +919672421830</p>
+                <p style="color: rgba(255, 255, 255, 0.77);">Contact Us - +919672421830</p>
             </div>
         </div>
         <br>
@@ -47,34 +47,34 @@
 
         <div class="tags">
             <li>
-                <a href="/gifts">Gift</a>
+                <a [routerLink]="['/gifts']">Gift</a>
             </li>
             &nbsp;
             <li>
-                <a href="/invest">Invest</a>
+                <a [routerLink]="['/invest']">Invest</a>
             </li>
             &nbsp;
             <li>
-                <a href="/blogs">Blog</a>
+                <a [routerLink]="['/blogs']">Blog</a>
             </li>
             &nbsp;
             <li>
-                <a href="/about-us">About us</a>
+                <a [routerLink]="['/about-us']">About us</a>
         </div>
     </div>
     <div class="content" style="background: #383B4F;">
 
         <div class="tags">
             <li>
-                <a href="/gifts#buyGift">Buy Gift</a>
+                <a [routerLink]="['/gifts']" fragment="buyGift">Buy Gift</a>
             </li>
             &nbsp;
             <li>
-                <a href="/gifts?action=redeem">Redeem Gift</a>
+                <a [routerLink]="['/gifts']" [queryParams]="{action: 'redeem'}">Redeem Gift</a>
             </li>
             &nbsp;
             <li>
-                <a href="/gifts#faq">FAQ</a>
+                <a [routerLink]="['/gifts']" fragment="faq">FAQ</a>
             </li>
         </div>
     </div>
@@ -82,15 +82,15 @@
 
         <div class="tags">
             <li>
-                <a href="/tnc">Terms and Conditions</a>
+                <a [routerLink]="['/tnc']">Terms and Conditions</a>
             </li>
             &nbsp;
             <li>
-                <a href="/privacy">Privacy</a>
+                <a [routerLink]="['/privacy']">Privacy</a>
             </li>
             &nbsp;
             <li>
-                <a href="/help-and-support">Help and support</a>
+                <a [routerLink]="['/help-and-support']">Help and support</a>
             </li>
         </div>
     </div>

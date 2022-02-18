@@ -3,10 +3,12 @@
         <div class="text">
             <div class="head">Help and Support</div>
         </div>
-        <div class="comms" *ngFor="let comm of comms">
-            <img class="commImg" src="../../../assets/images/{{comm.img}}">
-            <div class="text">
-                <div class="text about">{{comm.value}}</div>
+        <div class="commscol">
+            <div class="comms" *ngFor="let comm of comms">
+                <img class="commImg" id="{{comm.id}}" src="../../../assets/images/{{comm.img}}">
+                <div class="text">
+                    <div class="text about">{{comm.value}}</div>
+                </div>
             </div>
         </div>
     </div>

@@ -34,12 +34,18 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 1000px) {
   .faq-component {
     .question {
       width: 95%;
       .ques {
-        font-size: 1rem;
+        font-size: 1.1rem;
+      }
+      img {
+        width: .5rem;
+      }
+      .answer {
+        font-size: .8rem;
       }
     }
   }

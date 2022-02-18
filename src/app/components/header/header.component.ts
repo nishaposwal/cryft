@@ -83,7 +83,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         
       }
       else  
-          this.openDialog();
+          this.router.navigate(['/gifts'], {queryParams: {
+            action: 'redeem'
+          }})
     }
   showNavigationbar = false;
 

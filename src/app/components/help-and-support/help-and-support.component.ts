@@ -12,11 +12,13 @@ export class HelpAndSupportComponent implements OnInit {
   comms = [
     {
       'img': 'email.png',
-      'value': 'hi@gappy.in'
+      'value': 'hi@gappy.in',
+      'id': 'email'
     },
     {
       'img': 'phone.png',
-      'value': '+919672421830'
+      'value': '+919672421830',
+      'id': 'phone'
     }
   ]
   ngOnInit(): void {
