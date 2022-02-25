@@ -14,26 +14,11 @@
             <!-- <img src="assets/Chart.png" /> -->
             <div class="box compHoldings">
                 <h1>Companies Holding in this Fund</h1>
-                <div class="progress_wrapper">
-                    <div>
-                        <label class="first">Others </label>
-                        <progress max="100" value="10">10%</progress>
-                        <label class="second">14.82%</label>
-                    </div>
-                    <div>
-                        <label class="first">Others </label>
-                        <progress max="100" value="70">70%</progress>
-                        <label class="second">14.82%</label>
-                    </div>
-                    <div>
-                        <label class="first">Others </label>
-                        <progress max="100" value="30">30%</progress>
-                        <label class="second">14.82%</label>
-                    </div>
-                    <div>
-                        <label class="first">Others </label>
-                        <progress max="100" value="50">50%</progress>
-                        <label class="second">14.82%</label>
+                <div class="progress_wrapper" >
+                    <div *ngFor="let company of sags[id].companies" >
+                        <label class="first">{{company.name}} </label>
+                        <progress max="100" value="{{company.percent}}">{{company.percent}}%</progress>
+                        <label class="second">{{company.percent}}%</label>
                     </div>
                 </div>
             </div>
@@ -45,28 +30,7 @@
             </div>
             <div class="box">
                 <h1>Risk Factors</h1>
-                <ol>
-                    <li>
-                        Lorem ipsum dolor sit amet et delectus accommodare his consul
-                        copiosae legendos at vix ad putent delectus
-                    </li>
-                    <li>
-                        Lorem ipsum dolor sit amet et delectus accommodare his consul
-                        copiosae legendos at vix ad putent delectus
-                    </li>
-                    <li>
-                        Lorem ipsum dolor sit amet et delectus accommodare his consul
-                        copiosae legendos at vix ad putent delectus
-                    </li>
-                    <li>
-                        Lorem ipsum dolor sit amet et delectus accommodare his consul
-                        copiosae legendos at vix ad putent delectus
-                    </li>
-                    <li>
-                        Lorem ipsum dolor sit amet et delectus accommodare his consul
-                        copiosae legendos at vix ad putent delectus
-                    </li>
-                </ol>
+                Typically these funds are invested in the coins/tokens of the protocols or blockchain products but there are some risks added to this which include: volatility risk which is associated with market trends of the coin or token where coin price increases or decreases. 2 government regulations these regulations can differ from country to country. rest we are here to mitigate the risk as far as possible
             </div>
         </div>
         <div id="right">
