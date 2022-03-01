@@ -59,6 +59,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       {
         id: 4,
         name: 'About us', url:'about-us'
+      },
+      {
+        id: 5,
+        name: 'Wallet', url:'wallet'
       }
     ];
 
@@ -146,7 +150,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
    redrct(nav: any) {
-        if (nav.id <= 4) {
+        if (nav.id <= 5) {
           this.router.navigate([this.navs[nav.id-1].url])
         } else {
       this.navigayeToProfile();

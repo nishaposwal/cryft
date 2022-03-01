@@ -12,7 +12,7 @@ export class HelpAndSupportComponent implements OnInit {
   comms = [
     {
       'img': 'email.png',
-      'value': 'hi@gappy.in',
+      'value': 'hi@kilope.com',
       'id': 'email'
     },
     {

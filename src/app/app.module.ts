@@ -34,6 +34,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { HelpAndSupportComponent } from './components/help-and-support/help-and-support.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { SagDetailComponent } from './components/sag-detail/sag-detail.component';
+import { WalletComponent } from './components/wallet/wallet.component';
 @NgModule({
   
   declarations: [
@@ -47,7 +48,7 @@ import { SagDetailComponent } from './components/sag-detail/sag-detail.component
     TncComponent,
     ProfileComponent,
     SagsComponent, 
-    FooterComponent, BlogsComponent, AboutUsComponent, HelpAndSupportComponent, PrivacyComponent, SagDetailComponent, 
+    FooterComponent, BlogsComponent, AboutUsComponent, HelpAndSupportComponent, PrivacyComponent, SagDetailComponent, WalletComponent, 
   ],
   imports: [
     BrowserModule,

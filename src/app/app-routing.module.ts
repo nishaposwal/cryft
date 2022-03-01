@@ -12,6 +12,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SagDetailComponent } from './components/sag-detail/sag-detail.component';
 import { TncComponent } from './components/tnc/tnc.component';
+import { WalletComponent } from './components/wallet/wallet.component';
 import { HomeComponent } from './cryft/components/home/home.component';
 import { MetaverseSagComponent } from './cryft/components/Metaversesag/metaverse-sag.component';
 import { SagsComponent } from './cryft/components/sags/sags.component';
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'gifts',
     component: HomeComponent
+  },
+  {
+    path: 'wallet',
+    component: WalletComponent
   },
   {
     path: 'invest',

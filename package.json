@@ -23,6 +23,7 @@
     "@angular/platform-browser": "~11.2.13",
     "@angular/platform-browser-dynamic": "~11.2.13",
     "@angular/router": "~11.2.13",
+    "@transak/transak-sdk": "^1.0.31",
     "firebase-tools": "^10.1.0",
     "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",

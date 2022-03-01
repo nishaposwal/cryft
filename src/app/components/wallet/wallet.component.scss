@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: #f0f5ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.light_btn {
+  background: linear-gradient(321.06deg, #cddcf7 7.5%, #ffffff 100%);
+  box-shadow: 0px 20px 40px #cedbef,
+    inset 3px 3px 10px rgba(255, 255, 255, 0.72);
+}
+
+.container {
+  width: 100vw;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav .container h1 {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  letter-spacing: -0.408px;
+  color: #4365ff;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+nav .container #links {
+  min-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .container #links a {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.408px;
+  color: #29235c;
+  padding: 0.4rem 0;
+}
+
+nav .container #links #signup {
+  color: white;
+}
+
+nav .container #links #signup,
+nav .container #links #login {
+  min-width: 100px;
+  text-align: center;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #4d6cff 100%, #2b50ff 100%);
+  box-shadow: 0px 20px 40px #a5b5ff;
+}
+
+nav .container #links #login {
+  background: linear-gradient(321.06deg, #cddcf7 7.5%, #ffffff 100%);
+  box-shadow: 0px 20px 40px #cedbef,
+    inset 3px 3px 10px rgba(255, 255, 255, 0.72);
+}
+
+.main {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid rgb(255, 255, 255);
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.tab div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: scroll;
+}
+
+.tab div button {
+  min-width: 15rem;
+  background-color: transparent;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: rgba(74, 74, 74, 0.79);
+  letter-spacing: 1.5px;
+}
+
+.tab div button:hover {
+  background-color: rgba(228, 234, 241, 0.328);
+}
+
+.tab div button.active {
+  border-bottom: 3px solid #4365ff;
+  color: #4a4a4a;
+}
+
+.tabcontent {
+  padding: 2rem;
+  border: 1px solid rgb(255, 255, 255);
+  border-top: none;
+  width: 100%;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  color: rgba(74, 74, 74, 0.79);
+}
+
+.tabcontent p {
+  margin: 1rem 0;
+}
+
+.investment_wrapper {
+  width: 100%;
+  display: flex;
+  margin-bottom: 2rem;
+  overflow-x: scroll;
+}
+
+.investment_wrapper div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #fff;
+  padding: 1rem 3rem;
+  border-radius: 20px;
+  margin-right: 1rem;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 1.5px;
+  color: rgba(47, 47, 47, 0.77);
+}
+
+.investment_wrapper div img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 0.5rem;
+}
+
+@media only screen and (max-width: 1200px) {
+}

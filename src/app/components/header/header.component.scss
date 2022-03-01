@@ -32,8 +32,15 @@
       color: rgba(41, 35, 92, 1) !important;
       font-family: MontserratBold;
       cursor: pointer;
+      display: flex;
+      flex-direction: row;
       p {
         margin: auto;
+      }
+      img {
+        width: 25px;
+        height: 25px;
+        margin-right: 12px;
       }
     }
   }

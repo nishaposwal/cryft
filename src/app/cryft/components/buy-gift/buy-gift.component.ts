@@ -33,7 +33,7 @@ export class BuyGiftComponent implements OnInit {
   options: any = {
     key: 'rzp_live_FM5EtJ4ekjxFo5',
     currency: 'INR',
-    name: 'Gappy',
+    name: 'Kilope',
     description: 'Buy Gift',
     image: '',
     notes: {
