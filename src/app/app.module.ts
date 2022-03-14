@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
+import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {MatStepperModule} from '@angular/material/stepper';
 import { AppRoutingModule } from './app-routing.module';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,6 +37,7 @@ import { HelpAndSupportComponent } from './components/help-and-support/help-and-
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { SagDetailComponent } from './components/sag-detail/sag-detail.component';
 import { WalletComponent } from './components/wallet/wallet.component';
+import { ConnectExchangeComponent } from './components/connect-exchange/connect-exchange.component';
 @NgModule({
   
   declarations: [
@@ -48,7 +51,7 @@ import { WalletComponent } from './components/wallet/wallet.component';
     TncComponent,
     ProfileComponent,
     SagsComponent, 
-    FooterComponent, BlogsComponent, AboutUsComponent, HelpAndSupportComponent, PrivacyComponent, SagDetailComponent, WalletComponent, 
+    FooterComponent, BlogsComponent, AboutUsComponent, HelpAndSupportComponent, PrivacyComponent, SagDetailComponent, WalletComponent, ConnectExchangeComponent, 
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,10 @@ import { WalletComponent } from './components/wallet/wallet.component';
     ClipboardModule,
     MatTableModule,
     MatCardModule,
-    ToastrModule.forRoot()  
+    ToastrModule.forRoot(),
+    MatTabsModule,
+    MatStepperModule,
+    MatTooltipModule
   ],
   providers: [
     {

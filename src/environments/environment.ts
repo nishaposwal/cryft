@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_HOST : 'http://ec2-13-233-80-39.ap-south-1.compute.amazonaws.com:5000/api',//'https://tranquil-depths-04523.herokuapp.com/api',
+  API_HOST : 'https://tranquil-depths-04523.herokuapp.com/api',//'http://ec2-13-233-80-39.ap-south-1.compute.amazonaws.com:5000/api',
   IFSC_API_HOST : 'https://ifsc.razorpay.com/'
 };
 

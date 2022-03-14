@@ -1,0 +1,115 @@
+
+@import "src/assets/styles/helpers/fonts";
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Poppins:wght@500;400;600&display=swap');
+
+.rect {
+    display: flex;
+    padding: 3rem;
+    align-self: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column !important;
+    background: #FFFFFF;
+    border-radius: 50px; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 1rem auto;
+    width: 72%;
+    overflow-y: scroll;
+    height: fit-content;
+    .ss {
+        width: 100%;
+        margin: 1rem auto;
+    }
+    .text {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        /* identical to box height, or 155% */
+        
+        text-align: center;
+        align-self: center;
+        letter-spacing: 1.5px;
+        
+        color: rgba(47, 47, 47, 0.77);
+    }
+
+    .head {
+        font-size: 22px;
+        line-height: 28px;
+    }
+
+    .sm {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .nm {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .lg {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .txtAlignLeft {
+        text-align: left;
+    }
+
+    .marginOne {
+        margin: 1rem;
+    }
+
+    .marginTwo {
+        margin: 2rem;
+    }
+
+    .light {
+        font-weight: 400;
+    }
+
+    .bold {
+        font-weight: 600;
+    }
+    .exRect{
+        width: 42%;
+        height: 70px;
+        background: #E9F0FF;
+        border-radius: 14px;
+        padding: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 2.1rem auto;
+        img {
+            width: 38px;
+            margin-right: 1rem;
+        }
+        div {
+            margin: auto 0;
+        }
+    }
+    .exRect[onclick] {
+        outline: 5px solid #4F6EFF;
+      }
+    button {
+        display: flex;
+        padding: 1.1rem 3rem;
+        background: linear-gradient(315deg, #264CFF 0%, #4F6EFF 100%) !important;
+        box-shadow: 0px 20px 40px #A5B5FF, inset 0px -3px 10px rgba(0, 0, 0, 0.37), inset 3px 1px 15px rgba(255, 255, 255, 0.5) !important;
+        border-radius: 20px;
+        margin: 3rem auto;
+        color: white;
+    }
+    input {
+        background: #F5F9FF;
+        border-radius: 14px;
+        width: 100%;
+        height: 4rem;
+        outline: none !important;
+        border: none !important;
+        padding: 1rem;
+        font-size: 1.3rem;
+    }
+}

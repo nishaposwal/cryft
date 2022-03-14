@@ -1,35 +1,38 @@
+    <div class="cn">
     <div class="main container">
       <div class="tab">
-        <div>
-          <button
+        <mat-tab-group animationDuration="0ms" (selectedTabChange)="eventWallet($event)">
+          <mat-tab label=" My Investments"
             class="tablinks"
             id="defaultOpen"
           >
-            My Investments
-        </button>
+          <div id="Investments" class="tabcontent">
+            <div class="investment_wrapper">
+              <div>
+                <img src="../../../assets/images/bluechip.png" alt="" />
+                <span>Blue Chip Sag</span>
+              </div>
+              <div>
+                <img src="../../../assets/images/metaverse.svg" alt="" />
+                <span>Metaverse Sag</span>
+              </div>
+            </div>
+            <p>Total Invested - 12.4 USDT</p>
+            <p>Networth - 15.45 USDT</p>
+          </div>
+        </mat-tab>
           <!-- <button class="tablinks" (click)="eventWallet('Deposit')">
             Deposits
           </button> -->
-          <button class="tablinks buttonDeco" (click)="eventWallet('Buy')">Buy USDT</button>
-          <button class="tablinks buttonDeco" (click)="eventWallet('Connect Exchange')">
-            Connect Exchange
-          </button>
-        </div>
-      </div>
+          <mat-tab label="Buy USDT" class="tablinks buttonDeco">
 
-      <div id="Investments" class="tabcontent">
-        <div class="investment_wrapper">
-          <div>
-            <img src="../../../assets/images/bluechip.png" alt="" />
-            <p>Blue Chip Sag</p>
-          </div>
-          <div>
-            <img src="../../../assets/images/metaverse.svg" alt="" />
-            <p>Metaverse Sag</p>
-          </div>
-        </div>
-        <p>Total Invested - 12.4 USDT</p>
-        <p>Networth - 15.45 USDT</p>
+          </mat-tab>
+          <mat-tab label="Connect Exchange" class="tablinks buttonDeco">
+            <div id="cntExchnge" class="tabcontent">
+              <app-connect-exchange></app-connect-exchange>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
       </div>
 
       <!-- <div id="Deposit" class="tabcontent">
@@ -38,13 +41,6 @@
 
       <div id="Buy" class="tabcontent">
         <p>Buy</p>
-      </div>
-
-      <div id="Connect" class="tabcontent">
-        <p>Connect Exchange</p>
-      </div>
-
-      <div id="Exchange" class="tabcontent">
-        <p>Exchange</p>
-      </div> -->
+      </div>-->
     </div>
+  </div>

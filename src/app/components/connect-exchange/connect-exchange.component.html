@@ -1,0 +1,107 @@
+
+ <mat-horizontal-stepper
+    class="ex-step">
+    <mat-step label="Select Exchange">
+            <div class="rect">
+                <div class="text">
+                    <div class="head">
+                        Select Your Exchange 
+                    </div>
+                    <div class="exRect" id="rc" style="cursor: pointer;">
+                        <img src="../../../assets/images/wazirx.png"/>
+                        <div class="nm">wazirx</div>
+                    </div>
+                    <div  #tooltip="matTooltip"
+                    matTooltip="Coming Soon" class="exRect" style="cursor:not-allowed;">
+                        <img src="../../../assets/images/BNB.png" />
+                        <div class="nm" >Binance SPOT</div>
+                    </div>
+                    <div class="sm light" style="margin: 1rem 2rem;">Disclaimer. API key connections are susceptible to systemic errors from either kilope or Exchange. By connection your exchange API key, you agree to bear this risk.</div>
+                    <button mat-raised-button matStepperNext class="bold lg">Continue</button>
+                </div>
+            </div>
+        <div>
+          <!-- <button mat-button matStepperNext>Next</button> -->
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Create Api Key & Secret">
+        <div class="rect">
+            <div class="text">
+                <div class="head marginTwo">
+                    Steps to Connect to Wazirx Spot
+                </div>
+                <div class="lg txtAlignLeft marginOne" style="margin-left: 0;">
+                    Step 1: Create API Key on Wazirx
+                </div>
+                <div class="sm txtAlignLeft marginOne">
+                    Go to <a href="https://wazirx.com/settings/keys">https://wazirx.com/settings/keys</a> and click on CREATE NEW KEY to create key
+                </div>
+                <img src="../../../assets/images/step1.png" class="ss">
+                <div class="sm txtAlignLeft marginOne">
+                    Give a key name, any name can be given, example - GAPPY_KEY and then click on continue
+                </div>
+                <img src="../../../assets/images/step2.png" class="ss">
+                <div class="sm txtAlignLeft marginOne">
+                    Fill otp sent to your linked phone and email and continue
+                </div>
+                <div style="display: flex;flex-direction: row;justify-content: space-between;">
+                    <img src="../../../assets/images/step3.png" width="32%" height="300px">
+                <img src="../../../assets/images/step4.png" width="32%"height="300px">
+                <img src="../../../assets/images/step5.png" width="32%"height="300px">
+                </div>
+                <div class="sm txtAlignLeft marginOne bold">
+                    Once done you will see below screen. Copy the API key and Secret Key and keep them somewhere to use in later steps
+                </div>
+                <div class="lg txtAlignLeft marginTwo" style="margin-left: 0;">
+                    Step 2: Enable SPOT Trade
+                </div>
+                <div class="sm txtAlignLeft marginOne">
+                    For us to invest for you, SPOT trade should be enabled, to enable that click on Edit
+                </div>
+                <img src="../../../assets/images/step6.png" class="ss">
+                <div class="sm txtAlignLeft marginOne">
+                    Enable SPOT Trade and update
+                </div>
+                <img src="../../../assets/images/step7.png" class="ss">
+                <div class="sm txtAlignLeft marginOne">
+                    Again give OTP sent to mobile and email and continue
+                </div>
+                <div style="display: flex;flex-direction: row;justify-content: space-between;">
+                <img src="../../../assets/images/step8.png" width="42%" height="300px">
+                <img src="../../../assets/images/step9.png" width="42%" height="300px">
+                </div>
+
+               <div style="display: flex; flex-direction: row;">
+            <button mat-raised-button matStepperPrevious class="bold lg">Back</button>
+            <button mat-raised-button matStepperNext class="bold lg">Next</button>
+          </div>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step > 
+      <ng-template matStepLabel>Fill Key & Secret</ng-template>
+      <div class="rect">
+        <div class="text">
+            <div class="head">
+                <p>Connect WAZIRX Account</p>
+            </div>
+            <div class="lg txtAlignLeft marginTwo" style="margin-left: 0;">
+                API Key
+            </div>
+            <input [(ngModel)]="apiKey" type="text" required>
+            <div class="lg txtAlignLeft marginTwo" style="margin-left: 0;">
+                Secret Key
+            </div>
+            <input [(ngModel)]="secretKey" type="text" required>
+            <div  class="sm light" style="margin: 2rem;">
+                Disclaimer. API key connections are susceptible to systemic errors from either Kilope or Exchange. By connection your exchange API key, you agree to bear this risk.
+            </div>
+           <div style="display: flex; flex-direction: row;">
+        <button mat-raised-button matStepperPrevious class="bold lg">Back</button>
+        <button mat-raised-button class="bold lg" (click)="connectEx()">Connect Exchange</button>
+      </div>
+        </div>
+    </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  

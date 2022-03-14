@@ -60,8 +60,8 @@ transak: any;
   }
 
   
-  eventWallet (eventName: String) {
-    if (eventName == 'Buy') {
+  eventWallet (event: any) {
+    if (event.index == 1) {
       this.transak.init();
     }
   }
